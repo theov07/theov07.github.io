@@ -17,7 +17,7 @@ repository: "theov07/theov07.github.io"
 # Author (Sidebar)
 # ================================
 author:
-  avatar: "profile.png"
+  avatar: "images/IMG_8782.PNG"
   name: "Théo Verdelhan"
   bio: "Quantitative researcher focused on market microstructure, algorithmic trading, and machine learning applied to crypto and financial markets."
   location: "Paris, France"

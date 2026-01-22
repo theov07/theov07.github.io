@@ -1,19 +1,44 @@
 ---
-title: "About"
-permalink: /about/
+permalink: /
+title: "Théo Verdelhan"
 author_profile: true
 ---
 
-I am a **quantitative researcher and engineer** with a strong focus on **algorithmic trading, market microstructure, and machine learning**, applied to **crypto and digital asset markets**.
+### Quantitative Researcher — Crypto/DeFi Microstructure • ML Engineering • Financial Engineering
 
-I am currently completing a **MSc in Financial Engineering (Quantitative Finance Track)** at **Paris Dauphine University – PSL**, alongside a **Master’s degree in Computer Science (Data & AI)** from **EPF Graduate School of Engineering**, where I ranked **8th out of 157 students**.
+I build **systematic trading and market-making strategies** with a focus on **order-book microstructure**, **execution**, and **risk-aware decision-making**.  
+Background in **Financial Engineering (MSc, Dauphine–PSL)** and **Data & AI engineering (EPF, top-ranked)**, with hands-on production work in **crypto markets**.
 
-I have hands-on experience as a **Quantitative Researcher** in a private investment fund, where I designed and deployed **short-horizon trading and market-making strategies** on DeFi derivatives venues. My work focuses on **order-book dynamics, execution quality, inventory risk control**, and **low-latency research pipelines**, with strategies operating on **tick-level data** and real-time execution.
+**Currently interested in:** Quant Research / Quant Trading / Quant Engineering roles (hedge funds, prop shops, crypto-native trading firms).
 
-My interests lie at the intersection of:
-- Quantitative finance and trading
-- Crypto & DeFi market microstructure
-- Machine learning for financial time series
-- Systematic and data-driven investment strategies
+**Links:**  
+- CV: **[Download PDF](/files/CV_VERDELHAN_THEO_DAUPHINE_PSL.pdf)**  
+- LinkedIn: https://www.linkedin.com/in/theoverdelhan/  
+- GitHub: https://github.com/theov07  
 
-I am seeking **quantitative research, trading, or quantitative engineering roles** in **hedge funds, proprietary trading firms, or crypto-native trading companies**.
+---
+
+## Highlights
+
+- **DeFi market making:** designed and deployed short-horizon strategies using dynamic spreads + inventory risk control.  
+- **Research & backtesting:** tick-level pipelines across multiple crypto assets and regimes.  
+- **Low-latency systems:** real-time execution & monitoring infrastructure (REST/WebSocket).  
+- **Quant engineering:** pricing / microstructure models, ML for time series, robust evaluation.
+
+---
+
+## Selected Experience
+
+**Quantitative Researcher — Private Investment Fund (MYR)**  
+Market making and short-horizon trading strategies on DeFi derivatives venues.
+
+**Quantitative Developer — Crypto Arbitrage (La Valériane)**  
+Delta-neutral stat-arb between CEX and DEX derivatives.
+
+---
+
+## What you’ll find on this site
+
+- **Projects:** research notes, trading systems, pricing models  
+- **CV:** background, experience, skills  
+- **Contact:** email & LinkedIn
