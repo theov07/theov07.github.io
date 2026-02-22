@@ -42,6 +42,35 @@ footer {
   background-color: #000000 !important;
 }
 
+/* Masthead links - white text with red hover */
+.masthead a,
+.masthead__menu a,
+.masthead__menu-item a,
+.greedy-nav a,
+.visible-links a {
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.masthead a:hover,
+.masthead__menu a:hover,
+.masthead__menu-item a:hover,
+.greedy-nav a:hover,
+.visible-links a:hover {
+  color: #ff6c60 !important;
+}
+
+/* Selected menu item stays white */
+.masthead__menu-item.selected a {
+  color: #ffffff !important;
+  border-bottom: 2px solid #ffffff;
+}
+
+.masthead__menu-item.selected a:hover {
+  color: #ff6c60 !important;
+  border-bottom: 2px solid #ff6c60;
+}
+
 /* Force footer background */
 .page__footer,
 .page__footer footer,
