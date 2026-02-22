@@ -7,7 +7,7 @@ site_theme: "contrast"
 title: "Théo Verdelhan"
 title_separator: "-"
 name: &name "Théo Verdelhan"
-description: &description "Quantitative Researcher | Financial Engineering | Market Microstructure | Algorithmic Trading | Crypto & DeFi | Machine Learning"
+description: &description "MSc Financial Engineering Student | Aspiring Quantitative Researcher | Market Microstructure | Algorithmic Trading | Crypto & DeFi"
 
 url: "https://theov07.github.io"
 baseurl: ""
@@ -17,9 +17,9 @@ repository: "theov07/theov07.github.io"
 # Author (Sidebar)
 # ================================
 author:
-  avatar: "/images/IMG_8782.PNG"
+  avatar: "/images/avatar.jpg"
   name: "Théo Verdelhan"
-  bio: "Quantitative Researcher | MSc Financial Engineering (Dauphine-PSL) | Top 3% Computer Science & AI (EPF) | Market microstructure, systematic trading, and derivatives pricing in crypto/DeFi markets"
+  bio: "MSc Financial Engineering Student @ Dauphine-PSL | Computer Science & AI @ EPF (Top 3%) | Aspiring Quantitative Researcher"
   location: "Paris, France"
   employer: "Paris Dauphine University – PSL"
   email: "theo.verdelhan@dauphine.eu"

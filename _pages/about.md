@@ -20,13 +20,14 @@ author_profile: true
 
 .intro-section .subtitle {
   font-size: 1.2em;
-  color: #404040;
+  color: #000;
   margin-bottom: 1rem;
+  font-weight: 600;
 }
 
 .intro-section .tagline {
   font-size: 1em;
-  color: #666;
+  color: #333;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -64,7 +65,7 @@ author_profile: true
 }
 
 .nav-card p {
-  color: #666;
+  color: #333;
   font-size: 0.95em;
   line-height: 1.5;
   margin: 0;
@@ -76,6 +77,11 @@ author_profile: true
   padding: 2rem;
   background: #fafafa;
   border-radius: 8px;
+}
+
+.contact-section h3 {
+  color: #000;
+  margin-bottom: 1rem;
 }
 
 .contact-links {
@@ -109,23 +115,25 @@ author_profile: true
 
 <div class="intro-section">
   <h1>Théo Verdelhan</h1>
-  <div class="subtitle">Quantitative Researcher</div>
+  <div class="subtitle">Aspiring Quantitative Researcher</div>
   <div class="tagline">
-    MSc Financial Engineering (Paris Dauphine–PSL) | Computer Science & AI (EPF, Top 3%)
+    MSc Financial Engineering Student at Paris Dauphine–PSL
+    <br>
+    Computer Science & AI Graduate from EPF (Top 3%)
     <br>
     Specialized in market microstructure, systematic trading, and derivatives pricing
   </div>
 </div>
 
 <div class="navigation-grid">
-  <a href="/cv/" class="nav-card">
-    <h2>Professional Profile</h2>
-    <p>Education, experience, skills, and comprehensive CV</p>
+  <a href="/education/" class="nav-card">
+    <h2>Education</h2>
+    <p>Academic background in financial engineering and computer science</p>
   </a>
   
-  <a href="#experience-section" class="nav-card">
+  <a href="/experience/" class="nav-card">
     <h2>Experience</h2>
-    <p>Quantitative research and development positions in crypto markets</p>
+    <p>Quantitative research and development in crypto markets</p>
   </a>
   
   <a href="/projects/" class="nav-card">
@@ -148,40 +156,3 @@ author_profile: true
     <a href="/files/CV_VERDELHAN_THEO_DAUPHINE_PSL.pdf" target="_blank">Download CV</a>
   </div>
 </div>
-
----
-
-<div id="experience-section"></div>
-
-## Professional Experience
-
-### Quantitative Researcher — MYR (Private Investment Fund)
-**Montpellier, France | Aug 2024 – Jul 2025**
-
-Active market maker on Hyperliquid (DeFi), developing proprietary quantitative strategies in digital asset markets.
-
-- Designed and deployed short-horizon market-making strategies using L1/L2/L3 order book data, microprice signals, order book imbalance and FIFO queue dynamics
-- Developed microstructure-driven alpha signals from depth imbalance, order flow autocorrelation and spread dynamics
-- Implemented inventory risk control (Avellaneda–Stoikov inspired) and low-latency execution systems (<100ms)
-- Modeled limit order book event arrivals using stochastic intensity frameworks
-
-### Quantitative Developer — La Valériane (Investment Branch)
-**Montpellier, France | Sep 2023 – Jan 2024**
-
-Designed and built an end-to-end delta-neutral statistical arbitrage strategy between Binance (CEX) and dYdX (DeFi DEX).
-
-- Reconstructed full L2 order books and built 2-year tick-level datasets
-- Developed arbitrage signals based on microprice deviations and depth-adjusted fair value estimators
-- Achieved ~8% annualized returns with $800k–$1M daily volume while maintaining strict market neutrality
-
----
-
-## Education
-
-**Paris Dauphine University – PSL**  
-MSc in Financial Engineering – Quantitative Finance Track (Program 272)  
-Sep 2025 – Jun 2026
-
-**EPF Graduate School of Engineering**  
-Master in Computer Science – Data & AI Track | Rank: 8/157  
-Sep 2020 – Jun 2025

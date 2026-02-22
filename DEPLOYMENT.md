@@ -1,29 +1,52 @@
 # Guide de déploiement - Site Web Professionnel
 
-## Changements effectués
+## Changements effectués (Version 2)
 
-### 1. Design épuré et professionnel
-- Page d'accueil redessinée avec 4 sections cliquables (grid responsive)
-- Suppression de tous les emojis pour un style professionnel
-- Thème "Contrast" : fond blanc pur pour un look moderne et propre
+### 1. Avatar optimisé et fixé
+- Image optimisée : 5MB → 10KB (réduction de 99%)
+- Dimensions adaptées pour le web : 364x400px
+- Format JPEG optimisé pour chargement rapide
+- Chemin corrigé : `/images/avatar.jpg`
 
-### 2. Avatar fixé
-- Correction du chemin de l'avatar : `/images/IMG_8782.PNG`
-
-### 3. Navigation améliorée
-- **Professional Profile** : CV complet
+### 2. Navigation restructurée
+Menu principal avec 4 sections distinctes :
+- **Home** : Page d'accueil sobre
+- **Education** : Parcours académique et compétences
 - **Experience** : Expériences professionnelles
-- **Projects** : Systèmes de trading et recherche
-- **Portfolio** : Études de cas détaillées
+- **Projects** : Projets techniques uniquement
+- ❌ Supprimé : CV et Sitemap
 
-### 4. Style professionnel
-- Suppression des emojis
-- Design minimaliste adapté aux recruteurs en quant research
-- Code propre et bien structuré
+### 3. Pages séparées et organisées
+- **education.md** : Formation, coursework, compétences techniques
+- **experience.md** : Expériences professionnelles détaillées
+- **projects.md** : Projets techniques (pas d'éducation mélangée)
+- **about.md** : Page d'accueil sobre avec 4 cartes de navigation
+
+### 4. Bio corrigée - Étudiant
+**Avant :** "Quantitative Researcher"  
+**Après :** "MSc Financial Engineering Student @ Dauphine-PSL | Aspiring Quantitative Researcher"
+
+**Important :** Reflet exact de votre situation actuelle (étudiant visant à devenir quant researcher)
+
+### 5. Page d'accueil sobre et professionnelle
+- Header épuré : Nom + "Aspiring Quantitative Researcher"
+- 4 cartes de navigation cliquables
+- Section contact minimale
+- ❌ Plus de contenu en bas (expérience/éducation déplacés)
+
+### 6. Couleurs - Tout en noir
+- Thème "Contrast" maintenu (fond blanc pur)
+- **Tous les titres en noir** (h1, h2, h3, etc.)
+- **Tout le texte en noir** (!important pour forcer)
+- Plus de problème de visibilité
+
+### 7. Suppression des emojis
+- Zéro emoji sur tout le site
+- Style 100% professionnel pour recruteurs
 
 ## Déploiement sur GitHub Pages
 
-### Option 1 : Via Terminal
+### Commandes Git
 
 ```bash
 cd /Users/theoverdelhan/Documents/AUTRES/theov07.github.io
@@ -32,48 +55,72 @@ cd /Users/theoverdelhan/Documents/AUTRES/theov07.github.io
 git add .
 
 # Créer un commit
-git commit -m "Redesign: Professional homepage with clean navigation and white theme"
+git commit -m "Professional redesign: separate pages, optimized avatar, black text only"
 
 # Pousser vers GitHub
-git push origin main
+git push origin master
 ```
 
-### Option 2 : Via VS Code
+### Vérification
 
-1. Ouvrir l'onglet "Source Control" (icône branch sur la gauche)
-2. Cliquer sur "+" pour stager tous les fichiers
-3. Écrire un message de commit : "Redesign: Professional homepage"
-4. Cliquer sur "Commit"
-5. Cliquer sur "Sync Changes" ou "Push"
-
-## Vérification
-
-Après le push, votre site sera automatiquement mis à jour sur :
+Après le push, votre site sera mis à jour sur :
 `https://theov07.github.io`
 
 Le déploiement prend généralement 1-3 minutes.
 
 ## Fichiers modifiés
 
-- `_config.yml` : Thème "contrast" + avatar fixé
-- `_pages/about.md` : Nouvelle page d'accueil épurée
-- `_sass/_custom.scss` : Styles professionnels
-- `assets/css/main.scss` : Import des styles custom
+### Configuration
+- `_config.yml` : Bio corrigée + avatar optimisé
+- `_data/navigation.yml` : Menu restructuré (Education, Experience, Projects)
 
-## Design Features
+### Pages
+- `_pages/about.md` : Page d'accueil sobre (4 cartes + contact)
+- `_pages/education.md` : **NOUVELLE** - Formation académique
+- `_pages/experience.md` : **NOUVELLE** - Expériences pro
+- `_pages/projects.md` : Projets techniques uniquement
 
-### Page d'accueil
-- Header épuré avec nom, titre, et tagline
-- 4 cartes de navigation avec effet hover
-- Section contact avec liens essentiels
-- Expérience et éducation en bas de page
+### Styles
+- `_sass/_custom.scss` : Tout en noir avec !important
 
-### Couleurs (Thème Contrast)
-- Fond principal : Blanc pur (#ffffff)
-- Texte : Noir (#000000)
-- Bordures : Gris clair (#e0e0e0)
-- Hover : Ombres subtiles
+### Images
+- `images/avatar.jpg` : **NOUVELLE** - Avatar optimisé (10KB)
 
-### Responsive
-- Grid adaptatif pour mobile
-- Cartes en colonne unique sur petit écran
+## Structure du site
+
+```
+Homepage (/)
+├── Education (/education/)
+│   ├── Dauphine - MSc Financial Engineering
+│   ├── EPF - Computer Science & AI
+│   ├── Academic Projects
+│   └── Skills
+│
+├── Experience (/experience/)
+│   ├── MYR - Quantitative Researcher
+│   ├── La Valériane - Quantitative Developer
+│   ├── MASSEEO - Entrepreneur
+│   └── Professional Goal
+│
+├── Projects (/projects/)
+│   ├── Trading Systems
+│   ├── Derivatives Pricing
+│   ├── Machine Learning
+│   └── Infrastructure
+│
+└── Portfolio (/portfolio/)
+    └── Detailed case studies
+```
+
+## Résultat
+
+Votre site professionnel avec :
+- ✅ Navigation claire et séparée
+- ✅ Avatar optimisé et fonctionnel
+- ✅ Bio correcte (étudiant, pas encore quant researcher)
+- ✅ Titres visibles (tout en noir)
+- ✅ Page d'accueil sobre et épurée
+- ✅ Sections bien distinctes
+- ✅ 0 emoji - 100% professionnel
+- ✅ Thème blanc pur
+

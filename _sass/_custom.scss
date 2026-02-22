@@ -1,8 +1,29 @@
 /* Custom styles for professional quantitative finance website */
 
-/* Remove emojis and improve professional appearance */
+/* Ensure all text is black */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #000 !important;
+}
+
+/* Force all headings to be black */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: #000 !important;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+/* Page content text in black */
+.page__content {
+  color: #000 !important;
+}
+
+.page__content p,
+.page__content li,
+.page__content td,
+.page__content th {
+  color: #000 !important;
 }
 
 /* Enhanced navigation cards on homepage */
@@ -29,6 +50,7 @@ table td {
   padding: 0.75rem;
   text-align: left;
   border-bottom: 1px solid #e0e0e0;
+  color: #000 !important;
 }
 
 table th {
@@ -57,14 +79,6 @@ hr {
   border: none;
   border-top: 1px solid #e0e0e0;
   margin: 2rem 0;
-}
-
-/* Professional headings */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  color: #000;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
 }
 
 /* Responsive improvements */
