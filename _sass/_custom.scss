@@ -8,11 +8,23 @@ body,
 .sidebar,
 .masthead,
 .masthead__inner-wrap,
+.masthead__menu,
+.greedy-nav,
 .page__footer,
 .page__footer-follow,
 footer {
   background-color: #000000 !important;
   color: #ffffff !important;
+}
+
+/* Force masthead to be fully black */
+.masthead,
+.masthead__inner-wrap,
+.masthead__menu,
+.greedy-nav,
+.greedy-nav ul {
+  background: #000000 !important;
+  background-color: #000000 !important;
 }
 
 /* Force footer background */

@@ -48,7 +48,7 @@ author_profile: true
   text-align: center;
   transition: all 0.3s ease;
   text-decoration: none;
-  color: inherit;
+  color: #000000 !important;
   display: block;
 }
 
@@ -61,7 +61,7 @@ author_profile: true
 .nav-card h2 {
   font-size: 1.5em;
   margin-bottom: 0.8rem;
-  color: #000000;
+  color: #000000 !important;
 }
 
 .nav-card p {
