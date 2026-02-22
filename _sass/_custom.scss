@@ -35,6 +35,13 @@ footer {
   padding-right: 2em !important;
 }
 
+/* Center content on homepage with sidebar */
+.layout--single .page {
+  margin: 0 auto !important;
+  float: none !important;
+  width: auto !important;
+}
+
 /* Force masthead to be fully black - all selectors */
 .masthead,
 .masthead *,
