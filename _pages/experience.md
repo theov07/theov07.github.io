@@ -1,7 +1,7 @@
 ---
 title: "Professional Experience"
 permalink: /experience/
-author_profile: true
+author_profile: false
 ---
 
 ## Professional Experience

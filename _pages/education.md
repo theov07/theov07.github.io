@@ -1,7 +1,7 @@
 ---
 title: "Education"
 permalink: /education/
-author_profile: true
+author_profile: false
 ---
 
 <style>
