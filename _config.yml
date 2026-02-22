@@ -2,7 +2,7 @@
 # Basic Site Settings
 # ================================
 locale: "en-US"
-site_theme: "dark"
+site_theme: "contrast"
 
 title: "Théo Verdelhan"
 title_separator: "-"
