@@ -10,6 +10,7 @@ author_profile: true
   padding: 2rem 0 3rem 0;
   max-width: 800px;
   margin: 0 auto;
+  margin-left: 15%;
 }
 
 .intro-section h1 {
@@ -34,10 +35,11 @@ author_profile: true
 
 .navigation-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin: 3rem auto;
-  max-width: 1000px;
+  max-width: 800px;
+  margin-left: 25%;
 }
 
 .nav-card {
