@@ -10,7 +10,7 @@ author_profile: true
   padding: 2rem 0 3rem 0;
   max-width: 800px;
   margin: 0 auto;
-  margin-left: 15%;
+  margin-left: 25%;
 }
 
 .intro-section h1 {
@@ -51,8 +51,12 @@ author_profile: true
   transition: all 0.3s ease;
   text-decoration: none;
   color: #ffffff !important;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-shadow: 0 4px 12px rgba(255, 108, 96, 0.1);
+  min-height: 150px;
 }
 
 .nav-card:hover {
