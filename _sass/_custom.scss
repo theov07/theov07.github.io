@@ -35,6 +35,11 @@ body:not(.layout--single) #main {
   padding-right: 2em !important;
 }
 
+/* Shift sidebar to the right */
+.sidebar {
+  margin-left: 3em !important;
+}
+
 /* Force masthead to be fully black - all selectors */
 .masthead,
 .masthead *,

@@ -43,34 +43,30 @@ author_profile: true
 }
 
 .nav-card {
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
+  background: #1a1a1a;
+  border-left: 4px solid #ff6c60;
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
   transition: all 0.3s ease;
   text-decoration: none;
-  color: #000000 !important;
+  color: #ffffff !important;
   display: block;
+  box-shadow: 0 4px 12px rgba(255, 108, 96, 0.1);
 }
 
 .nav-card:hover {
-  border-color: #000000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transform: translateY(-4px);
+  transform: translateX(8px);
+  box-shadow: 0 6px 16px rgba(255, 108, 96, 0.2);
+  border-left-width: 6px;
 }
 
 .nav-card h2 {
   font-size: 1.5em;
-  margin-bottom: 0.8rem;
-  color: #000000 !important;
-}
-
-.nav-card p {
-  color: #cccccc;
-  font-size: 0.95em;
-  line-height: 1.5;
-  margin: 0;
+  margin-bottom: 0;
+  color: #ffffff !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
 }
 
 .contact-section {
