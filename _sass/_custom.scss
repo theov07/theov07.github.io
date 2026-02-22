@@ -33,13 +33,19 @@ footer {
   max-width: 100% !important;
   padding-left: 2em !important;
   padding-right: 2em !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
 }
 
 /* Center content on homepage with sidebar */
-.layout--single .page {
-  margin: 0 auto !important;
-  float: none !important;
-  width: auto !important;
+.sidebar {
+  flex-shrink: 0 !important;
+}
+
+.page {
+  margin: 0 !important;
+  padding-left: 2em !important;
 }
 
 /* Force masthead to be fully black - all selectors */
