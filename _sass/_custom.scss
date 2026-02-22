@@ -6,6 +6,44 @@ body {
   color: #000 !important;
 }
 
+/* Dark theme text colors */
+body.dark-theme {
+  color: #ffffff !important;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h3,
+body.dark-theme h4,
+body.dark-theme h5,
+body.dark-theme h6 {
+  color: #ffffff !important;
+}
+
+body.dark-theme .page__content,
+body.dark-theme .page__content p,
+body.dark-theme .page__content li,
+body.dark-theme .page__content td,
+body.dark-theme .page__content th {
+  color: #ffffff !important;
+}
+
+body.dark-theme .author__bio,
+body.dark-theme .author__name {
+  color: #ffffff !important;
+}
+
+/* Force avatar to display */
+.author__avatar {
+  display: block !important;
+}
+
+.author__avatar img {
+  display: block !important;
+  max-width: 175px !important;
+  border-radius: 50% !important;
+}
+
 /* Force all headings to be black */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
@@ -85,5 +123,87 @@ hr {
 @media (max-width: 768px) {
   .navigation-grid {
     padding: 0 1rem;
+  }
+}
+
+/* ========================================
+   Fixed Footer Contact Section - Professional
+   ======================================== */
+
+.fixed-footer-contact {
+  background: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 0;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+body.dark-theme .fixed-footer-contact {
+  background: #1a1a1a;
+  border-top: 1px solid #333;
+}
+
+.footer-contact-label {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+body.dark-theme .footer-contact-label {
+  color: #ffffff;
+}
+
+.footer-contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-link {
+  color: #0000ff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1em;
+  transition: all 0.2s ease;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+body.dark-theme .footer-link {
+  color: #6699ff;
+}
+
+/* Simplified copyright footer */
+.page__footer-copyright {
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.9em;
+  color: #666;
+  border-top: 1px solid #e0e0e0;
+}
+
+body.dark-theme .page__footer-copyright {
+  color: #999;
+  border-top: 1px solid #333;
+}
+
+.footer-separator {
+  margin: 0 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .footer-contact-links {
+    gap: 1.5rem;
+    font-size: 0.95em;
+  }
+  
+  .page__footer-copyright {
+    font-size: 0.85em;
   }
 }

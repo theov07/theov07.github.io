@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Théo Verdelhan"
+title: "Home"
 author_profile: true
 ---
 
@@ -114,7 +114,6 @@ author_profile: true
 </style>
 
 <div class="intro-section">
-  <h1>Théo Verdelhan</h1>
   <div class="subtitle">Aspiring Quantitative Researcher</div>
   <div class="tagline">
     MSc Financial Engineering Student at Paris Dauphine–PSL
@@ -128,31 +127,18 @@ author_profile: true
 <div class="navigation-grid">
   <a href="/education/" class="nav-card">
     <h2>Education</h2>
-    <p>Academic background in financial engineering and computer science</p>
   </a>
   
   <a href="/experience/" class="nav-card">
     <h2>Experience</h2>
-    <p>Quantitative research and development in crypto markets</p>
   </a>
   
   <a href="/projects/" class="nav-card">
     <h2>Projects</h2>
-    <p>Trading systems, pricing engines, and quantitative research</p>
   </a>
   
   <a href="/portfolio/" class="nav-card">
     <h2>Portfolio</h2>
-    <p>Detailed case studies and technical implementations</p>
   </a>
 </div>
 
-<div class="contact-section">
-  <h3>Contact</h3>
-  <div class="contact-links">
-    <a href="mailto:theo.verdelhan@dauphine.eu">Email</a>
-    <a href="https://www.linkedin.com/in/theoverdelhan/" target="_blank">LinkedIn</a>
-    <a href="https://github.com/theov07" target="_blank">GitHub</a>
-    <a href="/files/CV_VERDELHAN_THEO_DAUPHINE_PSL.pdf" target="_blank">Download CV</a>
-  </div>
-</div>
