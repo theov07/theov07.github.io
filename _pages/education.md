@@ -6,7 +6,7 @@ author_profile: true
 
 <style>
 .education-timeline {
-  max-width: 900px;
+  max-width: 100%;
   margin: 2rem auto;
   padding: 2rem 0;
 }
@@ -41,7 +41,7 @@ author_profile: true
 .degree-title {
   font-size: 1.3em;
   font-weight: 600;
-  color: #ff6c60;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -60,19 +60,16 @@ author_profile: true
   gap: 0.5rem;
 }
 
-.meta-icon {
-  color: #ff6c60;
-}
-
 .rank-badge {
   display: inline-block;
-  background: linear-gradient(135deg, #ff6c60, #ff8a80);
-  color: #ffffff;
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9em;
-  font-weight: 600;
+  background: transparent;
+  color: #999999;
+  padding: 0;
+  font-size: 0.85em;
+  font-weight: 400;
   margin-left: 1rem;
+  border-left: 1px solid #444444;
+  padding-left: 1rem;
 }
 
 .coursework-section {
@@ -140,11 +137,9 @@ author_profile: true
       <div class="degree-title">MSc in Financial Engineering – Quantitative Finance Track (Program 272)</div>
       <div class="education-meta">
         <span class="meta-item">
-          <span class="meta-icon">📍</span>
           Paris, France
         </span>
         <span class="meta-item">
-          <span class="meta-icon">📅</span>
           Sep 2025 – Jun 2026
         </span>
       </div>
@@ -174,11 +169,9 @@ author_profile: true
       </div>
       <div class="education-meta">
         <span class="meta-item">
-          <span class="meta-icon">📍</span>
           Paris, France
         </span>
         <span class="meta-item">
-          <span class="meta-icon">📅</span>
           Sep 2020 – Jun 2025
         </span>
       </div>

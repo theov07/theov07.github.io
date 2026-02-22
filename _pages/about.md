@@ -118,7 +118,7 @@ author_profile: true
   <div class="tagline">
     MSc Financial Engineering Student at Paris Dauphine–PSL
     <br>
-    Computer Science & AI Graduate from EPF (Top 3%)
+    Computer Science & AI Graduate from EPF
     <br>
     Specialized in market microstructure, systematic trading, and derivatives pricing
   </div>
