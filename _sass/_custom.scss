@@ -28,6 +28,13 @@ footer {
   color: #ffffff !important;
 }
 
+/* Override max-width limitation for full-width content */
+#main {
+  max-width: 100% !important;
+  padding-left: 2em !important;
+  padding-right: 2em !important;
+}
+
 /* Force masthead to be fully black - all selectors */
 .masthead,
 .masthead *,
