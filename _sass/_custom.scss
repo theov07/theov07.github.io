@@ -6,9 +6,21 @@ body,
 .page,
 .page__wrapper,
 .sidebar,
-.masthead {
+.masthead,
+.masthead__inner-wrap,
+.page__footer,
+.page__footer-follow,
+footer {
   background-color: #000000 !important;
   color: #ffffff !important;
+}
+
+/* Force footer background */
+.page__footer,
+.page__footer footer,
+.fixed-footer-contact,
+.page__footer-copyright {
+  background-color: #000000 !important;
 }
 
 body {

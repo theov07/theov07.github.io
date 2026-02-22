@@ -41,8 +41,8 @@ author_profile: true
 }
 
 .nav-card {
-  background: #1a1a1a;
-  border: 2px solid #333333;
+  background: #ffffff;
+  border: 2px solid #e0e0e0;
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -53,15 +53,15 @@ author_profile: true
 }
 
 .nav-card:hover {
-  border-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+  border-color: #000000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   transform: translateY(-4px);
 }
 
 .nav-card h2 {
   font-size: 1.5em;
   margin-bottom: 0.8rem;
-  color: #ffffff;
+  color: #000000;
 }
 
 .nav-card p {
