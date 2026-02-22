@@ -1,35 +1,32 @@
 /* Custom styles for professional quantitative finance website */
 
-/* Ensure all text is black */
+/* Dark theme with white text */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: #000 !important;
-}
-
-/* Dark theme text colors */
-body.dark-theme {
+  background-color: #000000 !important;
   color: #ffffff !important;
 }
 
-body.dark-theme h1,
-body.dark-theme h2,
-body.dark-theme h3,
-body.dark-theme h4,
-body.dark-theme h5,
-body.dark-theme h6 {
+/* All headings in white */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+/* All text content in white */
+.page__content,
+.page__content p,
+.page__content li,
+.page__content td,
+.page__content th {
   color: #ffffff !important;
 }
 
-body.dark-theme .page__content,
-body.dark-theme .page__content p,
-body.dark-theme .page__content li,
-body.dark-theme .page__content td,
-body.dark-theme .page__content th {
-  color: #ffffff !important;
-}
-
-body.dark-theme .author__bio,
-body.dark-theme .author__name {
+.author__bio,
+.author__name,
+.author__content {
   color: #ffffff !important;
 }
 
@@ -44,26 +41,6 @@ body.dark-theme .author__name {
   border-radius: 50% !important;
 }
 
-/* Force all headings to be black */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  color: #000 !important;
-  margin-top: 1.5em;
-  margin-bottom: 0.75em;
-}
-
-/* Page content text in black */
-.page__content {
-  color: #000 !important;
-}
-
-.page__content p,
-.page__content li,
-.page__content td,
-.page__content th {
-  color: #000 !important;
-}
-
 /* Enhanced navigation cards on homepage */
 .navigation-grid {
   max-width: 1000px;
@@ -72,7 +49,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Professional contact section */
 .contact-section {
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #333333;
   margin-top: 4rem;
 }
 
@@ -87,25 +64,28 @@ table th,
 table td {
   padding: 0.75rem;
   text-align: left;
-  border-bottom: 1px solid #e0e0e0;
-  color: #000 !important;
+  border-bottom: 1px solid #333333;
+  color: #ffffff !important;
 }
 
 table th {
   font-weight: 600;
-  background: #fafafa;
+  background: #1a1a1a;
 }
 
 /* Code blocks - professional styling */
 pre, code {
   font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
   font-size: 0.9em;
+  background: #1a1a1a;
+  color: #ffffff;
 }
 
 /* Links - subtle professional style */
 a {
   text-decoration: none;
   transition: all 0.2s ease;
+  color: #6699ff;
 }
 
 a:hover {
@@ -115,7 +95,7 @@ a:hover {
 /* Clean section separators */
 hr {
   border: none;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid #333333;
   margin: 2rem 0;
 }
 
@@ -131,26 +111,17 @@ hr {
    ======================================== */
 
 .fixed-footer-contact {
-  background: #f9f9f9;
-  border-top: 1px solid #e0e0e0;
+  background: #1a1a1a;
+  border-top: 1px solid #333333;
   padding: 1.5rem 0;
   text-align: center;
   margin-top: 4rem;
-}
-
-body.dark-theme .fixed-footer-contact {
-  background: #1a1a1a;
-  border-top: 1px solid #333;
 }
 
 .footer-contact-label {
   font-weight: 600;
   font-size: 1.1em;
   margin-bottom: 1rem;
-  color: #000;
-}
-
-body.dark-theme .footer-contact-label {
   color: #ffffff;
 }
 
@@ -163,7 +134,7 @@ body.dark-theme .footer-contact-label {
 }
 
 .footer-link {
-  color: #0000ff;
+  color: #6699ff;
   text-decoration: none;
   font-weight: 500;
   font-size: 1em;
@@ -175,22 +146,13 @@ body.dark-theme .footer-contact-label {
   opacity: 0.8;
 }
 
-body.dark-theme .footer-link {
-  color: #6699ff;
-}
-
 /* Simplified copyright footer */
 .page__footer-copyright {
   text-align: center;
   padding: 1.5rem 0;
   font-size: 0.9em;
-  color: #666;
-  border-top: 1px solid #e0e0e0;
-}
-
-body.dark-theme .page__footer-copyright {
-  color: #999;
-  border-top: 1px solid #333;
+  color: #999999;
+  border-top: 1px solid #333333;
 }
 
 .footer-separator {

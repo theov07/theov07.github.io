@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Home"
+title: ""
 author_profile: true
 ---
 
@@ -15,19 +15,19 @@ author_profile: true
 .intro-section h1 {
   font-size: 2.5em;
   margin-bottom: 0.5rem;
-  color: #000;
+  color: #ffffff;
 }
 
 .intro-section .subtitle {
   font-size: 1.2em;
-  color: #000;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-weight: 600;
 }
 
 .intro-section .tagline {
   font-size: 1em;
-  color: #333;
+  color: #cccccc;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
@@ -41,8 +41,8 @@ author_profile: true
 }
 
 .nav-card {
-  background: #ffffff;
-  border: 2px solid #e0e0e0;
+  background: #1a1a1a;
+  border: 2px solid #333333;
   border-radius: 8px;
   padding: 2rem;
   text-align: center;
@@ -53,19 +53,19 @@ author_profile: true
 }
 
 .nav-card:hover {
-  border-color: #000;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.1);
   transform: translateY(-4px);
 }
 
 .nav-card h2 {
   font-size: 1.5em;
   margin-bottom: 0.8rem;
-  color: #000;
+  color: #ffffff;
 }
 
 .nav-card p {
-  color: #333;
+  color: #cccccc;
   font-size: 0.95em;
   line-height: 1.5;
   margin: 0;
@@ -75,12 +75,12 @@ author_profile: true
   text-align: center;
   margin: 3rem 0 2rem 0;
   padding: 2rem;
-  background: #fafafa;
+  background: #1a1a1a;
   border-radius: 8px;
 }
 
 .contact-section h3 {
-  color: #000;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
@@ -93,7 +93,7 @@ author_profile: true
 }
 
 .contact-links a {
-  color: #0000ff;
+  color: #6699ff;
   text-decoration: none;
   font-weight: 500;
 }

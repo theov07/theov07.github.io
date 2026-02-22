@@ -2,7 +2,7 @@
 # Basic Site Settings
 # ================================
 locale: "en-US"
-site_theme: "contrast"
+site_theme: "dark"
 
 title: "Théo Verdelhan"
 title_separator: "-"
@@ -17,7 +17,7 @@ repository: "theov07/theov07.github.io"
 # Author (Sidebar)
 # ================================
 author:
-  avatar: "/images/avatar.jpg"
+  avatar: "avatar.jpg"
   name: "Théo Verdelhan"
   bio: "MSc Financial Engineering Student @ Dauphine-PSL | Computer Science & AI @ EPF (Top 3%) | Aspiring Quantitative Researcher"
   location: "Paris, France"
