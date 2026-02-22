@@ -17,7 +17,7 @@ repository: "theov07/theov07.github.io"
 # Author (Sidebar)
 # ================================
 author:
-  avatar: "images/IMG_8782.PNG"
+  avatar: "/images/IMG_8782.PNG"
   name: "Théo Verdelhan"
   bio: "Quantitative Researcher | MSc Financial Engineering (Dauphine-PSL) | Top 3% Computer Science & AI (EPF) | Market microstructure, systematic trading, and derivatives pricing in crypto/DeFi markets"
   location: "Paris, France"
