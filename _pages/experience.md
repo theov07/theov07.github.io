@@ -1,6 +1,6 @@
 ---
 title: "Professional Experience"
-permalink: /experience/
+permalink: /professional-experience/
 author_profile: false
 ---
 
