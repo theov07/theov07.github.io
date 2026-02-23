@@ -131,8 +131,8 @@ author_profile: true
     <h2>Education</h2>
   </a>
   
-  <a href="/experience/" class="nav-card">
-    <h2>Experience</h2>
+  <a href="/professional-experience/" class="nav-card">
+    <h2>Professional Experience</h2>
   </a>
   
   <a href="/projects/" class="nav-card">
