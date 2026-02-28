@@ -104,12 +104,38 @@ author_profile: true
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+.mobile-hero {
+  display: none;
+}
+
+@media (max-width: 1023px) {
   .intro-section {
-    margin-left: 0;
-    padding: 1.5rem 1rem;
+    display: none;
   }
-  
+
+  .mobile-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem 1rem;
+    text-align: center;
+  }
+
+  .mobile-hero img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobile-hero-name {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
   .navigation-grid {
     grid-template-columns: 1fr;
     margin-left: 0;
@@ -117,29 +143,22 @@ author_profile: true
     padding: 0 1rem;
     gap: 1rem;
   }
-  
-  .intro-section h1 {
-    font-size: 2em;
-  }
-  
-  .intro-section .subtitle {
-    font-size: 1.1em;
-  }
-  
-  .intro-section .tagline {
-    font-size: 0.95em;
-  }
-  
+
   .nav-card {
     padding: 1.2rem;
     min-height: 80px;
   }
-  
+
   .nav-card h2 {
     font-size: 1.2em;
   }
 }
 </style>
+
+<div class="mobile-hero">
+  <img src="/images/avatar.jpg" alt="Théo Verdelhan">
+  <p class="mobile-hero-name">Théo Verdelhan</p>
+</div>
 
 <div class="intro-section">
   <div class="subtitle">Aspiring Quantitative Researcher</div>
