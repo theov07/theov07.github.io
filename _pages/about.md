@@ -67,7 +67,7 @@ author_profile: true
 
 .nav-card h2 {
   font-size: 1.5em;
-  margin-bottom: 0;
+  margin: 0 !important;
   color: #ffffff !important;
   border-bottom: none !important;
   padding-bottom: 0 !important;
@@ -107,14 +107,15 @@ author_profile: true
 @media (max-width: 768px) {
   .intro-section {
     margin-left: 0;
-    padding: 1rem;
+    padding: 1.5rem 1rem;
   }
   
   .navigation-grid {
     grid-template-columns: 1fr;
     margin-left: 0;
+    margin-top: 0;
     padding: 0 1rem;
-    gap: 1.5rem;
+    gap: 1rem;
   }
   
   .intro-section h1 {
@@ -130,7 +131,12 @@ author_profile: true
   }
   
   .nav-card {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    min-height: 80px;
+  }
+  
+  .nav-card h2 {
+    font-size: 1.2em;
   }
 }
 </style>
