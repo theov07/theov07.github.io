@@ -122,38 +122,38 @@ author_profile: true
   }
 
   .mobile-hero img {
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.1rem;
   }
 
   .mobile-hero-name {
-    font-size: 1.8em;
+    font-size: 2em;
     font-weight: 700;
     color: #ffffff;
-    margin: 0 0 0.5rem;
+    margin: 0 0 0.6rem;
     line-height: 1.2;
   }
 
   .mobile-hero-title {
-    font-size: 1em;
+    font-size: 1.05em;
     font-weight: 600;
     color: #ff6c60;
-    margin: 0 0 0.4rem;
+    margin: 0 0 1rem;
   }
 
   .mobile-hero-bio {
-    font-size: 0.82em;
-    color: #aaaaaa;
-    line-height: 1.5;
-    margin: 0 0 1rem;
+    font-size: 0.88em;
+    color: #bbbbbb;
+    line-height: 1.8;
+    margin: 0 0 1.4rem;
   }
 
   .mobile-hero-links {
     display: flex;
-    gap: 1.2rem;
+    gap: 2rem;
     justify-content: center;
     flex-wrap: wrap;
   }
@@ -161,18 +161,26 @@ author_profile: true
   .mobile-hero-links a {
     color: #6699ff;
     text-decoration: none;
-    font-size: 0.85em;
+    font-size: 0.95em;
     font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .mobile-hero-links a i {
+    font-size: 1.6em;
   }
 
   .mobile-hero-links a:hover {
-    text-decoration: underline;
+    opacity: 0.8;
   }
 
   .navigation-grid {
     grid-template-columns: 1fr;
     margin-left: 0;
-    margin-top: 0;
+    margin-top: 2rem;
     padding: 0 1rem;
     gap: 1rem;
   }
@@ -193,14 +201,19 @@ author_profile: true
   <p class="mobile-hero-name">Théo Verdelhan</p>
   <p class="mobile-hero-title">Aspiring Quantitative Researcher</p>
   <p class="mobile-hero-bio">
-    MSc Financial Engineering — Paris Dauphine&ndash;PSL<br>
-    Computer Science &amp; AI — EPF<br>
-    Market microstructure &middot; Derivatives pricing
+    MSc Financial Engineering &mdash; Paris Dauphine&ndash;PSL<br>
+    Computer Science &amp; AI &mdash; EPF<br>
+    Specialized in market microstructure,<br>systematic trading &amp; derivatives pricing
   </p>
   <div class="mobile-hero-links">
-    <a href="https://github.com/theov07" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/theoverdelhan" target="_blank">LinkedIn</a>
-    <a href="https://dauphine.psl.eu" target="_blank">Paris Dauphine&ndash;PSL</a>
+    <a href="https://github.com/theov07" target="_blank">
+      <i class="fab fa-github"></i>
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/theoverdelhan" target="_blank">
+      <i class="fab fa-linkedin"></i>
+      LinkedIn
+    </a>
   </div>
 </div>
 
