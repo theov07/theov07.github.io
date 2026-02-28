@@ -105,12 +105,32 @@ author_profile: true
 }
 
 @media (max-width: 768px) {
+  .intro-section {
+    margin-left: 0;
+    padding: 1rem;
+  }
+  
   .navigation-grid {
     grid-template-columns: 1fr;
+    margin-left: 0;
+    padding: 0 1rem;
+    gap: 1.5rem;
   }
   
   .intro-section h1 {
     font-size: 2em;
+  }
+  
+  .intro-section .subtitle {
+    font-size: 1.1em;
+  }
+  
+  .intro-section .tagline {
+    font-size: 0.95em;
+  }
+  
+  .nav-card {
+    padding: 1.5rem;
   }
 }
 </style>
