@@ -130,10 +130,43 @@ author_profile: true
   }
 
   .mobile-hero-name {
-    font-size: 1.4em;
+    font-size: 1.8em;
     font-weight: 700;
     color: #ffffff;
-    margin: 0;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+
+  .mobile-hero-title {
+    font-size: 1em;
+    font-weight: 600;
+    color: #ff6c60;
+    margin: 0 0 0.4rem;
+  }
+
+  .mobile-hero-bio {
+    font-size: 0.82em;
+    color: #aaaaaa;
+    line-height: 1.5;
+    margin: 0 0 1rem;
+  }
+
+  .mobile-hero-links {
+    display: flex;
+    gap: 1.2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .mobile-hero-links a {
+    color: #6699ff;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: 500;
+  }
+
+  .mobile-hero-links a:hover {
+    text-decoration: underline;
   }
 
   .navigation-grid {
@@ -158,6 +191,17 @@ author_profile: true
 <div class="mobile-hero">
   <img src="/images/avatar.jpg" alt="Théo Verdelhan">
   <p class="mobile-hero-name">Théo Verdelhan</p>
+  <p class="mobile-hero-title">Aspiring Quantitative Researcher</p>
+  <p class="mobile-hero-bio">
+    MSc Financial Engineering — Paris Dauphine&ndash;PSL<br>
+    Computer Science &amp; AI — EPF<br>
+    Market microstructure &middot; Derivatives pricing
+  </p>
+  <div class="mobile-hero-links">
+    <a href="https://github.com/theov07" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/theoverdelhan" target="_blank">LinkedIn</a>
+    <a href="https://dauphine.psl.eu" target="_blank">Paris Dauphine&ndash;PSL</a>
+  </div>
 </div>
 
 <div class="intro-section">
