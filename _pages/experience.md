@@ -151,7 +151,7 @@ author_profile: false
   <div class="experience-card">
     <div class="experience-header">
       <div class="company-info">
-        <h2 class="company-name">MYR</h2>
+        <h2 class="company-name">MYR - Private Investment Fund</h2>
         <div class="role-title">Quantitative Researcher</div>
         <div class="experience-meta">
           <span class="meta-item">Montpellier, Occitanie, France</span>
@@ -192,7 +192,7 @@ author_profile: false
   <div class="experience-card">
     <div class="experience-header">
       <div class="company-info">
-        <h2 class="company-name">La Valériane</h2>
+        <h2 class="company-name">La Valériane - Investment Branch</h2>
         <div class="role-title">Quantitative Developer</div>
         <div class="experience-meta">
           <span class="meta-item">Montpellier, Occitanie, France</span>

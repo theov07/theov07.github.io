@@ -164,7 +164,7 @@ author_profile: false
     <div class="education-header">
       <h2 class="institution-name">EPF Graduate School of Engineering</h2>
       <div class="degree-title">
-        Master in Computer Science – Data & AI Track
+        Master in Computer Science – Data & ML Track
         <span class="rank-badge">Rank: 8/157</span>
       </div>
       <div class="education-meta">

@@ -199,10 +199,10 @@ author_profile: true
 <div class="mobile-hero">
   <img src="/images/avatar.jpg" alt="Théo Verdelhan">
   <p class="mobile-hero-name">Théo Verdelhan</p>
-  <p class="mobile-hero-title">Aspiring Quantitative Researcher</p>
+  <p class="mobile-hero-title">Quantitative Researcher</p>
   <p class="mobile-hero-bio">
     MSc Financial Engineering &mdash; Paris Dauphine&ndash;PSL<br>
-    Computer Science &amp; AI &mdash; EPF<br>
+    Computer Science &amp; ML &mdash; EPF<br>
     Specialized in market microstructure,<br>systematic trading &amp; derivatives pricing
   </p>
   <div class="mobile-hero-links">
