@@ -151,77 +151,79 @@ author_profile: false
   <div class="experience-card">
     <div class="experience-header">
       <div class="company-info">
-        <h2 class="company-name">MYR - Private Investment Fund</h2>
+        <h2 class="company-name">MYR</h2>
         <div class="role-title">Quantitative Researcher</div>
         <div class="experience-meta">
-          <span class="meta-item">Montpellier, France</span>
-          <span class="meta-item">Aug 2024 – Jul 2025</span>
+          <span class="meta-item">Montpellier, Occitanie, France</span>
+          <span class="meta-item">Jul 2024 – Aug 2025</span>
+          <span class="meta-item">Apprenticeship</span>
         </div>
       </div>
     </div>
     
     <div class="experience-description">
-      Active market maker on Hyperliquid (DeFi LBO), developing proprietary quantitative strategies in digital asset markets.
+      Contributed to quantitative research, market analysis, and trading system monitoring within an active market maker on Hyperliquid.
     </div>
     
     <div class="responsibilities-section">
       <div class="section-title">Key Responsibilities & Achievements</div>
       <ul class="responsibility-list">
         <li class="responsibility-item">
-          Designed and deployed short-horizon market-making strategies using L1/L2/L3 order book data, microprice signals, order book imbalance and FIFO queue dynamics to optimize execution probability and spread capture across 12 liquid crypto order books
+          Researched short-horizon market signals using L1/L2/L3 order book data, microprice, imbalance, and execution metrics across 12 liquid crypto markets
         </li>
         <li class="responsibility-item">
-          Developed microstructure-driven alpha signals from depth imbalance, order flow autocorrelation and spread dynamics, supported by event-time backtesting on 5+ years of tick-level data
+          Built internal Python tools and monitoring scripts using APIs and WebSocket feeds to track positions, hedging activity, market deviations, daily trading volume, PnL, execution quality, and competing market participant behavior in real time
         </li>
         <li class="responsibility-item">
-          Implemented inventory risk control (Avellaneda–Stoikov inspired) and low-latency execution systems (&lt;100ms), optimizing quote refresh, queue positioning and mitigating adverse selection
+          Analyzed multi-year tick-level datasets and high-frequency market data to study order book dynamics, fill behavior, and short-term price reactions
         </li>
         <li class="responsibility-item">
-          Modeled limit order book event arrivals using stochastic intensity frameworks (Poisson-type limit/market/cancel flows) to estimate short-term price pressure and fill probabilities while analyzing competing algorithmic trader behavior
+          Supported live strategy evaluation and operational monitoring on blockchain-based markets, improving risk oversight, execution follow-up, and internal trading workflows
         </li>
       </ul>
     </div>
     
     <div class="tech-stack">
       <span class="tech-label">Technical Stack:</span>
-      <span class="tech-items">Python, NumPy, Pandas, WebSocket APIs, REST APIs, Linux</span>
+      <span class="tech-items">Python, APIs, WebSocket feeds, Market microstructure, Tick data, Monitoring tools</span>
     </div>
   </div>
 
   <div class="experience-card">
     <div class="experience-header">
       <div class="company-info">
-        <h2 class="company-name">La Valériane - Investment Branch</h2>
+        <h2 class="company-name">La Valériane</h2>
         <div class="role-title">Quantitative Developer</div>
         <div class="experience-meta">
-          <span class="meta-item">Montpellier, France</span>
+          <span class="meta-item">Montpellier, Occitanie, France</span>
           <span class="meta-item">Sep 2023 – Jan 2024</span>
+          <span class="meta-item">Internship</span>
         </div>
       </div>
     </div>
     
     <div class="experience-description">
-      Designed and built an end-to-end delta-neutral statistical arbitrage strategy between Binance (CEX) and dYdX (DeFi DEX), targeting cross-venue microstructure inefficiencies.
+      Built and deployed a cross-exchange arbitrage strategy between Binance (CEX) and dYdX (DeFi DEX), covering data collection, backtesting, execution logic, and live monitoring.
     </div>
     
     <div class="responsibilities-section">
       <div class="section-title">Key Responsibilities & Achievements</div>
       <ul class="responsibility-list">
         <li class="responsibility-item">
-          Reconstructed full L2 order books and built 2-year tick-level datasets to analyze cross-exchange price formation, latency asymmetries and liquidity distribution
+          Reconstructed tick-level and L1/L2 order book datasets over one year to analyze cross-exchange spreads, liquidity conditions, and trading frictions
         </li>
         <li class="responsibility-item">
-          Developed arbitrage signals based on microprice deviations and depth-adjusted fair value estimators, incorporating slippage modeling and execution constraints
+          Developed and backtested arbitrage signals using price deviations and order book information, with slippage assumptions, execution costs, and realistic entry/exit rules
         </li>
         <li class="responsibility-item">
-          Implemented, backtested and deployed the trading bot under realistic latency and partial-fill assumptions, achieving ~8% annualized returns with $800k–$1M daily volume while maintaining strict market neutrality
+          Ran the strategy on a 24/7 server and developed Python monitoring and alert scripts to track bot activity, market conditions, and execution quality
         </li>
       </ul>
     </div>
     
     <div class="tech-stack">
       <span class="tech-label">Technical Stack:</span>
-      <span class="tech-items">Python, Binance API, dYdX API, NumPy, Pandas</span>
+      <span class="tech-items">Python, Binance API, dYdX API, WebSocket, Backtesting, Monitoring scripts</span>
     </div>
   </div>
 
