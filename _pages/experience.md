@@ -31,7 +31,7 @@ author_profile: false
     <header class="timeline-card__header">
       <div>
         <h2>MYR · Private Investment Fund</h2>
-        <p class="timeline-card__role">Quantitative Researcher</p>
+        <p class="timeline-card__role">Quantitative Researcher Intern</p>
       </div>
       <div class="timeline-card__meta">
         <span>Aug 2024 – Jul 2025</span>
