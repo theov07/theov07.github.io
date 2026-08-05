@@ -12,11 +12,11 @@ author_profile: false
 
 ## Experience
 
-### Silvertrain AI — Quantitative Research Intern
+### Silvertrain AI — Alpha Research & Systematic Trading Team
 
 *Jul 2026 – Present · Remote*
 
-- Contribute to quantitative research and development within the team.
+- Conducting quantitative research on alpha signals and systematic trading strategies across electronic markets.
 
 ### MYR · Private Investment Fund — Quantitative Researcher
 

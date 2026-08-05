@@ -17,7 +17,7 @@ repository: "theov07/theov07.github.io"
 # Author (Sidebar)
 # ================================
 author:
-  avatar: "avatar.jpg"
+  avatar: "avatar.webp"
   name: "Théo Verdelhan"
   bio: "Quantitative Research Intern @ Silvertrain AI | Financial Engineering @ Dauphine-PSL | Computer Science & ML @ EPF"
   location: "Paris, France"

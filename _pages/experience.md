@@ -15,7 +15,7 @@ author_profile: false
       <div>
         <p class="timeline-card__status">Current role</p>
         <h2>Silvertrain AI</h2>
-        <p class="timeline-card__role">Quantitative Research Intern</p>
+        <p class="timeline-card__role">Alpha Research &amp; Systematic Trading Team</p>
       </div>
       <div class="timeline-card__meta">
         <span>Jul 2026 – Present</span>
@@ -23,7 +23,7 @@ author_profile: false
       </div>
     </header>
     <p class="timeline-card__summary">
-      Contributing to quantitative research and development within the team.
+      Conducting quantitative research on alpha signals and systematic trading strategies across electronic markets.
     </p>
   </article>
 

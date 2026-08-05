@@ -29,7 +29,7 @@ author_profile: false
     </div>
   </div>
   <div class="profile-hero__portrait">
-    <img src="/images/avatar.jpg" alt="Portrait of Théo Verdelhan">
+    <img src="/images/avatar.webp" alt="Portrait of Théo Verdelhan">
   </div>
 </section>
 
