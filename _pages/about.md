@@ -10,10 +10,10 @@ author_profile: false
     <h1>Théo Verdelhan</h1>
     <p class="profile-hero__title">Market microstructure, systematic trading and derivatives research</p>
     <p class="profile-hero__lead">
-      Quantitative Researcher Intern at Silvertrain AI, with a Financial Engineering background from Paris Dauphine–PSL and an engineering degree in Computer Science, Data and Machine Learning from EPF.
+      Quantitative Research Intern at Silvertrain AI, with a Financial Engineering background from Paris Dauphine–PSL and an engineering degree in Computer Science, Data and Machine Learning from EPF.
     </p>
     <p class="profile-hero__lead">
-      I build execution-aware research systems: from order-book data and alpha validation to backtesting, numerical pricing and real-time market tools.
+      Across my public, academic and previous work, I build quantitative research systems spanning backtesting, numerical pricing and real-time market tools.
     </p>
     <div class="tag-list" aria-label="Core areas">
       <span>Market Microstructure</span>
@@ -37,7 +37,7 @@ author_profile: false
   <a class="home-card" href="/professional-experiences/">
     <span class="home-card__index">01</span>
     <h2>Experience</h2>
-    <p>Alpha research, live market monitoring and cross-exchange trading systems.</p>
+    <p>Previous roles and experience in quantitative research and engineering.</p>
   </a>
   <a class="home-card" href="/projects/">
     <span class="home-card__index">02</span>

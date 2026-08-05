@@ -12,13 +12,11 @@ author_profile: false
 
 ## Experience
 
-### Silvertrain AI — Quantitative Researcher Intern, Alpha Research
+### Silvertrain AI — Quantitative Research Intern
 
 *Jul 2026 – Present · Remote*
 
-- Contribute to alpha research, market-data analysis and systematic-strategy backtesting across electronic asset classes.
-- Analyze market microstructure, liquidity, order flow, volatility and order books using historical and live data when available.
-- Develop Python research tools and assess robustness through P&L, Sharpe ratio, drawdown, turnover, temporal stability, overfitting and data leakage.
+- Contribute to quantitative research and development within the team.
 
 ### MYR · Private Investment Fund — Quantitative Researcher
 

@@ -15,7 +15,7 @@ author_profile: false
       <div>
         <p class="timeline-card__status">Current role</p>
         <h2>Silvertrain AI</h2>
-        <p class="timeline-card__role">Quantitative Researcher Intern · Alpha Research</p>
+        <p class="timeline-card__role">Quantitative Research Intern</p>
       </div>
       <div class="timeline-card__meta">
         <span>Jul 2026 – Present</span>
@@ -23,15 +23,8 @@ author_profile: false
       </div>
     </header>
     <p class="timeline-card__summary">
-      Contributing to alpha research, market-data analysis and systematic-strategy backtesting across electronic asset classes.
+      Contributing to quantitative research and development within the team.
     </p>
-    <ul class="clean-list">
-      <li>Analyze historical and, when available, live data across crypto-assets, equities, futures, prediction markets and weather markets.</li>
-      <li>Study prices, volumes, spreads, liquidity, order flow, volatility and order books to develop and test quantitative signals.</li>
-      <li>Build Python tools for data processing, backtesting and performance analysis, with attention to P&amp;L, Sharpe ratio, drawdown, turnover and temporal stability.</li>
-      <li>Document research through notebooks, reports and charts, with regular research and code reviews.</li>
-    </ul>
-    <div class="skill-line"><strong>Focus</strong><span>Alpha research · Python · Time series · Market data · Robustness testing</span></div>
   </article>
 
   <article class="timeline-card">
