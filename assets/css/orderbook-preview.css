@@ -14,8 +14,8 @@
   --ask-rgb: 255, 80, 111;
   --blue: #5aa9ff;
   --amber: #ffc66d;
-  --header-height: 74px;
-  --tape-height: 52px;
+  --header-height: 64px;
+  --tape-height: 38px;
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -33,8 +33,7 @@ body {
 }
 
 body {
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden;
   color: var(--text);
   font-variant-numeric: tabular-nums;
   -webkit-font-smoothing: antialiased;
@@ -364,12 +363,12 @@ a {
   letter-spacing: 0.12em;
 }
 
-.book-panel--bids h1,
+.book-panel--bids h2,
 .book-panel--bids .book-panel__signal {
   color: var(--bid);
 }
 
-.book-panel--asks h1,
+.book-panel--asks h2,
 .book-panel--asks .book-panel__signal {
   color: var(--ask);
 }
@@ -1033,6 +1032,291 @@ a {
   text-align: center;
 }
 
+/* Single-screen portfolio terminal */
+.dashboard-workspace {
+  display: grid;
+  grid-template-rows: minmax(270px, 0.92fr) var(--tape-height) minmax(260px, 1.08fr);
+  width: 100%;
+  height: calc(100dvh - var(--header-height));
+  overflow: hidden;
+}
+
+.terminal-header {
+  min-height: var(--header-height);
+  padding-inline: 1rem;
+}
+
+.terminal-brand__mark {
+  width: 34px;
+  height: 34px;
+}
+
+.terminal-shell {
+  height: auto;
+  min-height: 0;
+}
+
+.personal-context {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0 0 0.45rem;
+  padding: 0.42rem 0.5rem;
+}
+
+.personal-context img {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 198, 109, 0.55);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.personal-context span {
+  display: block;
+  overflow: hidden;
+  font-size: 0.43rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.personal-context p {
+  margin-top: 0.25rem;
+  overflow: hidden;
+  font-size: 0.58rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.personal-context > a {
+  padding: 0.36rem 0.42rem;
+  border: 1px solid var(--line);
+  color: var(--muted-light);
+  font-size: 0.42rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.personal-context > a:hover,
+.personal-context > a:focus-visible {
+  border-color: var(--blue);
+  color: var(--text);
+  outline: none;
+}
+
+.book-panel__header {
+  min-height: 50px;
+  padding: 0.65rem 0.8rem 0.55rem;
+}
+
+.book-panel h2 {
+  margin-top: 0.25rem;
+  font-size: 0.92rem;
+}
+
+.book-panel__signal {
+  padding: 0.28rem 0.38rem;
+  font-size: 0.43rem;
+}
+
+.book-columns {
+  min-height: 23px;
+  padding-inline: 0.8rem;
+  font-size: 0.43rem;
+}
+
+.book-rows {
+  flex: 0 0 auto;
+  grid-auto-rows: 24px;
+  align-content: start;
+  padding: 0.18rem 0;
+}
+
+.book-row {
+  min-height: 24px;
+  padding-inline: 0.8rem;
+  font-size: clamp(0.56rem, 0.68vw, 0.66rem);
+}
+
+.market-core {
+  padding: 0.55rem 0.65rem;
+}
+
+.last-market {
+  padding-bottom: 0.45rem;
+}
+
+.last-market__price {
+  margin-top: 0.25rem;
+  font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+}
+
+.last-market__meta {
+  margin-top: 0.28rem;
+  font-size: 0.5rem;
+}
+
+.spread-line {
+  min-height: 24px;
+  padding-inline: 0.5rem;
+  font-size: 0.43rem;
+}
+
+.portfolio-nav {
+  margin-top: 0.42rem;
+}
+
+.portfolio-nav__label {
+  margin-bottom: 0.3rem;
+  font-size: 0.43rem;
+}
+
+.portfolio-nav__label small {
+  font-size: 0.4rem;
+}
+
+.portfolio-nav__grid {
+  gap: 0.28rem;
+}
+
+.route-order {
+  min-height: 40px;
+  padding: 0.35rem 0.45rem;
+}
+
+.route-order strong {
+  font-size: clamp(0.56rem, 0.7vw, 0.66rem);
+}
+
+.route-order__type,
+.route-order__action {
+  font-size: 0.38rem;
+}
+
+.micro-stats {
+  margin-top: 0.4rem;
+}
+
+.micro-stats div {
+  padding: 0.35rem 0.4rem;
+}
+
+.micro-stats dt {
+  font-size: 0.38rem;
+}
+
+.micro-stats dd {
+  margin-top: 0.2rem;
+  font-size: 0.5rem;
+}
+
+.market-disclaimer {
+  display: none;
+}
+
+.analytics-dashboard {
+  display: flex;
+  min-height: 0;
+  flex-direction: column;
+  padding: 0.55rem 0.75rem 0.45rem;
+  overflow: hidden;
+}
+
+.analytics-dashboard__header {
+  flex: 0 0 auto;
+  margin-bottom: 0.4rem;
+}
+
+.analytics-dashboard__header > div:first-child > span {
+  font-size: 0.4rem;
+}
+
+.analytics-dashboard__header h2 {
+  margin-top: 0.25rem;
+  font-size: 0.88rem;
+}
+
+.analytics-dashboard__badges {
+  gap: 0.25rem;
+}
+
+.analytics-dashboard__badges span {
+  padding: 0.28rem 0.35rem;
+  font-size: 0.38rem;
+}
+
+.analytics-dashboard__content {
+  flex: 1;
+  grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
+  gap: 0.45rem;
+  min-height: 0;
+}
+
+.depth-chart-card {
+  min-height: 0;
+}
+
+.depth-chart-card__header {
+  min-height: 42px;
+  padding: 0.5rem 0.7rem;
+}
+
+.depth-chart-card h3 {
+  font-size: 0.6rem;
+}
+
+.depth-chart-card p {
+  margin-top: 0.18rem;
+  font-size: 0.46rem;
+}
+
+.depth-chart-legend {
+  font-size: 0.44rem;
+}
+
+.depth-chart-wrap {
+  min-height: 0;
+}
+
+.analytics-metrics {
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  min-height: 0;
+}
+
+.metric-card {
+  min-height: 0;
+  padding: 0.38rem 0.45rem;
+}
+
+.metric-card__label {
+  font-size: 0.36rem;
+}
+
+.metric-card strong {
+  margin-top: 0.28rem;
+  font-size: clamp(0.58rem, 0.72vw, 0.72rem);
+}
+
+.metric-card small {
+  margin-top: 0.2rem;
+  font-size: 0.34rem;
+}
+
+.analytics-note {
+  flex: 0 0 auto;
+  margin-top: 0.3rem;
+  font-size: 0.4rem;
+  line-height: 1.25;
+}
+
+.trade-tape__label,
+.trade-tape__profile {
+  padding-inline: 0.85rem;
+}
+
 @keyframes live-pulse {
   50% { opacity: 0.45; transform: scale(0.72); }
 }
@@ -1063,22 +1347,22 @@ a {
   }
 
   .analytics-dashboard__content {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
   }
 
   .depth-chart-card {
-    min-height: 380px;
+    min-height: 0;
   }
 
   .analytics-metrics {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 780px) {
   :root {
-    --header-height: 64px;
-    --tape-height: 44px;
+    --header-height: 58px;
+    --tape-height: 34px;
   }
 
   .terminal-header {
@@ -1103,34 +1387,45 @@ a {
 
   .terminal-shell {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: 176px minmax(0, 1fr);
     grid-template-areas:
       "core core"
       "bids asks";
-    height: max(760px, calc(100dvh - var(--header-height) - var(--tape-height)));
+    height: auto;
+  }
+
+  .dashboard-workspace {
+    grid-template-rows: 332px var(--tape-height) minmax(0, 1fr);
   }
 
   .market-core {
-    padding: 0.85rem;
+    padding: 0.42rem 0.55rem;
   }
 
   .personal-context {
-    margin-bottom: 0.55rem;
-    padding: 0.5rem 0.6rem;
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    gap: 0.45rem;
+    margin-bottom: 0.35rem;
+    padding: 0.32rem 0.4rem;
+  }
+
+  .personal-context img {
+    width: 36px;
+    height: 36px;
   }
 
   .personal-context p {
-    margin-top: 0.28rem;
-    font-size: 0.58rem;
+    margin-top: 0.2rem;
+    font-size: 0.52rem;
   }
 
   .last-market {
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.3rem;
   }
 
   .last-market__price {
-    margin-top: 0.28rem;
-    font-size: clamp(1.7rem, 9vw, 2.45rem);
+    margin-top: 0.16rem;
+    font-size: clamp(1.25rem, 6vw, 1.7rem);
   }
 
   .last-market__meta {
@@ -1144,7 +1439,7 @@ a {
   }
 
   .portfolio-nav {
-    margin-top: 0.65rem;
+    margin-top: 0.3rem;
   }
 
   .portfolio-nav__label {
@@ -1152,8 +1447,8 @@ a {
   }
 
   .route-order {
-    min-height: 56px;
-    padding: 0.5rem 0.55rem;
+    min-height: 34px;
+    padding: 0.28rem 0.4rem;
   }
 
   .route-order strong {
@@ -1165,8 +1460,8 @@ a {
   }
 
   .book-panel__header {
-    min-height: 48px;
-    padding: 0.6rem 0.6rem 0.5rem;
+    min-height: 34px;
+    padding: 0.4rem 0.5rem 0.3rem;
   }
 
   .book-panel__eyebrow {
@@ -1179,7 +1474,7 @@ a {
   }
 
   .book-columns {
-    min-height: 25px;
+    min-height: 19px;
     padding: 0 0.55rem;
     font-size: 0.42rem;
   }
@@ -1195,8 +1490,14 @@ a {
   }
 
   .book-row {
+    min-height: 18px;
     padding: 0 0.55rem;
-    font-size: clamp(0.54rem, 2.3vw, 0.66rem);
+    font-size: clamp(0.48rem, 1.8vw, 0.58rem);
+  }
+
+  .book-rows {
+    grid-auto-rows: 18px;
+    padding-block: 0.1rem;
   }
 
   .trade-tape {
@@ -1214,41 +1515,64 @@ a {
 
   .analytics-dashboard {
     min-height: 0;
-    padding: 1rem 0.75rem 1.25rem;
+    padding: 0.4rem 0.5rem;
   }
 
   .analytics-dashboard__header {
-    align-items: flex-start;
-    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 0.28rem;
   }
 
   .analytics-dashboard__badges {
-    justify-content: flex-start;
+    display: none;
   }
 
   .analytics-dashboard__content {
-    display: block;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 118px minmax(0, 1fr);
+    gap: 0.3rem;
   }
 
   .depth-chart-card {
-    min-height: 340px;
+    min-height: 0;
   }
 
   .depth-chart-wrap {
-    min-height: 270px;
+    min-height: 0;
+  }
+
+  .depth-chart-card__header {
+    display: none;
   }
 
   .analytics-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin-top: 0.75rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+    margin-top: 0;
   }
 
   .metric-card {
-    min-height: 94px;
+    min-height: 0;
+    padding: 0.2rem 0.3rem;
+  }
+
+  .metric-card__label {
+    font-size: 0.29rem;
+  }
+
+  .metric-card strong {
+    margin-top: 0.15rem;
+    font-size: clamp(0.46rem, 1.7vw, 0.58rem);
+  }
+
+  .metric-card small {
+    display: none;
   }
 
   .analytics-note {
-    text-align: left;
+    display: none;
   }
 }
 
@@ -1289,28 +1613,95 @@ a {
 }
 
 @media (max-height: 700px) and (min-width: 781px) {
+  :root {
+    --tape-height: 32px;
+  }
+
+  .dashboard-workspace {
+    grid-template-rows: minmax(238px, 0.9fr) var(--tape-height) minmax(220px, 1.1fr);
+  }
+
   .book-panel__header {
-    min-height: 62px;
+    min-height: 44px;
+  }
+
+  .book-columns {
+    min-height: 20px;
+  }
+
+  .book-rows {
+    grid-auto-rows: 21px;
+  }
+
+  .book-row {
+    min-height: 21px;
   }
 
   .market-core {
-    padding-block: 0.8rem;
+    padding-block: 0.38rem;
+  }
+
+  .personal-context {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    padding-block: 0.28rem;
+  }
+
+  .personal-context img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .personal-context p,
+  .micro-stats,
+  .analytics-dashboard__badges,
+  .analytics-note {
+    display: none;
   }
 
   .last-market {
-    padding-bottom: 0.65rem;
+    padding-bottom: 0.3rem;
   }
 
   .portfolio-nav {
-    margin-top: 0.7rem;
+    margin-top: 0.3rem;
   }
 
   .route-order {
-    min-height: 62px;
+    min-height: 36px;
   }
 
   .market-disclaimer {
     display: none;
+  }
+
+  .analytics-dashboard {
+    padding-block: 0.38rem;
+  }
+
+  .analytics-dashboard__header {
+    margin-bottom: 0.25rem;
+  }
+
+  .depth-chart-card__header {
+    min-height: 34px;
+  }
+}
+
+@media (max-width: 780px) and (max-height: 720px) {
+  .dashboard-workspace {
+    grid-template-rows: 286px 30px minmax(0, 1fr);
+  }
+
+  .terminal-shell {
+    grid-template-rows: 154px minmax(0, 1fr);
+  }
+
+  .depth-chart-card {
+    display: none;
+  }
+
+  .analytics-dashboard__content {
+    grid-template-rows: minmax(0, 1fr);
   }
 }
 

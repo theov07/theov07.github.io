@@ -93,9 +93,8 @@
   };
 
   function levelCount() {
-    if (window.innerWidth <= 780) return window.innerHeight < 720 ? 5 : 7;
-    if (window.innerHeight < 700) return 9;
-    return 14;
+    if (window.innerWidth <= 780) return 5;
+    return 8;
   }
 
   function createRows(container, side) {
