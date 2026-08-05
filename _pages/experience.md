@@ -53,7 +53,7 @@ author_profile: false
     <header class="timeline-card__header">
       <div>
         <h2>La Valériane · Investment Branch</h2>
-        <p class="timeline-card__role">Quantitative Developer</p>
+        <p class="timeline-card__role">Quantitative Developer Intern</p>
       </div>
       <div class="timeline-card__meta">
         <span>Sep 2023 – Jan 2024</span>
