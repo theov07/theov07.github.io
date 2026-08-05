@@ -1,0 +1,162 @@
+---
+layout: null
+permalink: /orderbook-preview/
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#05070a">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Live BTCUSDT order book interface for Théo Verdelhan's quantitative portfolio.">
+    <title>BTCUSDT Live Order Book · Théo Verdelhan</title>
+    <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
+    <link rel="stylesheet" href="{{ '/assets/css/orderbook-preview.css' | relative_url }}">
+  </head>
+  <body class="ob-page is-connecting">
+    <a class="skip-link" href="#portfolio-navigation">Skip to portfolio navigation</a>
+
+    <div class="market-grid" aria-hidden="true"></div>
+    <div class="market-glow market-glow--bid" aria-hidden="true"></div>
+    <div class="market-glow market-glow--ask" aria-hidden="true"></div>
+
+    <header class="terminal-header">
+      <a class="terminal-brand" href="{{ '/' | relative_url }}" aria-label="Return to Théo Verdelhan's current homepage">
+        <span class="terminal-brand__mark">TV</span>
+        <span class="terminal-brand__copy">
+          <strong>THÉO VERDELHAN</strong>
+          <small>QUANTITATIVE PORTFOLIO</small>
+        </span>
+      </a>
+
+      <div class="market-name" aria-label="Selected market">
+        <span class="market-name__asset">BTC</span><span class="market-name__quote">/USDT</span>
+        <span class="market-name__venue">SPOT · BINANCE</span>
+      </div>
+
+      <div class="header-stats" aria-label="24 hour market statistics">
+        <div class="header-stat">
+          <span>24H CHANGE</span>
+          <strong id="change-24h">—</strong>
+        </div>
+        <div class="header-stat header-stat--optional">
+          <span>24H HIGH</span>
+          <strong id="high-24h">—</strong>
+        </div>
+        <div class="header-stat header-stat--optional">
+          <span>24H LOW</span>
+          <strong id="low-24h">—</strong>
+        </div>
+      </div>
+
+      <div class="connection" id="connection" role="status" aria-live="polite">
+        <span class="connection__dot"></span>
+        <span class="connection__copy">
+          <strong id="connection-label">CONNECTING</strong>
+          <small id="latency-label">MARKET DATA</small>
+        </span>
+      </div>
+    </header>
+
+    <main class="terminal-shell">
+      <h1 class="visually-hidden">BTCUSDT live order book and portfolio navigation</h1>
+      <section class="book-panel book-panel--bids" aria-labelledby="bids-title">
+        <header class="book-panel__header">
+          <div>
+            <span class="book-panel__eyebrow">BUY-SIDE LIQUIDITY</span>
+            <h2 id="bids-title">BIDS</h2>
+          </div>
+          <span class="book-panel__signal">DEPTH 20 · 100MS</span>
+        </header>
+        <div class="book-columns" aria-hidden="true">
+          <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
+        </div>
+        <div class="book-rows" id="bid-book" aria-label="Live BTCUSDT bid levels"></div>
+      </section>
+
+      <section class="market-core" aria-label="Live market summary and portfolio navigation">
+        <div class="last-market">
+          <span class="last-market__label">LAST TRADE</span>
+          <div class="last-market__price" id="last-price">—</div>
+          <div class="last-market__meta">
+            <span id="last-size">Waiting for BTCUSDT</span>
+            <span id="last-time">—</span>
+          </div>
+        </div>
+
+        <div class="spread-line" aria-label="Current spread">
+          <span>SPREAD</span>
+          <strong id="spread-value">—</strong>
+          <span id="spread-bps">— BPS</span>
+        </div>
+
+        <nav class="portfolio-nav" id="portfolio-navigation" aria-label="Portfolio navigation">
+          <p class="portfolio-nav__label"><span>SELECT DESTINATION</span><small>ROUTING ENABLED</small></p>
+          <div class="portfolio-nav__grid">
+            <a class="route-order route-order--education" href="{{ '/education/' | relative_url }}">
+              <span class="route-order__type">LIMIT</span>
+              <strong>EDUCATION</strong>
+              <span class="route-order__action">OPEN <b>↗</b></span>
+            </a>
+            <a class="route-order route-order--experience" href="{{ '/professional-experiences/' | relative_url }}">
+              <span class="route-order__type">MARKET</span>
+              <strong>EXPERIENCE</strong>
+              <span class="route-order__action">OPEN <b>↗</b></span>
+            </a>
+            <a class="route-order route-order--projects" href="{{ '/projects/' | relative_url }}">
+              <span class="route-order__type">STOP</span>
+              <strong>PROJECTS</strong>
+              <span class="route-order__action">OPEN <b>↗</b></span>
+            </a>
+            <a class="route-order route-order--resume" href="{{ '/cv/' | relative_url }}">
+              <span class="route-order__type">IOC</span>
+              <strong>RESUME</strong>
+              <span class="route-order__action">OPEN <b>↗</b></span>
+            </a>
+          </div>
+        </nav>
+
+        <dl class="micro-stats">
+          <div><dt>MID</dt><dd id="mid-price">—</dd></div>
+          <div><dt>IMBALANCE</dt><dd id="imbalance">—</dd></div>
+          <div><dt>24H VOLUME</dt><dd id="volume-24h">—</dd></div>
+        </dl>
+
+        <p class="market-disclaimer">PUBLIC MARKET DATA · VISUALIZATION ONLY · NO ORDER EXECUTION</p>
+      </section>
+
+      <section class="book-panel book-panel--asks" aria-labelledby="asks-title">
+        <header class="book-panel__header">
+          <div>
+            <span class="book-panel__eyebrow">SELL-SIDE LIQUIDITY</span>
+            <h2 id="asks-title">ASKS</h2>
+          </div>
+          <span class="book-panel__signal">LIVE BOOK</span>
+        </header>
+        <div class="book-columns" aria-hidden="true">
+          <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
+        </div>
+        <div class="book-rows" id="ask-book" aria-label="Live BTCUSDT ask levels"></div>
+      </section>
+    </main>
+
+    <footer class="trade-tape" aria-label="Recent BTCUSDT trades">
+      <div class="trade-tape__label">
+        <span class="trade-tape__pulse"></span>
+        LIVE TRADES
+      </div>
+      <div class="trade-tape__viewport">
+        <div class="trade-tape__track" id="trade-tape">
+          <span class="trade-tape__waiting">Awaiting public Binance market data…</span>
+        </div>
+      </div>
+      <a class="trade-tape__profile" href="{{ '/' | relative_url }}">CURRENT SITE ↗</a>
+    </footer>
+
+    <noscript>
+      <div class="no-script">JavaScript is required to display the live order book. Portfolio links remain available from the current site.</div>
+    </noscript>
+    <script src="{{ '/assets/js/orderbook-preview.js' | relative_url }}" defer></script>
+  </body>
+</html>
