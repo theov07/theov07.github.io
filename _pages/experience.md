@@ -19,7 +19,7 @@ author_profile: false
       </div>
       <div class="timeline-card__meta">
         <span>Jul 2026 – Present</span>
-        <span>Remote</span>
+        <span>Miami, FL</span>
       </div>
     </header>
     <p class="timeline-card__summary">
