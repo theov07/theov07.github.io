@@ -14,8 +14,8 @@ author_profile: false
     <header class="timeline-card__header">
       <div>
         <p class="timeline-card__status">Current role</p>
-        <h2>Silvertrain AI</h2>
-        <p class="timeline-card__role">Alpha Research &amp; Systematic Trading Team</p>
+        <h2>Silvertrain AI · Alpha Research &amp; Systematic Trading Team</h2>
+        <p class="timeline-card__role">Quantitative Researcher Intern</p>
       </div>
       <div class="timeline-card__meta">
         <span>Jul 2026 – Present</span>
