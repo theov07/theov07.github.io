@@ -35,8 +35,7 @@ author_profile: false
       <span>Paris, France</span>
     </div>
     <h2>EPF Graduate School of Engineering</h2>
-    <p class="education-card__degree">Engineering Degree / Master in Computer Science · Data &amp; Machine Learning Track</p>
-    <p class="rank-callout">Ranked 8th out of 157</p>
+    <p class="education-card__degree">Engineering Degree / Master in Computer Science · Data &amp; Machine Learning Track - (Ranked 8th out of 157)</p>
     <h3>Selected coursework</h3>
     <div class="tag-list">
       <span>Probability &amp; Statistics</span>
