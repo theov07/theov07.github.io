@@ -26,13 +26,13 @@ permalink: /orderbook-preview/
         <span class="terminal-brand__mark">TV</span>
         <span class="terminal-brand__copy">
           <strong>THÉO VERDELHAN</strong>
-          <small>QUANTITATIVE PORTFOLIO</small>
+          <small>PERSONAL QUANT PORTFOLIO</small>
         </span>
       </a>
 
       <div class="market-name" aria-label="Selected market">
         <span class="market-name__asset">BTC</span><span class="market-name__quote">/USDT</span>
-        <span class="market-name__venue">SPOT · BINANCE</span>
+        <span class="market-name__venue">LIVE MARKET LAB · BINANCE</span>
       </div>
 
       <div class="header-stats" aria-label="24 hour market statistics">
@@ -59,8 +59,9 @@ permalink: /orderbook-preview/
       </div>
     </header>
 
-    <main class="terminal-shell">
+    <main class="dashboard-workspace">
       <h1 class="visually-hidden">BTCUSDT live order book and portfolio navigation</h1>
+      <section class="terminal-shell" aria-label="Live order book and portfolio router">
       <section class="book-panel book-panel--bids" aria-labelledby="bids-title">
         <header class="book-panel__header">
           <div>
@@ -76,6 +77,11 @@ permalink: /orderbook-preview/
       </section>
 
       <section class="market-core" aria-label="Live market summary and portfolio navigation">
+        <div class="personal-context">
+          <span>PERSONAL PORTFOLIO · LIVE MARKET LAB</span>
+          <p><strong>Théo Verdelhan</strong> — quantitative researcher focused on market microstructure, systematic trading and derivatives.</p>
+        </div>
+
         <div class="last-market">
           <span class="last-market__label">LAST TRADE</span>
           <div class="last-market__price" id="last-price">—</div>
@@ -92,7 +98,7 @@ permalink: /orderbook-preview/
         </div>
 
         <nav class="portfolio-nav" id="portfolio-navigation" aria-label="Portfolio navigation">
-          <p class="portfolio-nav__label"><span>SELECT DESTINATION</span><small>ROUTING ENABLED</small></p>
+          <p class="portfolio-nav__label"><span>PORTFOLIO ROUTER · SELECT DESTINATION</span><small>ROUTING ENABLED</small></p>
           <div class="portfolio-nav__grid">
             <a class="route-order route-order--education" href="{{ '/education/' | relative_url }}">
               <span class="route-order__type">LIMIT</span>
@@ -139,20 +145,118 @@ permalink: /orderbook-preview/
         </div>
         <div class="book-rows" id="ask-book" aria-label="Live BTCUSDT ask levels"></div>
       </section>
-    </main>
+      </section>
 
-    <footer class="trade-tape" aria-label="Recent BTCUSDT trades">
-      <div class="trade-tape__label">
-        <span class="trade-tape__pulse"></span>
-        LIVE TRADES
-      </div>
-      <div class="trade-tape__viewport">
-        <div class="trade-tape__track" id="trade-tape">
-          <span class="trade-tape__waiting">Awaiting public Binance market data…</span>
+      <footer class="trade-tape" aria-label="Recent BTCUSDT trades">
+        <div class="trade-tape__label">
+          <span class="trade-tape__pulse"></span>
+          LIVE TRADES
         </div>
-      </div>
-      <a class="trade-tape__profile" href="{{ '/' | relative_url }}">CURRENT SITE ↗</a>
-    </footer>
+        <div class="trade-tape__viewport">
+          <div class="trade-tape__track" id="trade-tape">
+            <span class="trade-tape__waiting">Awaiting public Binance market data…</span>
+          </div>
+        </div>
+        <a class="trade-tape__profile" href="{{ '/' | relative_url }}">CURRENT SITE ↗</a>
+      </footer>
+
+      <section class="analytics-dashboard" aria-labelledby="analytics-title">
+        <header class="analytics-dashboard__header">
+          <div>
+            <span>RESEARCH LAYER · REAL-TIME MICROSTRUCTURE</span>
+            <h2 id="analytics-title">MARKET MAKING ANALYTICS</h2>
+          </div>
+          <div class="analytics-dashboard__badges" aria-label="Analytics model status">
+            <span>BTCUSDT</span>
+            <span>PUBLIC DATA MODEL</span>
+            <span>5S ROLLING WINDOW</span>
+          </div>
+        </header>
+
+        <div class="analytics-dashboard__content">
+          <article class="depth-chart-card" aria-labelledby="depth-chart-title">
+            <header class="depth-chart-card__header">
+              <div>
+                <h3 id="depth-chart-title">ORDER BOOK DEPTH</h3>
+                <p>Cumulative quantity across the top 20 levels</p>
+              </div>
+              <div class="depth-chart-legend" aria-label="Chart legend">
+                <span><i class="depth-chart-legend__line depth-chart-legend__line--bid"></i>Bid depth</span>
+                <span><i class="depth-chart-legend__line depth-chart-legend__line--ask"></i>Ask depth</span>
+              </div>
+            </header>
+            <div class="depth-chart-wrap">
+              <canvas id="depth-chart" width="980" height="300" role="img" aria-label="Waiting for live bid and ask depth"></canvas>
+            </div>
+          </article>
+
+          <div class="analytics-metrics" aria-label="Live market making metrics">
+            <article class="metric-card metric-card--neutral">
+              <span class="metric-card__label">MID PRICE</span>
+              <strong id="analytics-mid">—</strong>
+              <small>BEST BID / ASK</small>
+            </article>
+            <article class="metric-card metric-card--blue">
+              <span class="metric-card__label">MICROPRICE</span>
+              <strong id="analytics-microprice">—</strong>
+              <small id="microprice-skew">— BPS VS MID</small>
+            </article>
+            <article class="metric-card metric-card--neutral">
+              <span class="metric-card__label">SPREAD</span>
+              <strong id="analytics-spread">—</strong>
+              <small id="analytics-spread-usdt">— USDT</small>
+            </article>
+            <article class="metric-card metric-card--bid">
+              <span class="metric-card__label">BID QUEUE · L1</span>
+              <strong id="bid-queue">—</strong>
+              <small>BTC AHEAD</small>
+            </article>
+            <article class="metric-card metric-card--ask">
+              <span class="metric-card__label">ASK QUEUE · L1</span>
+              <strong id="ask-queue">—</strong>
+              <small>BTC AHEAD</small>
+            </article>
+            <article class="metric-card metric-card--blue">
+              <span class="metric-card__label">BOOK IMBALANCE · 10</span>
+              <strong id="analytics-imbalance">—</strong>
+              <small>BID VS ASK DEPTH</small>
+            </article>
+            <article class="metric-card metric-card--bid">
+              <span class="metric-card__label">BID FILL PROXY · 5S</span>
+              <strong id="bid-fill-proxy">—</strong>
+              <small>SELL FLOW / QUEUE</small>
+            </article>
+            <article class="metric-card metric-card--ask">
+              <span class="metric-card__label">ASK FILL PROXY · 5S</span>
+              <strong id="ask-fill-proxy">—</strong>
+              <small>BUY FLOW / QUEUE</small>
+            </article>
+            <article class="metric-card metric-card--neutral">
+              <span class="metric-card__label">SIGNED MARKOUT · 1S</span>
+              <strong id="markout-1s">COLLECTING</strong>
+              <small>AGGRESSOR-SIGNED</small>
+            </article>
+            <article class="metric-card metric-card--neutral">
+              <span class="metric-card__label">SIGNED MARKOUT · 5S</span>
+              <strong id="markout-5s">COLLECTING</strong>
+              <small>AGGRESSOR-SIGNED</small>
+            </article>
+            <article class="metric-card metric-card--blue">
+              <span class="metric-card__label">TRADE FLOW · 5S</span>
+              <strong id="flow-imbalance">—</strong>
+              <small id="flow-detail">BUY — · SELL —</small>
+            </article>
+            <article class="metric-card metric-card--neutral">
+              <span class="metric-card__label">UPDATE RATE</span>
+              <strong id="update-rate">—</strong>
+              <small>MESSAGES / SECOND</small>
+            </article>
+          </div>
+        </div>
+
+        <p class="analytics-note">Fill metrics are queue-consumption proxies based on public aggregate trades and displayed L1 liquidity. Markouts measure aggressor-signed post-trade mid-price moves. Research visualization only.</p>
+      </section>
+    </main>
 
     <noscript>
       <div class="no-script">JavaScript is required to display the live order book. Portfolio links remain available from the current site.</div>
