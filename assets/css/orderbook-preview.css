@@ -1035,7 +1035,7 @@ a {
 /* Single-screen portfolio terminal */
 .dashboard-workspace {
   display: grid;
-  grid-template-rows: minmax(270px, 0.92fr) var(--tape-height) minmax(260px, 1.08fr);
+  grid-template-rows: minmax(340px, 1.42fr) var(--tape-height) minmax(210px, 0.78fr);
   width: 100%;
   height: calc(100dvh - var(--header-height));
   overflow: hidden;
@@ -1052,22 +1052,24 @@ a {
 }
 
 .terminal-shell {
+  grid-template-columns: minmax(220px, 0.72fr) minmax(460px, 1.3fr) minmax(220px, 0.72fr);
   height: auto;
   min-height: 0;
 }
 
 .personal-context {
+  --portrait-size: clamp(54px, 6.5vh, 74px);
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) auto;
+  grid-template-columns: var(--portrait-size) minmax(0, 1fr) auto;
   align-items: center;
-  gap: 0.65rem;
-  margin: 0 0 0.45rem;
-  padding: 0.42rem 0.5rem;
+  gap: 0.85rem;
+  margin: 0 0 0.7rem;
+  padding: 0.62rem 0.72rem;
 }
 
 .personal-context img {
-  width: 44px;
-  height: 44px;
+  width: var(--portrait-size);
+  height: var(--portrait-size);
   border: 1px solid rgba(255, 198, 109, 0.55);
   border-radius: 50%;
   object-fit: cover;
@@ -1076,7 +1078,7 @@ a {
 .personal-context span {
   display: block;
   overflow: hidden;
-  font-size: 0.43rem;
+  font-size: clamp(0.46rem, 0.55vw, 0.58rem);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1084,17 +1086,17 @@ a {
 .personal-context p {
   margin-top: 0.25rem;
   overflow: hidden;
-  font-size: 0.58rem;
-  line-height: 1.25;
+  font-size: clamp(0.62rem, 0.72vw, 0.76rem);
+  line-height: 1.35;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .personal-context > a {
-  padding: 0.36rem 0.42rem;
+  padding: 0.48rem 0.58rem;
   border: 1px solid var(--line);
   color: var(--muted-light);
-  font-size: 0.42rem;
+  font-size: 0.48rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   transition: border-color 150ms ease, color 150ms ease;
@@ -1142,36 +1144,37 @@ a {
 }
 
 .market-core {
-  padding: 0.55rem 0.65rem;
+  justify-content: center;
+  padding: clamp(0.7rem, 1.4vh, 1rem) clamp(0.8rem, 1.4vw, 1.3rem);
 }
 
 .last-market {
-  padding-bottom: 0.45rem;
+  padding-bottom: 0.6rem;
 }
 
 .last-market__price {
-  margin-top: 0.25rem;
-  font-size: clamp(1.45rem, 2.2vw, 2.05rem);
+  margin-top: 0.32rem;
+  font-size: clamp(2rem, 4vh, 2.75rem);
 }
 
 .last-market__meta {
-  margin-top: 0.28rem;
-  font-size: 0.5rem;
+  margin-top: 0.36rem;
+  font-size: 0.58rem;
 }
 
 .spread-line {
-  min-height: 24px;
-  padding-inline: 0.5rem;
-  font-size: 0.43rem;
+  min-height: 28px;
+  padding-inline: 0.65rem;
+  font-size: 0.48rem;
 }
 
 .portfolio-nav {
-  margin-top: 0.42rem;
+  margin-top: 0.58rem;
 }
 
 .portfolio-nav__label {
-  margin-bottom: 0.3rem;
-  font-size: 0.43rem;
+  margin-bottom: 0.42rem;
+  font-size: 0.48rem;
 }
 
 .portfolio-nav__label small {
@@ -1179,38 +1182,38 @@ a {
 }
 
 .portfolio-nav__grid {
-  gap: 0.28rem;
+  gap: 0.42rem;
 }
 
 .route-order {
-  min-height: 40px;
-  padding: 0.35rem 0.45rem;
+  min-height: clamp(46px, 5.4vh, 60px);
+  padding: 0.5rem 0.62rem;
 }
 
 .route-order strong {
-  font-size: clamp(0.56rem, 0.7vw, 0.66rem);
+  font-size: clamp(0.68rem, 0.85vw, 0.84rem);
 }
 
 .route-order__type,
 .route-order__action {
-  font-size: 0.38rem;
+  font-size: 0.44rem;
 }
 
 .micro-stats {
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
 }
 
 .micro-stats div {
-  padding: 0.35rem 0.4rem;
+  padding: 0.48rem 0.5rem;
 }
 
 .micro-stats dt {
-  font-size: 0.38rem;
+  font-size: 0.42rem;
 }
 
 .micro-stats dd {
-  margin-top: 0.2rem;
-  font-size: 0.5rem;
+  margin-top: 0.25rem;
+  font-size: 0.58rem;
 }
 
 .market-disclaimer {
@@ -1221,22 +1224,22 @@ a {
   display: flex;
   min-height: 0;
   flex-direction: column;
-  padding: 0.55rem 0.75rem 0.45rem;
+  padding: 0.42rem 0.65rem 0.35rem;
   overflow: hidden;
 }
 
 .analytics-dashboard__header {
   flex: 0 0 auto;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.28rem;
 }
 
 .analytics-dashboard__header > div:first-child > span {
-  font-size: 0.4rem;
+  font-size: 0.44rem;
 }
 
 .analytics-dashboard__header h2 {
-  margin-top: 0.25rem;
-  font-size: 0.88rem;
+  margin-top: 0.18rem;
+  font-size: 0.96rem;
 }
 
 .analytics-dashboard__badges {
@@ -1251,7 +1254,7 @@ a {
 .analytics-dashboard__content {
   flex: 1;
   grid-template-columns: minmax(0, 1.18fr) minmax(0, 1fr);
-  gap: 0.45rem;
+  gap: 0.38rem;
   min-height: 0;
 }
 
@@ -1260,21 +1263,21 @@ a {
 }
 
 .depth-chart-card__header {
-  min-height: 42px;
-  padding: 0.5rem 0.7rem;
+  min-height: 36px;
+  padding: 0.38rem 0.62rem;
 }
 
 .depth-chart-card h3 {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 .depth-chart-card p {
-  margin-top: 0.18rem;
-  font-size: 0.46rem;
+  margin-top: 0.14rem;
+  font-size: 0.52rem;
 }
 
 .depth-chart-legend {
-  font-size: 0.44rem;
+  font-size: 0.52rem;
 }
 
 .depth-chart-wrap {
@@ -1288,28 +1291,25 @@ a {
 
 .metric-card {
   min-height: 0;
-  padding: 0.38rem 0.45rem;
+  padding: 0.34rem 0.44rem;
 }
 
 .metric-card__label {
-  font-size: 0.36rem;
+  font-size: 0.4rem;
 }
 
 .metric-card strong {
-  margin-top: 0.28rem;
-  font-size: clamp(0.58rem, 0.72vw, 0.72rem);
+  margin-top: 0.22rem;
+  font-size: clamp(0.66rem, 0.82vw, 0.82rem);
 }
 
 .metric-card small {
-  margin-top: 0.2rem;
-  font-size: 0.34rem;
+  margin-top: 0.16rem;
+  font-size: 0.36rem;
 }
 
 .analytics-note {
-  flex: 0 0 auto;
-  margin-top: 0.3rem;
-  font-size: 0.4rem;
-  line-height: 1.25;
+  display: none;
 }
 
 .trade-tape__label,
@@ -1339,7 +1339,7 @@ a {
   }
 
   .terminal-shell {
-    grid-template-columns: minmax(220px, 1fr) minmax(310px, 0.9fr) minmax(220px, 1fr);
+    grid-template-columns: minmax(150px, 0.72fr) minmax(360px, 1.3fr) minmax(150px, 0.72fr);
   }
 
   .book-panel__signal {
@@ -1395,7 +1395,7 @@ a {
   }
 
   .dashboard-workspace {
-    grid-template-rows: 332px var(--tape-height) minmax(0, 1fr);
+    grid-template-rows: 390px var(--tape-height) minmax(0, 1fr);
   }
 
   .market-core {
@@ -1618,7 +1618,7 @@ a {
   }
 
   .dashboard-workspace {
-    grid-template-rows: minmax(238px, 0.9fr) var(--tape-height) minmax(220px, 1.1fr);
+    grid-template-rows: minmax(280px, 1.35fr) var(--tape-height) minmax(180px, 0.65fr);
   }
 
   .book-panel__header {

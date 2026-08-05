@@ -310,7 +310,7 @@
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     context.clearRect(0, 0, displayWidth, displayHeight);
 
-    const padding = { top: 30, right: 18, bottom: 34, left: 48 };
+    const padding = { top: 32, right: 20, bottom: 38, left: 58 };
     const chartWidth = displayWidth - padding.left - padding.right;
     const chartHeight = displayHeight - padding.top - padding.bottom;
     const minPrice = bidDepth[bidDepth.length - 1].price;
@@ -325,7 +325,7 @@
     const baseline = padding.top + chartHeight;
 
     context.lineWidth = 1;
-    context.font = '10px "SFMono-Regular", Consolas, monospace';
+    context.font = '12px "SFMono-Regular", Consolas, monospace';
     context.textBaseline = "middle";
     for (let index = 0; index <= 4; index += 1) {
       const quantity = (maxQuantity / 4) * index;
