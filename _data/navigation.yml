@@ -16,3 +16,5 @@ main:
     url: /professional-experiences/
   - title: "Projects"
     url: /projects/
+  - title: "Resume"
+    url: /cv/

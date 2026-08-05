@@ -1,142 +1,75 @@
 ---
 layout: archive
-title: "CV"
+title: "Resume"
 permalink: /cv/
-author_profile: true
+author_profile: false
 ---
 
-You can download my full CV here:
+<div class="resume-actions">
+  <p>Quantitative researcher focused on market microstructure, systematic trading, derivatives and research engineering.</p>
+  <a class="button button--primary" href="/files/CV_VERDELHAN_THEO_DAUPHINE_PSL.pdf" target="_blank">Download one-page PDF</a>
+</div>
 
-**[Download CV (PDF)](/files/CV_VERDELHAN_THEO_DAUPHINE_PSL.pdf)**
+## Experience
 
----
+### Silvertrain AI — Quantitative Researcher Intern, Alpha Research
 
-## Contact Information
+*Jul 2026 – Present · Remote*
 
-**Email:** theo.verdelhan@dauphine.eu  
-**Phone:** +33 7 81 79 04 21  
-**LinkedIn:** [linkedin.com/in/theoverdelhan](https://www.linkedin.com/in/theoverdelhan)  
-**GitHub:** [github.com/theov07](https://github.com/theov07)
+- Contribute to alpha research, market-data analysis and systematic-strategy backtesting across electronic asset classes.
+- Analyze market microstructure, liquidity, order flow, volatility and order books using historical and live data when available.
+- Develop Python research tools and assess robustness through P&L, Sharpe ratio, drawdown, turnover, temporal stability, overfitting and data leakage.
 
----
+### MYR · Private Investment Fund — Quantitative Researcher
+
+*Aug 2024 – Jul 2025 · Montpellier, France*
+
+- Researched short-horizon signals across 12 liquid crypto markets using L1/L2/L3 order-book data, microprice, imbalance and execution metrics.
+- Analyzed multi-year tick-level datasets to study order-book dynamics, fill behavior, adverse selection and price reactions.
+- Built Python monitoring tools using APIs and WebSocket feeds for positions, hedging, P&L, execution quality and live strategy risk.
+
+### La Valériane · Investment Branch — Quantitative Developer
+
+*Sep 2023 – Jan 2024 · Montpellier, France*
+
+- Built a Binance–dYdX cross-exchange arbitrage system from data collection through backtesting, execution and monitoring.
+- Reconstructed one year of tick-level and L1/L2 order-book data and tested signals under realistic costs, slippage and entry/exit rules.
+- Ran the strategy on a 24/7 server with Python monitoring scripts for market conditions, bot activity and execution quality.
 
 ## Education
 
-**Paris Dauphine University – PSL** | Paris, France  
-*MSc in Financial Engineering – Quantitative Finance Track (Program 272)*  
-**Sep 2025 – Jun 2026**
+### Paris Dauphine University – PSL
 
-**Relevant Coursework:** Stochastic Calculus, Derivatives Pricing, Volatility Modeling, Interest Rate Products, Quantitative Portfolio Management, Algorithmic Trading (Python/C++), Machine Learning, Time Series.
+**MSc in Financial Engineering · Quantitative Finance Track (Program 272)** · *2025–2026*
 
----
+Stochastic calculus, derivatives pricing, volatility modelling, portfolio theory, algorithmic trading, machine learning and time series.
 
-**EPF Graduate School of Engineering** | Paris, France  
-*Master in Computer Science – Data & AI Track*  
-**Sep 2020 – Jun 2025**  
-**Rank: 8/157**
+### EPF Graduate School of Engineering
 
-**Relevant Coursework:** Probability & Statistics, Linear Algebra, Numerical Optimization, Algorithms & Data Structures, Time Series Analysis, Databases, Machine Learning.
+**Engineering Degree / Master in Computer Science · Data & Machine Learning Track** · *2020–2025*<br>
+Ranked **8th out of 157**.
 
----
+## Selected Projects & Competitions
 
-## Professional Experience
+- **IMC Prosperity 4:** #77 worldwide / #1 France in the archived Round 1 algorithmic ranking; #514 worldwide / #17 France in the final algorithmic ranking among about 20,000 teams.
+- **Real-Time Market Data & Market Making:** Binance WebSocket simulator with microprice, queue-aware quoting, markouts, inventory controls and P&L tracking.
+- **C++17 Simulated Trading Platform:** event-driven matching engine, strategy execution, risk controls, accounting and post-trade reporting.
+- **Multi-Scale Lead–Lag:** Hayashi–Koike estimator for asynchronous Binance, Kraken and Bybit tick data with wavelet decomposition.
+- **Volatility Timing:** Heston state-space model with Unscented Kalman Filter and short-volatility carry backtests.
+- **Structured Products Pricing Engine:** bonds, swaps, barriers, autocalls and structured notes with Nelson–Siegel, Black–Scholes, Heston and SABR calibration.
+- **Monte Carlo Option Pricing:** Longstaff–Schwartz, variance reduction, CRN-based Greeks, confidence intervals and numerical benchmarks.
+- **GDP Forecasting with MIDAS:** 47 daily financial series, PCA factors and expanding-window pseudo out-of-sample evaluation.
 
-**MYR - Private Investment Fund** | Montpellier, France  
-*Quantitative Researcher*  
-**Aug 2024 – Jul 2025**
+## Technical Toolkit
 
-Active market maker on Hyperliquid (DeFi LBO), developing proprietary quantitative strategies in digital asset markets.
+**Programming:** Python, C++, C#, SQL<br>
+**Scientific computing:** NumPy, pandas, SciPy, statsmodels, scikit-learn, PyTorch<br>
+**Engineering:** Git, Docker, Linux, FastAPI, Streamlit, REST APIs, WebSocket, SQLite<br>
+**Research:** time series, econometrics, feature engineering, chronological validation, PCA, Monte Carlo, calibration, backtesting and performance diagnostics<br>
+**Markets:** order books, liquidity, microprice, imbalance, fills, markouts, adverse selection, market making, relative value, volatility and derivatives
 
-- Designed and deployed **short-horizon market-making strategies** using L1/L2/L3 order book data, microprice signals, order book imbalance and FIFO queue dynamics to optimize execution probability and spread capture across 12 liquid crypto order books.
-- Developed **microstructure-driven alpha signals** from depth imbalance, order flow autocorrelation and spread dynamics, supported by event-time backtesting on 5+ years of tick-level data.
-- Implemented **inventory risk control** (Avellaneda–Stoikov inspired) and **low-latency execution systems** (<100ms), optimizing quote refresh, queue positioning and mitigating adverse selection.
-- Modeled **limit order book event arrivals** using stochastic intensity frameworks (Poisson-type limit/market/cancel flows) to estimate short-term price pressure and fill probabilities while analyzing competing algorithmic trader behavior.
+## Additional Information
 
----
-
-**La Valériane - Investment Branch** | Montpellier, France  
-*Quantitative Developer*  
-**Sep 2023 – Jan 2024**
-
-Designed and built an end-to-end delta-neutral statistical arbitrage strategy between Binance (CEX) and dYdX (DeFi DEX), targeting cross-venue microstructure inefficiencies.
-
-- Reconstructed **full L2 order books** and built **2-year tick-level datasets** to analyze cross-exchange price formation, latency asymmetries and liquidity distribution.
-- Developed **arbitrage signals** based on microprice deviations and depth-adjusted fair value estimators, incorporating slippage modeling and execution constraints.
-- Implemented, backtested and deployed the trading bot under realistic latency and partial-fill assumptions, achieving **~8% annualized returns** with **$800k–$1M daily volume** while maintaining strict market neutrality.
-
----
-
-## Projects
-
-**GDP Forecasting with MIDAS Regressions** | Paris Dauphine University  
-*Nov 2025 – Jan 2026*
-
-- Replicated and extended MIDAS regressions with separate lag/lead dynamics for **GDP nowcasting** using daily financial data.
-- Research-grade Python implementation with out-of-sample evaluation.
-
----
-
-**Trinomial Tree Option Pricer** | Paris Dauphine University  
-*Sep 2025 – Dec 2025*
-
-- Implemented a **trinomial-tree pricing engine** in Python for European & American options with early-exercise handling and Greeks computation.
-- Validated against Black–Scholes convergence benchmarks and exposed via lightweight APIs for pricing and diagnostics.
-
----
-
-**Algorithmic Trading Systems** | EPF Capstone Project  
-*Jan 2024 – Jun 2024*
-
-- Led a team of 6 to develop an **Avellaneda–Stoikov market-making framework** with volatility-adaptive spreads and risk controls.
-- Backtested **10M+ trades** on Hyperliquid (DeFi DEXC), reducing adverse selection by **~9%** and stabilizing PnL variance by **7%**.
-
----
-
-**Multi-Asset Basket Option Pricing Engine** | Personal Project  
-*C#*
-
-- Production-grade pricing engine for multi-asset derivatives combining analytical moment-matching (Brigo et al.) and **Monte Carlo simulation** with control variate variance reduction.
-- Supports term structure modeling, full correlation matrices, and real market data integration (ECB €STR, Bloomberg volatility surfaces).
-
----
-
-**LSTM Stock Price Forecaster** | Machine Learning Project  
-
-- Built a **deep learning model** for short-horizon financial time-series forecasting using LSTM architectures and feature engineering techniques.
-
----
-
-## Skills
-
-**Programming:** Python, C++, SQL, C#
-
-**Libraries & Frameworks:** NumPy, Pandas, SciPy, Statsmodels, Scikit-learn, PyTorch
-
-**Quantitative Finance:**
-- Derivatives pricing & option Greeks
-- Monte Carlo simulation & variance reduction techniques
-- Term structure modeling
-- Market microstructure analysis (L1/L2/L3 order books)
-- Microprice signals & order flow analysis
-- Inventory-aware market making (Avellaneda–Stoikov framework)
-
-**Data & Infrastructure:**
-- Event-time backtesting
-- High-frequency data processing
-- Low-latency execution systems
-- Git, Docker, Linux
-
-**Languages:**
-- French (Native)
-- English (Fluent)
-- Spanish (Intermediate)
-
----
-
-## Entrepreneurship
-
-**Founder - MASSEEO**  
-*White-label electrostimulation brand*
-
-- Founded and built a successful e-commerce brand with **several thousand euros in revenue**
-- Managed product development, marketing, and sales operations
+**Languages:** French (native), English (fluent), Spanish (intermediate)<br>
+**Entrepreneurship:** Founder of MASSEEO, a white-label electrostimulation brand that generated several thousand euros in revenue.<br>
+**Interests:** Competitive tennis and alpine skiing.

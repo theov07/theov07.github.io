@@ -7,7 +7,7 @@ site_theme: "contrast"
 title: "Théo Verdelhan"
 title_separator: "-"
 name: &name "Théo Verdelhan"
-description: &description "MSc Financial Engineering Student | Aspiring Quantitative Researcher | Market Microstructure | Algorithmic Trading | Crypto & DeFi"
+description: &description "Quantitative researcher focused on market microstructure, systematic trading, derivatives pricing, and execution-aware research."
 
 url: "https://theov07.github.io"
 baseurl: ""
@@ -19,9 +19,9 @@ repository: "theov07/theov07.github.io"
 author:
   avatar: "avatar.jpg"
   name: "Théo Verdelhan"
-  bio: "MSc Financial Engineering Student @ Dauphine-PSL | Computer Science & AI @ EPF (Top 3%) | Aspiring Quantitative Researcher"
+  bio: "Quantitative Researcher Intern @ Silvertrain AI | Financial Engineering @ Dauphine-PSL | Computer Science & ML @ EPF"
   location: "Paris, France"
-  employer: "Paris Dauphine University – PSL"
+  employer: "Silvertrain AI"
   email: "theo.verdelhan@dauphine.eu"
 
   # Academic profiles (optional)
@@ -39,7 +39,7 @@ author:
 # ================================
 breadcrumbs: false
 words_per_minute: 160
-future: true
+future: false
 read_more: "disabled"
 
 # ================================
@@ -61,24 +61,17 @@ exclude:
   - vendor
   - Gemfile
   - Gemfile.lock
-  - README
+  - README.md
+  - package.json
+  - Dockerfile
+  - docker-compose.yaml
+  - CONTRIBUTING.md
+  - LICENSE
+  - optimize_avatar.py
 
 markdown: kramdown
 highlighter: rouge
-timezone: Etc/UTC
-
-# ================================
-# Collections
-# ================================
-collections:
-  publications:
-    output: true
-  talks:
-    output: true
-  teaching:
-    output: true
-  portfolio:
-    output: true
+timezone: Europe/Paris
 
 # ================================
 # Defaults
@@ -89,7 +82,7 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
 
 # ================================
 # Plugins

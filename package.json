@@ -1,25 +1,19 @@
 {
-  "name": "academic-pages",
+  "name": "theov07-portfolio",
   "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
+  "description": "Build tooling for Théo Verdelhan's quantitative research portfolio",
   "repository": {
     "type": "git",
-    "url": "https://github.com/academicpages/academicpages.github.io"
+    "url": "https://github.com/theov07/theov07.github.io"
   },
   "keywords": [
     "jekyll",
     "theme",
     "minimal"
   ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
-  ],
+  "author": "Théo Verdelhan",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/academicpages/academicpages.github.io/issues"
-  },
-  "homepage": "https://github.com/academicpages/academicpages.github.io",
+  "homepage": "https://theov07.github.io",
   "engines": {
     "node": ">= 0.10.0"
   },

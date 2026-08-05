@@ -1,248 +1,57 @@
 ---
 permalink: /
 title: ""
-author_profile: true
+author_profile: false
 ---
 
-<style>
-.intro-section {
-  text-align: center;
-  padding: 2rem 0 3rem 0;
-  max-width: 800px;
-  margin: 0 auto;
-  margin-left: 25%;
-}
-
-.intro-section h1 {
-  font-size: 2.5em;
-  margin-bottom: 0.5rem;
-  color: #ffffff;
-}
-
-.intro-section .subtitle {
-  font-size: 1.2em;
-  color: #ffffff;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.intro-section .tagline {
-  font-size: 1em;
-  color: #cccccc;
-  line-height: 1.6;
-  margin-bottom: 2rem;
-}
-
-.navigation-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 3rem auto;
-  max-width: 800px;
-  margin-left: 25%;
-}
-
-.nav-card {
-  background: #1a1a1a;
-  border-left: 4px solid #ff6c60;
-  border-radius: 8px;
-  padding: 2rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  color: #ffffff !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 12px rgba(255, 108, 96, 0.1);
-  min-height: 150px;
-}
-
-.nav-card:hover {
-  transform: translateX(8px);
-  box-shadow: 0 6px 16px rgba(255, 108, 96, 0.2);
-  border-left-width: 6px;
-}
-
-.nav-card h2 {
-  font-size: 1.5em;
-  margin: 0 !important;
-  color: #ffffff !important;
-  border-bottom: none !important;
-  padding-bottom: 0 !important;
-}
-
-.contact-section {
-  text-align: center;
-  margin: 3rem 0 2rem 0;
-  padding: 2rem;
-  background: #1a1a1a;
-  border-radius: 8px;
-}
-
-.contact-section h3 {
-  color: #ffffff;
-  margin-bottom: 1rem;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 1rem;
-}
-
-.contact-links a {
-  color: #6699ff;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-links a:hover {
-  text-decoration: underline;
-}
-
-.mobile-hero {
-  display: none;
-}
-
-@media (max-width: 1023px) {
-  .intro-section {
-    display: none;
-  }
-
-  .mobile-hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem 1rem;
-    text-align: center;
-  }
-
-  .mobile-hero img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1.1rem;
-  }
-
-  .mobile-hero-name {
-    font-size: 2em;
-    font-weight: 700;
-    color: #ffffff;
-    margin: 0 0 0.6rem;
-    line-height: 1.2;
-  }
-
-  .mobile-hero-title {
-    font-size: 1.05em;
-    font-weight: 600;
-    color: #ff6c60;
-    margin: 0 0 1rem;
-  }
-
-  .mobile-hero-bio {
-    font-size: 0.88em;
-    color: #bbbbbb;
-    line-height: 1.8;
-    margin: 0 0 1.4rem;
-  }
-
-  .mobile-hero-links {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .mobile-hero-links a {
-    color: #6699ff;
-    text-decoration: none;
-    font-size: 0.95em;
-    font-weight: 500;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-  }
-
-  .mobile-hero-links a i {
-    font-size: 1.6em;
-  }
-
-  .mobile-hero-links a:hover {
-    opacity: 0.8;
-  }
-
-  .navigation-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    margin-top: 2rem;
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-
-  .nav-card {
-    padding: 1.2rem;
-    min-height: 80px;
-  }
-
-  .nav-card h2 {
-    font-size: 1.2em;
-  }
-}
-</style>
-
-<div class="mobile-hero">
-  <img src="/images/avatar.jpg" alt="Théo Verdelhan">
-  <p class="mobile-hero-name">Théo Verdelhan</p>
-  <p class="mobile-hero-title">Quantitative Researcher</p>
-  <p class="mobile-hero-bio">
-    MSc Financial Engineering &mdash; Paris Dauphine&ndash;PSL<br>
-    Computer Science &amp; ML &mdash; EPF<br>
-    Specialized in market microstructure,<br>systematic trading &amp; derivatives pricing
-  </p>
-  <div class="mobile-hero-links">
-    <a href="https://github.com/theov07" target="_blank">
-      <i class="fab fa-github"></i>
-      GitHub
-    </a>
-    <a href="https://linkedin.com/in/theoverdelhan" target="_blank">
-      <i class="fab fa-linkedin"></i>
-      LinkedIn
-    </a>
+<section class="profile-hero">
+  <div class="profile-hero__copy">
+    <p class="eyebrow">Quantitative research · Paris, France</p>
+    <h1>Théo Verdelhan</h1>
+    <p class="profile-hero__title">Market microstructure, systematic trading and derivatives research</p>
+    <p class="profile-hero__lead">
+      Quantitative Researcher Intern at Silvertrain AI, with a Financial Engineering background from Paris Dauphine–PSL and an engineering degree in Computer Science, Data and Machine Learning from EPF.
+    </p>
+    <p class="profile-hero__lead">
+      I build execution-aware research systems: from order-book data and alpha validation to backtesting, numerical pricing and real-time market tools.
+    </p>
+    <div class="tag-list" aria-label="Core areas">
+      <span>Market Microstructure</span>
+      <span>Alpha Research</span>
+      <span>Python &amp; C++</span>
+      <span>Derivatives</span>
+      <span>Crypto Markets</span>
+    </div>
+    <div class="button-row">
+      <a class="button button--primary" href="/projects/">Explore my work</a>
+      <a class="button" href="https://github.com/theov07" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a class="button" href="https://www.linkedin.com/in/theoverdelhan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
   </div>
-</div>
-
-<div class="intro-section">
-  <div class="subtitle">Aspiring Quantitative Researcher</div>
-  <div class="tagline">
-    MSc Financial Engineering Student at Paris Dauphine–PSL
-    <br>
-    Computer Science & AI Graduate from EPF
-    <br>
-    Specialized in market microstructure, systematic trading, and derivatives pricing
+  <div class="profile-hero__portrait">
+    <img src="/images/avatar.jpg" alt="Portrait of Théo Verdelhan">
   </div>
-</div>
+</section>
 
-<div class="navigation-grid">
-  <a href="/education/" class="nav-card">
-    <h2>Education</h2>
+<section class="home-links" aria-label="Portfolio sections">
+  <a class="home-card" href="/professional-experiences/">
+    <span class="home-card__index">01</span>
+    <h2>Experience</h2>
+    <p>Alpha research, live market monitoring and cross-exchange trading systems.</p>
   </a>
-  
-  <a href="/professional-experiences/" class="nav-card">
-    <h2>Professional Experiences</h2>
-  </a>
-  
-  <a href="/projects/" class="nav-card">
+  <a class="home-card" href="/projects/">
+    <span class="home-card__index">02</span>
     <h2>Projects</h2>
+    <p>Selected trading, pricing, econometrics and research-engineering work.</p>
   </a>
-  
-  <a href="/portfolio/" class="nav-card">
-    <h2>Portfolio</h2>
+  <a class="home-card" href="/education/">
+    <span class="home-card__index">03</span>
+    <h2>Education</h2>
+    <p>Financial engineering at Dauphine–PSL and Computer Science &amp; ML at EPF.</p>
   </a>
-</div>
-
+  <a class="home-card" href="/cv/">
+    <span class="home-card__index">04</span>
+    <h2>Resume</h2>
+    <p>A concise overview of my experience, technical toolkit and selected results.</p>
+  </a>
+</section>

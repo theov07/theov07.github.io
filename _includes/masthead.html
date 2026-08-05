@@ -1,26 +1,43 @@
 {% include base_path %}
 <div class="masthead">
   <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><span class="navicon"></span></button>
-        <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == '/' or page.url == '/index.html' %}selected{% endif %}">
-            <a href="{{ base_path }}/">{{ site.title }}</a>
+    <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+      <a class="site-nav__brand {% if page.url == '/' or page.url == '/index.html' %}selected{% endif %}" href="{{ base_path }}/">{{ site.title }}</a>
+      <button class="site-nav__toggle" type="button" aria-expanded="false" aria-controls="site-nav-links" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="site-nav-links" class="site-nav__links">
+        {% for link in site.data.navigation.main %}
+          {% if link.url contains 'http' %}
+            {% assign domain = '' %}
+          {% else %}
+            {% assign domain = base_path %}
+          {% endif %}
+          <li class="{% if page.url contains link.url and link.url != '/' %}selected{% elsif page.url == '/' and link.url == '/' %}selected{% endif %}">
+            <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
           </li>
-          {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
-            {% else %}
-              {% assign domain = base_path %}
-            {% endif %}
-            <li class="masthead__menu-item {% if page.url contains link.url and link.url != '/' %}selected{% endif %}">
-              <a href="{{ domain }}{{ link.url }}">{{ link.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-        <ul class="hidden-links hidden"></ul>
-      </nav>
-    </div>
+        {% endfor %}
+      </ul>
+    </nav>
   </div>
 </div>
+
+<script>
+  (function () {
+    var nav = document.getElementById('site-nav');
+    var toggle = nav && nav.querySelector('.site-nav__toggle');
+    if (!nav || !toggle) return;
+
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    nav.addEventListener('click', function (event) {
+      if (event.target.closest('.site-nav__links a')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }());
+</script>
