@@ -6,7 +6,6 @@ author_profile: false
 
 <div class="page-intro">
   <p class="eyebrow">Research · Trading systems · Numerical finance</p>
-  <p>A curated selection of public repositories, academic research and competitions. Simulated engines, paper-trading systems and live-market tools are labelled explicitly.</p>
 </div>
 
 <section class="project-section">

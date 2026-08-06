@@ -6,7 +6,6 @@ author_profile: false
 
 <div class="page-intro">
   <p class="eyebrow">Research · Trading · Engineering</p>
-  <p>Experience spanning alpha research, market microstructure, live strategy monitoring, backtesting and execution-aware systems.</p>
 </div>
 
 <section class="timeline" aria-label="Professional experience">

@@ -6,7 +6,6 @@ author_profile: false
 
 <div class="page-intro">
   <p class="eyebrow">Quantitative finance · Computer science · Machine learning</p>
-  <p>A dual background combining financial mathematics, numerical methods and production-oriented software engineering.</p>
 </div>
 
 <section class="education-grid" aria-label="Education">
