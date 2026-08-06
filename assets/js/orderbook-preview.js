@@ -132,7 +132,7 @@
   };
 
   function levelCount() {
-    if (window.innerWidth <= 780) return 5;
+    if (window.innerWidth <= 780) return 4;
     return 8;
   }
 
