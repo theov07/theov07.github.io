@@ -4,7 +4,7 @@
 # links. Removing a link prevents it from showing in the header, but does not
 # prevent it from being included in the site.
 #
-# NOTE that only one of the CV options should be selected, the first is for the
+# NOTE that only one of the resume options should be selected, the first is for the
 #      Markdown formatted page while the second is generated using JSON.
 
 main:
@@ -12,7 +12,7 @@ main:
     url: /
   - title: "Education"
     url: /education/
-  - title: "Professional Experiences"
+  - title: "Experience"
     url: /professional-experiences/
   - title: "Projects"
     url: /projects/

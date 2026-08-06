@@ -14,7 +14,7 @@ author_profile: false
 
 ### Silvertrain AI — Alpha Research & Systematic Trading Team
 
-*Jul 2026 – Present · Remote*
+*Jul 2026 – Present · Miami, FL*
 
 - Conducting quantitative research on alpha signals and systematic trading strategies across electronic markets.
 
@@ -40,7 +40,7 @@ author_profile: false
 
 **MSc in Financial Engineering · Quantitative Finance Track (Program 272)** · *2025–2026*
 
-Stochastic calculus, derivatives pricing, volatility modelling, portfolio theory, algorithmic trading, machine learning and time series.
+Stochastic calculus, derivatives pricing, volatility modeling, portfolio theory, algorithmic trading, machine learning and time series.
 
 ### EPF Graduate School of Engineering
 

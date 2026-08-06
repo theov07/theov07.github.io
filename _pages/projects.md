@@ -105,7 +105,7 @@ author_profile: false
     <p class="eyebrow">02</p>
     <div>
       <h2>Quantitative Research</h2>
-      <p>Signal validation, asynchronous data, volatility modelling, econometrics and financial machine learning.</p>
+      <p>Signal validation, asynchronous data, volatility modeling, econometrics and financial machine learning.</p>
     </div>
   </header>
 

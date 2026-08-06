@@ -1,5 +1,5 @@
 ---
-title: "Professional Experience"
+title: "Experience"
 permalink: /professional-experiences/
 author_profile: false
 ---
@@ -8,7 +8,7 @@ author_profile: false
   <p class="eyebrow">Research · Trading · Engineering</p>
 </div>
 
-<section class="timeline" aria-label="Professional experience">
+<section class="timeline" aria-label="Experience">
   <article class="timeline-card timeline-card--current">
     <header class="timeline-card__header">
       <div>
