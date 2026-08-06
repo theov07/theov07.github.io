@@ -1,33 +1,33 @@
 ---
 layout: null
-permalink: /research-preview/
-sitemap: false
+permalink: /research/
+sitemap: true
 ---
 <!doctype html>
 <html lang="en">
   <head>
-    {% include research-preview/head.html title="Selected Quantitative Research — Preview" description="An isolated preview of four quantitative research case studies by Théo Verdelhan." %}
+    {% include research-preview/head.html title="Selected Quantitative Research" description="Four quantitative research case studies by Théo Verdelhan, spanning market microstructure, systematic trading and econometrics." %}
   </head>
   <body class="rp-page">
     {% include research-preview/header.html %}
 
     <div class="preview-ribbon">
-      <div class="rp-shell">Isolated preview · not linked from the current portfolio · noindex</div>
+      <div class="rp-shell">Research hub · evidence, validation and implementation</div>
     </div>
 
     <main>
       <section class="rp-hero">
         <div class="rp-shell rp-hero__grid">
           <div>
-            <p class="eyebrow">Research portfolio · case-study preview</p>
+            <p class="eyebrow">Research portfolio · case studies</p>
             <h1>Selected Quantitative Research</h1>
             <p class="rp-lede">Four end-to-end studies spanning high-frequency price discovery, execution-aware market making, systematic competition research and mixed-frequency macro forecasting.</p>
           </div>
           <aside class="rp-hero__aside">
-            <p><strong>What this preview changes</strong><br>Nothing on the current site. These routes are isolated so the content, hierarchy and visuals can be reviewed before any integration.</p>
+            <p><strong>Research standard</strong><br>Each study separates the economic question, empirical method, validation protocol, evidence and limitations.</p>
             <div class="rp-actions">
               <a class="rp-button rp-button--primary" href="#case-studies">Explore the research</a>
-              <a class="rp-button" href="{{ '/' | relative_url }}">Current portfolio ↗</a>
+              <a class="rp-button" href="{{ '/' | relative_url }}">Portfolio ↗</a>
             </div>
           </aside>
         </div>
@@ -78,7 +78,7 @@ sitemap: false
                 <h2>Multi-Scale Lead–Lag</h2>
                 <p>An asynchronous-tick implementation of the Hayashi–Koike estimator, adapted to cross-venue and cross-product crypto price discovery.</p>
                 <div class="tag-row"><span>Hayashi–Yoshida</span><span>Wavelets</span><span>Tick data</span><span>Validation</span></div>
-                <a class="hub-card__footer" href="{{ '/research-preview/lead-lag/' | relative_url }}"><span>Open case study</span><span>01 ↗</span></a>
+                <a class="hub-card__footer" href="{{ '/research/lead-lag/' | relative_url }}"><span>Open case study</span><span>01 ↗</span></a>
               </div>
             </article>
 
@@ -91,7 +91,7 @@ sitemap: false
                 <h2>Real-Time Market Making</h2>
                 <p>A live Binance market-data pipeline and paper-execution engine designed around queue-aware fills, markouts, inventory and explicit risk gates.</p>
                 <div class="tag-row"><span>WebSocket</span><span>L2 queues</span><span>Markouts</span><span>Paper execution</span></div>
-                <a class="hub-card__footer" href="{{ '/research-preview/market-making/' | relative_url }}"><span>Open case study</span><span>02 ↗</span></a>
+                <a class="hub-card__footer" href="{{ '/research/market-making/' | relative_url }}"><span>Open case study</span><span>02 ↗</span></a>
               </div>
             </article>
 
@@ -104,7 +104,7 @@ sitemap: false
                 <h2>IMC Prosperity 4</h2>
                 <p>A six-round, three-person research programme covering market making, options, counterparty signals, relative value and strategy integration.</p>
                 <div class="tag-row"><span>Market making</span><span>Options</span><span>Relative value</span><span>Backtesting</span></div>
-                <a class="hub-card__footer" href="{{ '/research-preview/imc-prosperity/' | relative_url }}"><span>Open case study</span><span>03 ↗</span></a>
+                <a class="hub-card__footer" href="{{ '/research/imc-prosperity/' | relative_url }}"><span>Open case study</span><span>03 ↗</span></a>
               </div>
             </article>
 
@@ -117,7 +117,7 @@ sitemap: false
                 <h2>GDP Forecasting with MIDAS</h2>
                 <p>A replication and extension of mixed-frequency GDP forecasting with daily financial data, recursive evaluation and separate lag/lead dynamics.</p>
                 <div class="tag-row"><span>MIDAS</span><span>PCA</span><span>Nowcasting</span><span>Out-of-sample</span></div>
-                <a class="hub-card__footer" href="{{ '/research-preview/gdp-forecasting/' | relative_url }}"><span>Open case study</span><span>04 ↗</span></a>
+                <a class="hub-card__footer" href="{{ '/research/gdp-forecasting/' | relative_url }}"><span>Open case study</span><span>04 ↗</span></a>
               </div>
             </article>
           </div>
@@ -132,8 +132,9 @@ sitemap: false
             <p>Competition PnL is labelled as in-game or backtest PnL. Market-making fills are explicitly simulated. Forecast improvements are shown against their stated benchmark and include negative results. Lead–lag estimates are treated as statistical price-discovery evidence, not as executable arbitrage.</p>
           </div>
           <aside class="research-note research-note--blue">
-            <h3>Preview status</h3>
-            <p>These pages are intentionally excluded from the sitemap and carry a <code>noindex</code> directive. They can be removed without touching the current homepage or existing portfolio pages.</p>
+            <p class="eyebrow accent-green">Research scope</p>
+            <h3>Results with explicit boundaries</h3>
+            <p>The studies distinguish statistical evidence, simulated execution, competition outcomes and real-market performance. Assumptions and interpretation limits are stated alongside the results.</p>
           </aside>
         </div>
       </section>

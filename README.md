@@ -6,6 +6,7 @@ The site is built with Jekyll and GitHub Pages. Its public content is intentiona
 
 - experience;
 - education;
+- detailed quantitative research case studies;
 - selected quantitative research and engineering projects;
 - an HTML resume and downloadable one-page PDF.
 
@@ -23,6 +24,7 @@ Then open `http://localhost:4000`.
 - `_pages/home.html`: live-market homepage and portfolio navigation
 - `_pages/experience.md`: experience
 - `_pages/education.md`: academic background
+- `_pages/research-preview*.html`: public research hub and detailed case studies
 - `_pages/projects.md`: selected projects and competitions
 - `_pages/cv.md`: web resume
 - `assets/css/orderbook-preview.css`: homepage visual system

@@ -29,7 +29,10 @@ author_profile: false
       </ul>
       <div class="project-card__footer">
         <div class="tag-list"><span>Python</span><span>Market Making</span><span>Relative Value</span><span>Game Theory</span></div>
-        <a href="https://github.com/theov07/IMC_PROSPERITY_4_COMPETITION" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+        <div class="link-row">
+          <a href="{{ '/research/imc-prosperity/' | relative_url }}">Case study ↗</a>
+          <a href="https://github.com/theov07/IMC_PROSPERITY_4_COMPETITION" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+        </div>
       </div>
     </article>
 
@@ -45,6 +48,7 @@ author_profile: false
       <div class="project-card__footer">
         <div class="tag-list"><span>Python</span><span>WebSocket</span><span>Streamlit</span><span>Order Book</span></div>
         <div class="link-row">
+          <a href="{{ '/research/market-making/' | relative_url }}">Case study ↗</a>
           <a href="https://github.com/theov07/Real_Time_Market_Data_And_MM_Logic" target="_blank" rel="noopener noreferrer">Repository ↗</a>
           <a href="https://mm-dashboard-microstructure.streamlit.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
         </div>
@@ -121,6 +125,7 @@ author_profile: false
       </ul>
       <div class="project-card__footer">
         <div class="tag-list"><span>High-Frequency Data</span><span>Lead–Lag</span><span>Wavelets</span><span>Python</span></div>
+        <a href="{{ '/research/lead-lag/' | relative_url }}">Case study ↗</a>
       </div>
     </article>
 
@@ -150,7 +155,10 @@ author_profile: false
       </ul>
       <div class="project-card__footer">
         <div class="tag-list"><span>MIDAS</span><span>Econometrics</span><span>PCA</span><span>Forecasting</span></div>
-        <a href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+        <div class="link-row">
+          <a href="{{ '/research/gdp-forecasting/' | relative_url }}">Case study ↗</a>
+          <a href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+        </div>
       </div>
     </article>
 
