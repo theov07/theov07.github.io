@@ -35,16 +35,16 @@
     spreadValue: document.getElementById("spread-value"),
     spreadBps: document.getElementById("spread-bps"),
     midPrice: document.getElementById("mid-price"),
-    imbalance: document.getElementById("imbalance"),
+    bidDepth: document.getElementById("bid-depth"),
+    askDepth: document.getElementById("ask-depth"),
+    bidSellFlow: document.getElementById("bid-sell-flow"),
+    askBuyFlow: document.getElementById("ask-buy-flow"),
     change24h: document.getElementById("change-24h"),
     high24h: document.getElementById("high-24h"),
     low24h: document.getElementById("low-24h"),
     volume24h: document.getElementById("volume-24h"),
-    analyticsMid: document.getElementById("analytics-mid"),
     analyticsMicroprice: document.getElementById("analytics-microprice"),
     micropriceSkew: document.getElementById("microprice-skew"),
-    analyticsSpread: document.getElementById("analytics-spread"),
-    analyticsSpreadUsdt: document.getElementById("analytics-spread-usdt"),
     bidQueue: document.getElementById("bid-queue"),
     askQueue: document.getElementById("ask-queue"),
     analyticsImbalance: document.getElementById("analytics-imbalance"),
@@ -52,9 +52,6 @@
     askFillProxy: document.getElementById("ask-fill-proxy"),
     markout1s: document.getElementById("markout-1s"),
     markout5s: document.getElementById("markout-5s"),
-    flowImbalance: document.getElementById("flow-imbalance"),
-    flowDetail: document.getElementById("flow-detail"),
-    updateRate: document.getElementById("update-rate"),
     depthChart: document.getElementById("depth-chart"),
     connectionLabel: document.getElementById("connection-label"),
     latencyLabel: document.getElementById("latency-label"),
@@ -72,7 +69,6 @@
     markouts5s: [],
     markoutTimers: new Set(),
     lastMarkoutCaptureAt: 0,
-    messageCount: 0,
     lastTradePrice: null,
     lastMessageAt: 0,
     lastStatusAt: 0,
@@ -81,7 +77,6 @@
     retryCount: 0,
     reconnectTimer: null,
     staleTimer: null,
-    rateTimer: null,
     tradeRenderTimer: null,
     pendingTrade: null,
     socket: null,
@@ -207,8 +202,6 @@
     const askLiquidity = state.asks.slice(0, 10).reduce((sum, [, quantity]) => sum + quantity, 0);
     const denominator = bidLiquidity + askLiquidity;
     const imbalance = denominator ? ((bidLiquidity - askLiquidity) / denominator) * 100 : 0;
-    elements.imbalance.textContent = `${imbalance >= 0 ? "+" : ""}${imbalance.toFixed(1)}%`;
-    elements.imbalance.style.color = imbalance >= 0 ? "var(--bid)" : "var(--ask)";
     updateAnalytics({
       bestBid,
       bestAsk,
@@ -246,27 +239,26 @@
     const sellFlow = state.recentFlow
       .filter((trade) => trade.isSell)
       .reduce((sum, trade) => sum + trade.quantity, 0);
-    const totalFlow = buyFlow + sellFlow;
-    const flowImbalance = totalFlow ? ((buyFlow - sellFlow) / totalFlow) * 100 : 0;
     const bidFillProxy = Math.min(99.9, (sellFlow / (metrics.bestBidQuantity + SIMULATED_QUOTE_SIZE)) * 100);
     const askFillProxy = Math.min(99.9, (buyFlow / (metrics.bestAskQuantity + SIMULATED_QUOTE_SIZE)) * 100);
     const micropriceSkew = ((metrics.microprice - metrics.mid) / metrics.mid) * 10000;
+    const displayedBidDepth = state.bids.slice(0, levelCount()).reduce((sum, [, quantity]) => sum + quantity, 0);
+    const displayedAskDepth = state.asks.slice(0, levelCount()).reduce((sum, [, quantity]) => sum + quantity, 0);
 
-    elements.analyticsMid.textContent = priceFormatter.format(metrics.mid);
+    elements.midPrice.textContent = priceFormatter.format(metrics.mid);
     elements.analyticsMicroprice.textContent = priceFormatter.format(metrics.microprice);
     elements.micropriceSkew.textContent = `${signedBps(micropriceSkew)} VS MID`;
-    elements.analyticsSpread.textContent = `${metrics.spreadBps.toFixed(2)} BPS`;
-    elements.analyticsSpreadUsdt.textContent = `${priceFormatter.format(metrics.spread)} USDT`;
     elements.bidQueue.textContent = `${formatAmount(metrics.bestBidQuantity)} BTC`;
     elements.askQueue.textContent = `${formatAmount(metrics.bestAskQuantity)} BTC`;
+    elements.bidDepth.textContent = `${formatAmount(displayedBidDepth)} BTC`;
+    elements.askDepth.textContent = `${formatAmount(displayedAskDepth)} BTC`;
+    elements.bidSellFlow.textContent = `${formatAmount(sellFlow)} BTC`;
+    elements.askBuyFlow.textContent = `${formatAmount(buyFlow)} BTC`;
     elements.analyticsImbalance.textContent = signedPercent(metrics.imbalance);
     elements.bidFillProxy.textContent = `${bidFillProxy.toFixed(1)}%`;
     elements.askFillProxy.textContent = `${askFillProxy.toFixed(1)}%`;
-    elements.flowImbalance.textContent = signedPercent(flowImbalance);
-    elements.flowDetail.textContent = `BUY ${formatAmount(buyFlow)} · SELL ${formatAmount(sellFlow)} BTC`;
 
     setMetricTone(elements.analyticsImbalance, metrics.imbalance);
-    setMetricTone(elements.flowImbalance, flowImbalance);
     setMetricTone(elements.analyticsMicroprice, micropriceSkew);
   }
 
@@ -310,17 +302,23 @@
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     context.clearRect(0, 0, displayWidth, displayHeight);
 
-    const padding = { top: 32, right: 20, bottom: 38, left: 58 };
+    const padding = { top: 48, right: 22, bottom: 34, left: 62 };
     const chartWidth = displayWidth - padding.left - padding.right;
     const chartHeight = displayHeight - padding.top - padding.bottom;
     const minPrice = bidDepth[bidDepth.length - 1].price;
     const maxPrice = askDepth[askDepth.length - 1].price;
-    const range = Math.max(maxPrice - minPrice, 1);
     const maxQuantity = Math.max(bidDepth[bidDepth.length - 1].total, askDepth[askDepth.length - 1].total, 0.0001);
     const bestBid = bidDepth[0].price;
     const bestAsk = askDepth[0].price;
     const mid = (bestBid + bestAsk) / 2;
-    const x = (price) => padding.left + ((price - minPrice) / range) * chartWidth;
+    const centerX = padding.left + (chartWidth / 2);
+    const centerGap = Math.max(58, Math.min(110, chartWidth * 0.13));
+    const bidEdge = centerX - (centerGap / 2);
+    const askEdge = centerX + (centerGap / 2);
+    const bidRange = Math.max(bestBid - minPrice, 0.01);
+    const askRange = Math.max(maxPrice - bestAsk, 0.01);
+    const bidX = (price) => padding.left + ((price - minPrice) / bidRange) * (bidEdge - padding.left);
+    const askX = (price) => askEdge + ((price - bestAsk) / askRange) * ((displayWidth - padding.right) - askEdge);
     const y = (quantity) => padding.top + chartHeight - (quantity / maxQuantity) * chartHeight;
     const baseline = padding.top + chartHeight;
 
@@ -340,36 +338,38 @@
       context.fillText(formatAmount(quantity), padding.left - 8, lineY);
     }
 
-    function drawStep(points, stroke, fill) {
+    context.fillStyle = "rgba(148, 163, 184, 0.035)";
+    context.fillRect(bidEdge, padding.top, centerGap, chartHeight);
+
+    function drawStep(points, xScale, stroke, fill) {
       const ordered = points;
       context.beginPath();
-      context.moveTo(x(ordered[0].price), baseline);
-      context.lineTo(x(ordered[0].price), y(ordered[0].total));
+      context.moveTo(xScale(ordered[0].price), baseline);
+      context.lineTo(xScale(ordered[0].price), y(ordered[0].total));
       for (let index = 1; index < ordered.length; index += 1) {
-        context.lineTo(x(ordered[index].price), y(ordered[index - 1].total));
-        context.lineTo(x(ordered[index].price), y(ordered[index].total));
+        context.lineTo(xScale(ordered[index].price), y(ordered[index - 1].total));
+        context.lineTo(xScale(ordered[index].price), y(ordered[index].total));
       }
-      context.lineTo(x(ordered[ordered.length - 1].price), baseline);
+      context.lineTo(xScale(ordered[ordered.length - 1].price), baseline);
       context.closePath();
       context.fillStyle = fill;
       context.fill();
 
       context.beginPath();
-      context.moveTo(x(ordered[0].price), y(ordered[0].total));
+      context.moveTo(xScale(ordered[0].price), y(ordered[0].total));
       for (let index = 1; index < ordered.length; index += 1) {
-        context.lineTo(x(ordered[index].price), y(ordered[index - 1].total));
-        context.lineTo(x(ordered[index].price), y(ordered[index].total));
+        context.lineTo(xScale(ordered[index].price), y(ordered[index - 1].total));
+        context.lineTo(xScale(ordered[index].price), y(ordered[index].total));
       }
       context.strokeStyle = stroke;
       context.lineWidth = 2;
       context.stroke();
     }
 
-    drawStep([...bidDepth].reverse(), "#00d99b", "rgba(0, 217, 155, 0.16)");
-    drawStep(askDepth, "#ff506f", "rgba(255, 80, 111, 0.16)");
+    drawStep([...bidDepth].reverse(), bidX, "#00d99b", "rgba(0, 217, 155, 0.16)");
+    drawStep(askDepth, askX, "#ff506f", "rgba(255, 80, 111, 0.16)");
 
-    function drawReference(price, color, label) {
-      const lineX = x(price);
+    function drawReference(lineX, color) {
       context.setLineDash([3, 4]);
       context.strokeStyle = color;
       context.lineWidth = 1;
@@ -378,24 +378,41 @@
       context.lineTo(lineX, baseline);
       context.stroke();
       context.setLineDash([]);
-      context.fillStyle = color;
-      context.textAlign = price <= mid ? "right" : "left";
-      context.fillText(label, lineX + (price <= mid ? -5 : 5), padding.top - 12);
     }
 
-    drawReference(bestBid, "#00d99b", `BID ${priceFormatter.format(bestBid)}`);
-    drawReference(bestAsk, "#ff506f", `ASK ${priceFormatter.format(bestAsk)}`);
+    drawReference(bidEdge, "#00d99b");
+    drawReference(askEdge, "#ff506f");
 
-    context.fillStyle = "rgba(169, 178, 193, 0.72)";
+    context.setLineDash([2, 5]);
+    context.strokeStyle = "rgba(169, 178, 193, 0.42)";
+    context.beginPath();
+    context.moveTo(centerX, padding.top);
+    context.lineTo(centerX, baseline);
+    context.stroke();
+    context.setLineDash([]);
+
+    context.font = '600 12px "SFMono-Regular", Consolas, monospace';
+    context.fillStyle = "rgba(210, 218, 230, 0.86)";
     context.textAlign = "center";
-    context.fillText(`MID ${priceFormatter.format(mid)}`, x(mid), padding.top - 12);
+    context.fillText(`MID ${priceFormatter.format(mid)}`, centerX, 13);
 
-    const xLabels = [minPrice, bestBid, mid, bestAsk, maxPrice];
-    xLabels.forEach((price, index) => {
-      context.fillStyle = "rgba(148, 163, 184, 0.58)";
-      context.textAlign = index === 0 ? "left" : index === xLabels.length - 1 ? "right" : "center";
-      context.fillText(priceFormatter.format(price), x(price), baseline + 18);
-    });
+    context.fillStyle = "#00d99b";
+    context.textAlign = "right";
+    context.fillText(`BID ${priceFormatter.format(bestBid)}`, bidEdge - 9, 32);
+    context.fillStyle = "#ff506f";
+    context.textAlign = "left";
+    context.fillText(`ASK ${priceFormatter.format(bestAsk)}`, askEdge + 9, 32);
+
+    context.font = '11px "SFMono-Regular", Consolas, monospace';
+    context.fillStyle = "rgba(148, 163, 184, 0.62)";
+    context.textAlign = "left";
+    context.fillText(priceFormatter.format(minPrice), padding.left, baseline + 18);
+    context.textAlign = "right";
+    context.fillText(priceFormatter.format(bestBid), bidEdge - 7, baseline + 18);
+    context.textAlign = "left";
+    context.fillText(priceFormatter.format(bestAsk), askEdge + 7, baseline + 18);
+    context.textAlign = "right";
+    context.fillText(priceFormatter.format(maxPrice), displayWidth - padding.right, baseline + 18);
 
     canvas.setAttribute(
       "aria-label",
@@ -542,7 +559,6 @@
 
     const stream = message.stream || "";
     const data = message.data || message;
-    state.messageCount += 1;
     state.retryCount = 0;
     noteMessage(data.E || data.T);
 
@@ -603,11 +619,6 @@
         setConnection("stale", `${Math.round(silence / 1000)}S NO DATA`);
       }
     }, 2000);
-
-    state.rateTimer = window.setInterval(() => {
-      elements.updateRate.textContent = `${state.messageCount} MSG/S`;
-      state.messageCount = 0;
-    }, 1000);
   }
 
   function destroy() {
@@ -615,7 +626,6 @@
     window.clearTimeout(state.reconnectTimer);
     window.clearTimeout(state.tradeRenderTimer);
     window.clearInterval(state.staleTimer);
-    window.clearInterval(state.rateTimer);
     state.markoutTimers.forEach((timer) => window.clearTimeout(timer));
     if (state.depthChartObserver) state.depthChartObserver.disconnect();
     if (state.socket) state.socket.close();

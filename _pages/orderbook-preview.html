@@ -74,6 +74,15 @@ permalink: /orderbook-preview/
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
         </div>
         <div class="book-rows" id="bid-book" aria-label="Live BTCUSDT bid levels"></div>
+        <section class="book-snapshot book-snapshot--bid" aria-label="Basic bid-side statistics">
+          <header><span>LIQUIDITY SNAPSHOT</span><small>BUY SIDE · LIVE</small></header>
+          <dl>
+            <div><dt>MID PRICE</dt><dd id="mid-price">—</dd><small>BEST BID / ASK</small></div>
+            <div><dt>L1 BID QUEUE</dt><dd id="bid-queue">—</dd><small>BTC AHEAD</small></div>
+            <div><dt>BID DEPTH · 8</dt><dd id="bid-depth">—</dd><small>DISPLAYED BTC</small></div>
+            <div><dt>SELL FLOW · 5S</dt><dd id="bid-sell-flow">—</dd><small>AGGRESSIVE BTC</small></div>
+          </dl>
+        </section>
       </section>
 
       <section class="market-core" aria-label="Live market summary and portfolio navigation">
@@ -127,12 +136,6 @@ permalink: /orderbook-preview/
           </div>
         </nav>
 
-        <dl class="micro-stats">
-          <div><dt>MID</dt><dd id="mid-price">—</dd></div>
-          <div><dt>IMBALANCE</dt><dd id="imbalance">—</dd></div>
-          <div><dt>24H VOLUME</dt><dd id="volume-24h">—</dd></div>
-        </dl>
-
         <p class="market-disclaimer">PUBLIC MARKET DATA · VISUALIZATION ONLY · NO ORDER EXECUTION</p>
       </section>
 
@@ -148,6 +151,15 @@ permalink: /orderbook-preview/
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
         </div>
         <div class="book-rows" id="ask-book" aria-label="Live BTCUSDT ask levels"></div>
+        <section class="book-snapshot book-snapshot--ask" aria-label="Basic ask-side statistics">
+          <header><span>EXECUTION SNAPSHOT</span><small>SELL SIDE · LIVE</small></header>
+          <dl>
+            <div><dt>24H VOLUME</dt><dd id="volume-24h">—</dd><small>QUOTE TURNOVER</small></div>
+            <div><dt>L1 ASK QUEUE</dt><dd id="ask-queue">—</dd><small>BTC AHEAD</small></div>
+            <div><dt>ASK DEPTH · 8</dt><dd id="ask-depth">—</dd><small>DISPLAYED BTC</small></div>
+            <div><dt>BUY FLOW · 5S</dt><dd id="ask-buy-flow">—</dd><small>AGGRESSIVE BTC</small></div>
+          </dl>
+        </section>
       </section>
       </section>
 
@@ -182,7 +194,7 @@ permalink: /orderbook-preview/
             <header class="depth-chart-card__header">
               <div>
                 <h3 id="depth-chart-title">ORDER BOOK DEPTH</h3>
-                <p>Cumulative quantity across the top 20 levels</p>
+                <p>Split depth scale · top 20 levels · live spread isolated</p>
               </div>
               <div class="depth-chart-legend" aria-label="Chart legend">
                 <span><i class="depth-chart-legend__line depth-chart-legend__line--bid"></i>Bid depth</span>
@@ -195,30 +207,10 @@ permalink: /orderbook-preview/
           </article>
 
           <div class="analytics-metrics" aria-label="Live market making metrics">
-            <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">MID PRICE</span>
-              <strong id="analytics-mid">—</strong>
-              <small>BEST BID / ASK</small>
-            </article>
             <article class="metric-card metric-card--blue">
               <span class="metric-card__label">MICROPRICE</span>
               <strong id="analytics-microprice">—</strong>
               <small id="microprice-skew">— BPS VS MID</small>
-            </article>
-            <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">SPREAD</span>
-              <strong id="analytics-spread">—</strong>
-              <small id="analytics-spread-usdt">— USDT</small>
-            </article>
-            <article class="metric-card metric-card--bid">
-              <span class="metric-card__label">BID QUEUE · L1</span>
-              <strong id="bid-queue">—</strong>
-              <small>BTC AHEAD</small>
-            </article>
-            <article class="metric-card metric-card--ask">
-              <span class="metric-card__label">ASK QUEUE · L1</span>
-              <strong id="ask-queue">—</strong>
-              <small>BTC AHEAD</small>
             </article>
             <article class="metric-card metric-card--blue">
               <span class="metric-card__label">BOOK IMBALANCE · 10</span>
@@ -244,16 +236,6 @@ permalink: /orderbook-preview/
               <span class="metric-card__label">SIGNED MARKOUT · 5S</span>
               <strong id="markout-5s">COLLECTING</strong>
               <small>AGGRESSOR-SIGNED</small>
-            </article>
-            <article class="metric-card metric-card--blue">
-              <span class="metric-card__label">TRADE FLOW · 5S</span>
-              <strong id="flow-imbalance">—</strong>
-              <small id="flow-detail">BUY — · SELL —</small>
-            </article>
-            <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">UPDATE RATE</span>
-              <strong id="update-rate">—</strong>
-              <small>MESSAGES / SECOND</small>
             </article>
           </div>
         </div>
