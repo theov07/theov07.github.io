@@ -27,6 +27,7 @@
   const PAPER_HISTORY_LIMIT = 240;
   const PAPER_HISTORY_INTERVAL_MS = 500;
   const PAPER_INVENTORY_LIMIT = 0.02;
+  const LIVE_SESSION_LIMIT_MS = 5 * 60 * 1000;
 
   const elements = {
     body: document.body,
@@ -97,10 +98,14 @@
     retryCount: 0,
     reconnectTimer: null,
     staleTimer: null,
+    sessionTimer: null,
     tradeRenderTimer: null,
     pendingTrade: null,
     socket: null,
     destroyed: false,
+    sessionExpired: false,
+    suspended: document.hidden,
+    sessionDeadline: Date.now() + LIVE_SESSION_LIMIT_MS,
     bookDirty: false,
     renderQueued: false,
     chartRenderQueued: false,
@@ -310,6 +315,7 @@
   }
 
   function paperSideIsActive(side) {
+    if (state.destroyed || state.sessionExpired) return false;
     return side === "bid"
       ? state.paper.inventory < PAPER_INVENTORY_LIMIT
       : state.paper.inventory > -PAPER_INVENTORY_LIMIT;
@@ -345,8 +351,12 @@
     const queuePercent = queueStart ? Math.max(0, Math.min(100, (queue / queueStart) * 100)) : 0;
 
     quoteElement.textContent = quote ? priceFormatter.format(quote) : "—";
-    statusElement.textContent = active ? "RESTING AT L1 · QUEUE MODEL" : "INVENTORY GUARD ACTIVE";
-    statusElement.classList.toggle("is-paused", !active);
+    statusElement.textContent = state.sessionExpired
+      ? "SESSION PAUSED"
+      : active
+        ? "RESTING AT L1 · QUEUE MODEL"
+        : "INVENTORY GUARD ACTIVE";
+    statusElement.classList.toggle("is-paused", state.sessionExpired || !active);
     queueElement.textContent = quote ? `${formatAmount(Math.max(0, queue))} BTC` : "—";
     queueBar.style.width = `${queuePercent.toFixed(1)}%`;
     fillsElement.textContent = String(fills);
@@ -885,9 +895,9 @@
 
   function setConnection(status, detail) {
     if (state.connectionStatus !== status) {
-      elements.body.classList.remove("is-connecting", "is-live", "is-stale", "is-offline");
+      elements.body.classList.remove("is-connecting", "is-live", "is-stale", "is-offline", "is-paused");
       elements.body.classList.add(`is-${status}`);
-      elements.connectionLabel.textContent = status === "live" ? "LIVE" : status.toUpperCase();
+      elements.connectionLabel.textContent = status === "live" ? "LIVE" : status === "paused" ? "PAUSED" : status.toUpperCase();
       state.connectionStatus = status;
     }
     if (elements.latencyLabel.textContent !== detail) elements.latencyLabel.textContent = detail;
@@ -923,7 +933,7 @@
   }
 
   function scheduleReconnect() {
-    if (state.destroyed || state.reconnectTimer) return;
+    if (state.destroyed || state.sessionExpired || state.suspended || state.reconnectTimer) return;
     const delay = Math.min(30000, 1000 * (2 ** Math.min(state.retryCount, 5)));
     state.retryCount += 1;
     state.endpointIndex = (state.endpointIndex + 1) % ENDPOINTS.length;
@@ -935,7 +945,11 @@
   }
 
   function connect() {
-    if (state.destroyed) return;
+    if (state.destroyed || state.sessionExpired || state.suspended || document.hidden) return;
+    if (Date.now() >= state.sessionDeadline) {
+      expireLiveSession();
+      return;
+    }
     if (state.socket && state.socket.readyState < WebSocket.CLOSING) state.socket.close();
 
     setConnection("connecting", "MARKET DATA");
@@ -976,15 +990,75 @@
     }, 2000);
   }
 
-  function destroy() {
-    state.destroyed = true;
+  function clearReconnectTimer() {
     window.clearTimeout(state.reconnectTimer);
+    state.reconnectTimer = null;
+  }
+
+  function closeSocket(reason) {
+    const socket = state.socket;
+    state.socket = null;
+    if (!socket || socket.readyState >= WebSocket.CLOSING) return;
+    try {
+      socket.close(1000, reason);
+    } catch {
+      socket.close();
+    }
+  }
+
+  function suspendLiveSession() {
+    if (state.destroyed || state.sessionExpired) return;
+    state.suspended = true;
+    clearReconnectTimer();
+    closeSocket("Page inactive");
+    setConnection("paused", "TAB INACTIVE");
+  }
+
+  function resumeLiveSession() {
+    if (state.destroyed || state.sessionExpired) return;
+    if (Date.now() >= state.sessionDeadline) {
+      expireLiveSession();
+      return;
+    }
+    state.suspended = false;
+    if (!state.socket || state.socket.readyState === WebSocket.CLOSED) connect();
+  }
+
+  function expireLiveSession() {
+    if (state.destroyed || state.sessionExpired) return;
+    state.sessionExpired = true;
+    state.suspended = true;
+    state.sessionTimer = null;
+    clearReconnectTimer();
     window.clearTimeout(state.tradeRenderTimer);
+    state.tradeRenderTimer = null;
+    state.pendingTrade = null;
+    window.clearInterval(state.staleTimer);
+    state.staleTimer = null;
+    state.markoutTimers.forEach((timer) => window.clearTimeout(timer));
+    state.markoutTimers.clear();
+    closeSocket("Five minute limit");
+    elements.paperBidStatus.textContent = "SESSION PAUSED";
+    elements.paperAskStatus.textContent = "SESSION PAUSED";
+    elements.paperBidStatus.classList.add("is-paused");
+    elements.paperAskStatus.classList.add("is-paused");
+    setConnection("paused", "5 MIN LIMIT");
+  }
+
+  function destroy() {
+    if (state.destroyed) return;
+    state.destroyed = true;
+    state.suspended = true;
+    window.clearTimeout(state.sessionTimer);
+    clearReconnectTimer();
+    window.clearTimeout(state.tradeRenderTimer);
+    window.clearTimeout(resizeTimer);
     window.clearInterval(state.staleTimer);
     state.markoutTimers.forEach((timer) => window.clearTimeout(timer));
+    state.markoutTimers.clear();
     if (state.depthChartObserver) state.depthChartObserver.disconnect();
     if (state.paperChartObserver) state.paperChartObserver.disconnect();
-    if (state.socket) state.socket.close();
+    closeSocket("Page closed");
   }
 
   let resizeTimer;
@@ -997,8 +1071,10 @@
     }, 120);
   });
   window.addEventListener("beforeunload", destroy, { once: true });
+  window.addEventListener("pagehide", destroy, { once: true });
   document.addEventListener("visibilitychange", () => {
-    if (!document.hidden && (!state.socket || state.socket.readyState === WebSocket.CLOSED)) connect();
+    if (document.hidden) suspendLiveSession();
+    else resumeLiveSession();
   });
 
   elements.paperChartTabs.forEach((button) => {
@@ -1027,5 +1103,7 @@
   }
   renderPaperQuotes();
   watchForStaleData();
-  connect();
+  state.sessionTimer = window.setTimeout(expireLiveSession, LIVE_SESSION_LIMIT_MS);
+  if (document.hidden) suspendLiveSession();
+  else connect();
 })();

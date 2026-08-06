@@ -19,6 +19,14 @@
   font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+@font-face {
+  font-family: "Portfolio Brands";
+  src: url("../webfonts/fa-brands-400.woff2") format("woff2");
+  font-display: swap;
+  font-style: normal;
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -273,6 +281,15 @@ a {
 .is-stale .connection__copy strong,
 .is-offline .connection__copy strong {
   color: var(--ask);
+}
+
+.is-paused .connection__dot {
+  background: var(--amber);
+  box-shadow: 0 0 15px rgba(255, 198, 109, 0.68);
+}
+
+.is-paused .connection__copy strong {
+  color: var(--amber);
 }
 
 .terminal-shell {
@@ -645,6 +662,82 @@ a {
 .route-order__action b {
   color: var(--text);
   font-size: 0.65rem;
+}
+
+.portfolio-socials {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.portfolio-social-link {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.62rem;
+  min-height: 44px;
+  padding: 0.48rem 0.65rem;
+  border: 1px solid var(--line-strong);
+  background: rgba(255, 255, 255, 0.022);
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.portfolio-social-link:hover,
+.portfolio-social-link:focus-visible {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.045);
+  outline: none;
+}
+
+.portfolio-social-link--linkedin:hover,
+.portfolio-social-link--linkedin:focus-visible {
+  border-color: #4fa3e3;
+}
+
+.portfolio-social-link--github:hover,
+.portfolio-social-link--github:focus-visible {
+  border-color: var(--muted-light);
+}
+
+.portfolio-social-link__icon {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  font-family: "Portfolio Brands";
+  font-size: 1.15rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.portfolio-social-link__icon--linkedin {
+  color: #69b9ef;
+}
+
+.portfolio-social-link__icon--linkedin::before {
+  content: "\f0e1";
+}
+
+.portfolio-social-link__icon--github::before {
+  content: "\f09b";
+}
+
+.portfolio-social-link strong {
+  overflow: hidden;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-social-link small {
+  color: var(--muted);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
 }
 
 .micro-stats {
@@ -1077,7 +1170,7 @@ a {
 .personal-context {
   --portrait-size: clamp(76px, 8.4vh, 96px);
   display: grid;
-  grid-template-columns: var(--portrait-size) minmax(0, 1fr) auto;
+  grid-template-columns: var(--portrait-size) minmax(0, 1fr);
   align-items: center;
   gap: 1rem;
   margin: 0 0 0.82rem;
@@ -1109,23 +1202,6 @@ a {
   white-space: nowrap;
 }
 
-.personal-context > a {
-  padding: 0.62rem 0.72rem;
-  border: 1px solid var(--line);
-  color: var(--muted-light);
-  font-size: 0.63rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  transition: border-color 150ms ease, color 150ms ease;
-}
-
-.personal-context > a:hover,
-.personal-context > a:focus-visible {
-  border-color: var(--blue);
-  color: var(--text);
-  outline: none;
-}
-
 .book-panel__header {
   min-height: 50px;
   padding: 0.65rem 0.8rem 0.55rem;
@@ -1152,10 +1228,15 @@ a {
 }
 
 .book-rows {
+  position: relative;
+  z-index: 1;
   flex: 0 0 auto;
   grid-auto-rows: 24px;
   align-content: start;
-  padding: 0.18rem 0;
+  margin-bottom: 0.3rem;
+  padding: 0.18rem 0 0.3rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-strong);
 }
 
 .book-row {
@@ -1172,7 +1253,7 @@ a {
   flex-direction: column;
   justify-content: center;
   padding: 0.55rem 0.8rem;
-  border-top: 1px solid var(--line);
+  border-top: 0;
   background:
     linear-gradient(180deg, rgba(8, 12, 18, 0.2), rgba(8, 12, 18, 0.72)),
     repeating-linear-gradient(0deg, transparent 0 27px, rgba(148, 163, 184, 0.035) 28px);
@@ -1771,7 +1852,7 @@ a {
 
   .terminal-shell {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 176px minmax(0, 1fr);
+    grid-template-rows: 218px minmax(0, 1fr);
     grid-template-areas:
       "core core"
       "bids asks";
@@ -1779,7 +1860,7 @@ a {
   }
 
   .dashboard-workspace {
-    grid-template-rows: 390px var(--tape-height) minmax(0, 1fr);
+    grid-template-rows: 430px var(--tape-height) minmax(0, 1fr);
   }
 
   .market-core {
@@ -1787,7 +1868,7 @@ a {
   }
 
   .personal-context {
-    grid-template-columns: 36px minmax(0, 1fr) auto;
+    grid-template-columns: 36px minmax(0, 1fr);
     gap: 0.45rem;
     margin-bottom: 0.35rem;
     padding: 0.32rem 0.4rem;
@@ -1843,6 +1924,32 @@ a {
     display: none;
   }
 
+  .portfolio-socials {
+    gap: 0.35rem;
+    margin-top: 0.35rem;
+  }
+
+  .portfolio-social-link {
+    grid-template-columns: 20px minmax(0, 1fr);
+    gap: 0.4rem;
+    min-height: 30px;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .portfolio-social-link__icon {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-social-link strong {
+    font-size: 0.54rem;
+  }
+
+  .portfolio-social-link small {
+    display: none;
+  }
+
   .book-panel__header {
     min-height: 34px;
     padding: 0.4rem 0.5rem 0.3rem;
@@ -1881,7 +1988,9 @@ a {
 
   .book-rows {
     grid-auto-rows: 18px;
+    margin-bottom: 0;
     padding-block: 0.1rem;
+    border-bottom: 0;
   }
 
   .book-snapshot,
@@ -2090,7 +2199,7 @@ a {
   }
 
   .personal-context {
-    grid-template-columns: 36px minmax(0, 1fr) auto;
+    grid-template-columns: 36px minmax(0, 1fr);
     padding-block: 0.28rem;
   }
 
@@ -2142,6 +2251,10 @@ a {
 
   .terminal-shell {
     grid-template-rows: 154px minmax(0, 1fr);
+  }
+
+  .portfolio-socials {
+    display: none;
   }
 
   .depth-chart-card {
