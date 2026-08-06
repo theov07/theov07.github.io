@@ -1,0 +1,176 @@
+---
+layout: null
+permalink: /research-preview/market-making/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include research-preview/head.html title="Real-Time Market Making — Research Preview" description="A live market-data and paper-execution case study with queue-aware fills, markouts and risk controls." %}
+  </head>
+  <body class="rp-page">
+    {% include research-preview/header.html %}
+    <div class="preview-ribbon"><div class="rp-shell">Case study 02 · isolated preview · noindex</div></div>
+
+    <main>
+      <section class="rp-hero rp-hero--detail">
+        <div class="rp-shell rp-hero__grid">
+          <div>
+            <p class="eyebrow">Execution research · live market data</p>
+            <h1>Real-Time Market Making</h1>
+            <p class="rp-lede">A modular BTC market-data and paper-execution lab built to study quoting decisions, visible queue position, adverse selection and short-horizon inventory risk—not to manufacture a flattering backtest.</p>
+          </div>
+          <aside class="rp-hero__aside">
+            <p><strong>Public engineering project</strong><br>Binance WebSocket and REST data · Python 3.11+ · Streamlit and console interfaces.</p>
+            <div class="rp-actions">
+              <a class="rp-button rp-button--primary" href="https://github.com/theov07/Real_Time_Market_Data_And_MM_Logic" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+              <a class="rp-button" href="https://mm-dashboard-microstructure.streamlit.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      {% include research-preview/project-nav.html active="market-making" %}
+
+      <section class="rp-section rp-section--compact">
+        <div class="rp-shell">
+          <div class="metric-grid">
+            <div class="metric"><span>Quote logic</span><strong>5 modes</strong><p>Mid, top, level, microprice and queue-aware.</p></div>
+            <div class="metric"><span>Fill diagnostics</span><strong>1 / 5 / 10s</strong><p>Post-fill markout horizons.</p></div>
+            <div class="metric"><span>Default participation</span><strong>25%</strong><p>Cap on trade quantity attributed to a paper fill.</p></div>
+            <div class="metric"><span>Execution state</span><strong class="accent-green">Live data</strong><p>Simulated quotes and fills; no order is sent.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">System architecture</p>
+            <h2>One event loop from exchange message to research metric</h2>
+            <p>The project separates feed handling, book state, quoting, execution approximation and post-trade analytics so assumptions can be changed without rewriting the whole stack.</p>
+          </header>
+          <div class="system-flow" aria-label="Market-making system flow">
+            <div class="system-flow__node"><span>01 · Feed</span><strong>Binance depth and trade streams</strong></div>
+            <div class="system-flow__node"><span>02 · State</span><strong>Local L2 order book and symbol precision</strong></div>
+            <div class="system-flow__node"><span>03 · Quotes</span><strong>Reservation price, skew and quote mode</strong></div>
+            <div class="system-flow__node"><span>04 · Paper fills</span><strong>Queue ahead, participation and cooldown</strong></div>
+            <div class="system-flow__node"><span>05 · Analytics</span><strong>Markouts, P&amp;L, inventory and gates</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Live research interface</p>
+            <h2>Market state and execution diagnostics in one view</h2>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/market-making/live-research-interface.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/market-making/live-research-interface.png' | relative_url }}" alt="Live BTCUSDT research dashboard with bid and ask books, depth chart and execution analytics" loading="lazy"></a>
+            <figcaption><strong>Research interface.</strong> The visual layer combines the live book, trade tape, cumulative depth, microprice, imbalance, fill proxies and short-horizon paper markouts. Prices shown are a point-in-time market snapshot, not current values.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Quote formation</p>
+            <h2>Five ways to place the same risk-aware quote</h2>
+          </header>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Mode</th><th>Anchor</th><th>Research use</th></tr></thead>
+              <tbody>
+                <tr><td><strong>mid</strong></td><td>Symmetric around an inventory- and imbalance-adjusted reservation price.</td><td>Controlled spread and skew experiments.</td></tr>
+                <tr><td><strong>top</strong></td><td>Current best bid and ask, shifted by inventory state.</td><td>Maximum displayed aggressiveness.</td></tr>
+                <tr><td><strong>level</strong></td><td>Configurable bid and ask book levels.</td><td>Distance-versus-fill trade-off.</td></tr>
+                <tr><td><strong>microprice</strong></td><td>Top-of-book size-weighted price, then risk-adjusted.</td><td>Short-horizon imbalance response.</td></tr>
+                <tr><td><strong>queue_aware</strong></td><td>Most aggressive level below a maximum visible queue-ahead multiple.</td><td>Fill probability versus adverse selection.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="two-column" style="margin-top:18px">
+            <article class="research-card">
+              <h3>Reservation-price shifts</h3>
+              <p>Long inventory moves the reservation price lower; short inventory moves it higher. Top-of-book imbalance can shift both quotes toward the heavier side, while a volatility coefficient widens the base spread during fast moves.</p>
+            </article>
+            <article class="research-card">
+              <h3>Quote gates</h3>
+              <p>Quoting can pause when short-term movement breaches a volatility threshold. It also stops when the loss limit is breached, when proposed exposure exceeds the notional limit or during the configured post-fill cooldown.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/market-making/order-book-depth.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/market-making/order-book-depth.png' | relative_url }}" alt="Cumulative BTC bid and ask depth separated around the mid-price" loading="lazy"></a>
+            <figcaption><strong>Cumulative order-book depth.</strong> Bid and ask liquidity are plotted on separate sides of the live spread. The chart is descriptive market state; it is not itself a trading signal.</figcaption>
+          </figure>
+          <aside class="research-note research-note--blue">
+            <p class="eyebrow">Microstructure state</p>
+            <h3>What the dashboard measures</h3>
+            <ul>
+              <li>Mid-price and top-of-book microprice.</li>
+              <li>Displayed spread and cumulative depth by side.</li>
+              <li>Visible queue ahead at each paper quote.</li>
+              <li>Trade-flow direction and top-of-book imbalance.</li>
+              <li>Realized, unrealized and total paper P&amp;L.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Execution approximation</p>
+            <h2>A fill requires more than touching the price</h2>
+          </header>
+          <div class="process-grid">
+            <article class="process-step"><h3>Crossing trade</h3><p>An aggressive sell must trade at or below the paper bid; an aggressive buy must trade at or above the paper ask.</p></article>
+            <article class="process-step"><h3>Top-of-book test</h3><p>By default, a quote must still be realistically fillable relative to the current best price.</p></article>
+            <article class="process-step"><h3>Queue consumption</h3><p>Visible resting quantity ahead is consumed before any incoming trade quantity can reach the paper quote.</p></article>
+            <article class="process-step"><h3>Participation cap</h3><p>Only a configurable share of the residual trade quantity can fill, followed by a cooldown and quote refresh.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column">
+          <article class="research-card">
+            <p class="eyebrow">Post-trade diagnostics</p>
+            <h3>Markouts connect fills to adverse selection</h3>
+            <p>Every paper fill records side, quote price, quantity, market spread and mid-price at execution. Signed markouts at 1s, 5s and 10s then measure whether the market moved for or against the passive fill. Queue-ahead state is retained for fill-probability diagnostics.</p>
+          </article>
+          <aside class="research-note research-note--warning">
+            <p class="eyebrow accent-amber">Research limitation</p>
+            <h3>Paper fills remain a model</h3>
+            <p>L2 public data cannot reconstruct exact queue priority, hidden liquidity, exchange matching details or network latency. The participation cap and queue model make fills less optimistic, but simulated P&amp;L is not a claim of executable return. No live order is ever sent.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <article class="research-card">
+            <p class="eyebrow">Engineering scope</p>
+            <h3>Modular by construction</h3>
+            <p>Dedicated modules cover exchange WebSocket/REST clients, local book state, symbol precision, backoff and reconnection, strategy logic, gating, queue position, portfolio accounting, risk, spread tracking, liquidity diagnostics, markouts and two user interfaces. The repository also includes focused tests for market data, order books, trading, analytics and exchange utilities.</p>
+          </article>
+          <aside class="research-note research-note--green">
+            <p class="eyebrow accent-green">Deployment</p>
+            <h3>Two operating modes</h3>
+            <p>The Streamlit application exposes live charts, parameter controls and CSV exports. The console version provides a lower-overhead view of the same book, quote, fill, queue and P&amp;L state.</p>
+            <div class="rp-link-row" style="margin-top:16px"><a class="rp-button" href="https://github.com/theov07/Real_Time_Market_Data_And_MM_Logic" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    {% include research-preview/footer.html %}
+  </body>
+</html>

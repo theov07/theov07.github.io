@@ -1,0 +1,187 @@
+---
+layout: null
+permalink: /research-preview/gdp-forecasting/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include research-preview/head.html title="GDP Forecasting with MIDAS — Research Preview" description="A mixed-frequency econometrics case study for US GDP forecasting with daily financial data." %}
+  </head>
+  <body class="rp-page">
+    {% include research-preview/header.html %}
+    <div class="preview-ribbon"><div class="rp-shell">Case study 04 · isolated preview · noindex</div></div>
+
+    <main>
+      <section class="rp-hero rp-hero--detail">
+        <div class="rp-shell rp-hero__grid">
+          <div>
+            <p class="eyebrow">Econometrics · mixed-frequency forecasting</p>
+            <h1>GDP Forecasting with MIDAS</h1>
+            <p class="rp-lede">Can daily financial information improve quarterly US GDP forecasts without collapsing hundreds of observations into an arbitrary average? This project replicates ADL–MIDAS results and tests a new separation between historical and nowcast weights.</p>
+          </div>
+          <aside class="rp-hero__aside">
+            <p><strong>Academic replication and extension</strong><br>M2 272 Quantitative Finance · Paris-Dauphine PSL<br>Théo Verdelhan · Léo Renault · Arthur Le Net · Nicolas Annon</p>
+            <div class="rp-actions"><a class="rp-button rp-button--primary" href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">Repository ↗</a></div>
+          </aside>
+        </div>
+      </section>
+
+      {% include research-preview/project-nav.html active="gdp" %}
+
+      <section class="rp-section rp-section--compact">
+        <div class="rp-shell">
+          <div class="metric-grid">
+            <div class="metric"><span>Predictor universe</span><strong>47 series</strong><p>Daily multi-asset and macro-financial Bloomberg variables.</p></div>
+            <div class="metric"><span>Full coverage</span><strong>1986–2025</strong><p>Historical replication plus a post-COVID extension.</p></div>
+            <div class="metric"><span>Core daily block</span><strong>63 days</strong><p>Approximately one quarter of high-frequency information.</p></div>
+            <div class="metric"><span>Recent OOS</span><strong>8 quarters</strong><p>A deliberately short and difficult 2024–2025 evaluation.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Research design</p>
+            <h2>Respect the information calendar</h2>
+            <p>The target is quarterly GDP growth; the predictors arrive daily or monthly. MIDAS keeps the high-frequency ordering while constraining the lag distribution to a small number of parameters.</p>
+          </header>
+          <div class="process-grid">
+            <article class="process-step"><h3>Transform predictors</h3><p>Apply returns, differences and stationarity checks across equities, rates, credit, FX, commodities and macro indicators.</p></article>
+            <article class="process-step"><h3>Compress information</h3><p>Use individual predictors or PCA factors while preserving mixed-frequency timing.</p></article>
+            <article class="process-step"><h3>Estimate ADL–MIDAS</h3><p>Fit exponential Almon weights and select autoregressive lag order using AIC.</p></article>
+            <article class="process-step"><h3>Forecast recursively</h3><p>Expand the estimation window and generate each forecast only with information available at that date.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Data and evaluation</p>
+            <h2>Three samples, one leakage-safe protocol</h2>
+          </header>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Sample</th><th>Data period</th><th>Training window</th><th>Out-of-sample window</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Long replication</strong></td><td>1986–2008</td><td>1986Q1–2000Q4</td><td>2001Q1–2008Q4</td></tr>
+                <tr><td><strong>Short replication</strong></td><td>1999–2008</td><td>1999Q1–2005Q4</td><td>2006Q1–2008Q4</td></tr>
+                <tr><td><strong>Recent extension</strong></td><td>2020–2025</td><td>2020Q1–2023Q4</td><td>2024Q1–2025Q4</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="two-column" style="margin-top:18px">
+            <article class="research-card"><h3>Benchmark set</h3><p>Random Walk, AR, flat distributed lags, factor autoregressions, ADL, FADL and MIDAS variants are compared using RMSFE. Ratios below one indicate an improvement over Random Walk.</p></article>
+            <article class="research-card"><h3>Forecast combination</h3><p>Multiple signals can be combined with discounted MSFE weights, allowing models with smaller recent errors to receive more weight without using future outcomes.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Historical replication</p>
+            <h2>High-frequency data helps only under the right specification</h2>
+            <p>Daily leads materially improve several MIDAS variants, while the daily ADS macro index is especially informative in the replicated tables. The result is conditional: merely adding financial data does not guarantee a lower forecast error.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/gdp/long-sample-oos.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/gdp/long-sample-oos.png' | relative_url }}" alt="Long-sample out-of-sample GDP growth forecasts comparing MIDAS with AR one" loading="lazy"></a>
+            <figcaption><strong>Long-sample OOS forecast path · 2001–2008.</strong> In this DF4 specification, MIDAS records an RMSFE of 2.66 versus 2.72 for AR(1), a 2.4% improvement. The crisis period remains difficult for both models.</figcaption>
+          </figure>
+          <div class="data-table-wrap" style="margin-top:18px">
+            <table class="data-table">
+              <thead><tr><th>Replicated model</th><th>Long h=1</th><th>Long h=4</th><th>Short h=1</th><th>Short h=4</th></tr></thead>
+              <tbody>
+                <tr><td><strong>FADL–MIDAS with daily leads</strong></td><td>0.77</td><td>0.73</td><td>0.70</td><td>0.62</td></tr>
+                <tr><td><strong>ADL–MIDAS with daily leads</strong></td><td>0.97</td><td>0.87</td><td>0.94</td><td>0.89</td></tr>
+                <tr><td><strong>ADS ADL–MIDAS</strong></td><td>0.57</td><td>0.48</td><td>0.56</td><td>0.42</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin:12px 2px 0;color:var(--rp-dim);font-size:12px">RMSFE ratios relative to Random Walk; values below 1 indicate lower forecast error.</p>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Original extension</p>
+            <h2>Separate the lag block from the nowcast block</h2>
+            <p>The standard specification applies one coefficient to historical lags and within-quarter leads. The Two‑β extension estimates distinct scaling and weight dynamics for past information and data already observed inside the target quarter.</p>
+          </header>
+          <div class="figure-grid figure-grid--asymmetric">
+            <figure class="research-figure">
+              <a href="{{ '/images/research-preview/gdp/two-beta-weights.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/gdp/two-beta-weights.png' | relative_url }}" alt="Estimated Two-beta MIDAS lag and lead weight profiles and parameter evolution" loading="lazy"></a>
+              <figcaption><strong>Two‑β weight diagnostics.</strong> Historical and nowcast blocks learn distinct decay profiles rather than sharing a single constraint.</figcaption>
+            </figure>
+            <aside class="research-note research-note--blue">
+              <p class="eyebrow">Recent OOS · 2024–2025</p>
+              <h3>Better than single‑β; worse than Random Walk</h3>
+              <div class="mini-stat-grid" style="grid-template-columns:1fr;margin-top:18px">
+                <div class="mini-stat"><span>Two‑β RMSFE</span><strong>2.7267</strong></div>
+                <div class="mini-stat"><span>Single‑β RMSFE</span><strong>3.2400</strong></div>
+                <div class="mini-stat"><span>Relative improvement</span><strong class="accent-green">15.8%</strong></div>
+                <div class="mini-stat"><span>Two‑β / RW</span><strong class="accent-red">1.288</strong></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Error anatomy</p>
+            <h2>The recent ranking is driven by very few quarters</h2>
+            <p>The post-COVID extension has only eight OOS forecasts. A quarter-level error heatmap makes it possible to see where a model misses, whether it systematically over- or under-predicts and how a small number of observations controls RMSFE.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/gdp/recent-error-heatmap.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/gdp/recent-error-heatmap.png' | relative_url }}" alt="Heatmap of recent quarterly GDP forecast errors by model" loading="lazy"></a>
+            <figcaption><strong>Quarter-by-quarter forecast errors.</strong> Green denotes underprediction and red denotes overprediction. The dispersion reinforces why aggregate RMSFE must be read together with the short sample length and regime context.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column">
+          <article class="research-card">
+            <p class="eyebrow">What survives the replication</p>
+            <h3>Leads and indicator choice matter more than complexity</h3>
+            <ul>
+              <li>Models with daily leads generally improve on no-lead variants.</li>
+              <li>ADS outperforms broad financial factors in the replicated tables.</li>
+              <li>Recursive OOS evaluation changes model rankings relative to in-sample fit.</li>
+              <li>Parsimonious AR and flat-ADL models dominate several richer variants in 2024–2025.</li>
+            </ul>
+          </article>
+          <aside class="research-note research-note--warning">
+            <p class="eyebrow accent-amber">Limits</p>
+            <h3>The extension fixes a restriction, not the whole forecast problem</h3>
+            <p>Two‑β improves on standard MIDAS in the recent window but does not beat Random Walk. The eight-quarter OOS sample is sensitive to individual misses, and post-COVID factor relationships may be unstable. Longer windows, multiple horizons and a Two‑β FADL–MIDAS specification are natural next tests.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <article class="research-card">
+            <p class="eyebrow">Implementation</p>
+            <h3>Full pipeline, not a notebook-only result</h3>
+            <p>The repository separates data loading, transformations, stationarity diagnostics, MIDAS estimation, benchmarks, recursive evaluation, paper-table replication and plotting. The generated figures and reports are preserved alongside the main notebook and Bloomberg-derived dataset.</p>
+            <div class="tag-row"><span>NumPy</span><span>Pandas</span><span>SciPy</span><span>Statsmodels</span><span>scikit-learn</span></div>
+          </article>
+          <aside class="research-note research-note--green">
+            <p class="eyebrow accent-green">Reference</p>
+            <h3>Replication target</h3>
+            <p>Andreou, Ghysels and Kourtellos (2013), “Should Macroeconomic Forecasters Use Daily Financial Data and How?”, <em>Journal of Business &amp; Economic Statistics</em>.</p>
+            <div class="rp-link-row" style="margin-top:16px"><a class="rp-button" href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    {% include research-preview/footer.html %}
+  </body>
+</html>

@@ -1,0 +1,171 @@
+---
+layout: null
+permalink: /research-preview/lead-lag/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include research-preview/head.html title="Multi-Scale Lead–Lag — Research Preview" description="A research case study on asynchronous high-frequency lead-lag estimation across crypto venues and products." %}
+  </head>
+  <body class="rp-page">
+    {% include research-preview/header.html %}
+    <div class="preview-ribbon"><div class="rp-shell">Case study 01 · isolated preview · noindex</div></div>
+
+    <main>
+      <section class="rp-hero rp-hero--detail">
+        <div class="rp-shell rp-hero__grid">
+          <div>
+            <p class="eyebrow">Market microstructure · asynchronous tick data</p>
+            <h1>Multi-Scale Lead–Lag</h1>
+            <p class="rp-lede">Which venue incorporates information first—and does that ordering change with the time scale? This study implements the Hayashi–Koike estimator and adapts it to public cryptocurrency trades across venues and products.</p>
+          </div>
+          <aside class="rp-hero__aside">
+            <p><strong>Academic research project</strong><br>M2 272 Quantitative Finance · Paris-Dauphine PSL<br>Théo Verdelhan · Léo Renault · Ziad El Arari</p>
+            <div class="tag-row"><span>Python</span><span>Hayashi–Yoshida</span><span>Daubechies</span><span>HFT data</span></div>
+          </aside>
+        </div>
+      </section>
+
+      {% include research-preview/project-nav.html active="lead-lag" %}
+
+      <section class="rp-section rp-section--compact">
+        <div class="rp-shell">
+          <div class="metric-grid">
+            <div class="metric"><span>Core sample</span><strong>12.6M</strong><p>Binance BTC observations in April 2026.</p></div>
+            <div class="metric"><span>Resolution</span><strong>50 ms</strong><p>Lag-grid step used in the main empirical design.</p></div>
+            <div class="metric"><span>Frequency bands</span><strong>8 scales</strong><p>From roughly 0.10–0.20s to 12.80–25.60s.</p></div>
+            <div class="metric"><span>Temporal audit</span><strong>3 months</strong><p>January, February and April 2026.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Research question</p>
+            <h2>Price discovery is not necessarily single-scale</h2>
+            <p>A venue can react first at sub-second horizons yet differ at slower adjustment scales. Standard synchronized-return correlations can also distort inference when trade arrivals are irregular.</p>
+          </header>
+          <div class="two-column">
+            <article class="research-card">
+              <h3>Why asynchronous estimation?</h3>
+              <p>Binance and Kraken do not print trades on a common clock. Previous-tick interpolation creates a synthetic synchronous series and can shift or flatten the estimated lag. The Hayashi–Yoshida covariance instead works directly with overlapping observation intervals.</p>
+            </article>
+            <article class="research-card">
+              <h3>Why multiple scales?</h3>
+              <p>Daubechies wavelet filters split the lagged covariance contrast into dyadic frequency bands. The result is a lead–lag profile, not one aggregate number: faster bands describe immediate price discovery while coarser bands capture slower cross-venue adjustment.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Estimator pipeline</p>
+            <h2>From raw event time to a scale-by-scale lag</h2>
+          </header>
+          <div class="process-grid">
+            <article class="process-step"><h3>Ingest event-time data</h3><p>Normalize public exchange trades without forcing a shared timestamp grid.</p></article>
+            <article class="process-step"><h3>Build lagged HY contrast</h3><p>Shift the second series over candidate lags and accumulate overlapping return intervals.</p></article>
+            <article class="process-step"><h3>Apply wavelet filters</h3><p>Use Daubechies coefficients and autocorrelation wavelets to isolate dyadic scales.</p></article>
+            <article class="process-step"><h3>Estimate each maximum</h3><p>Select the lag maximizing the absolute filtered contrast at every scale.</p></article>
+          </div>
+          <div class="research-note research-note--blue" style="margin-top:18px">
+            <h3>Sign convention</h3>
+            <p>Series 1 is written first. A negative estimate means series 1 leads series 2; a positive estimate means series 2 leads series 1. This convention was unit-tested and audited with shifted synthetic data before interpreting exchange results.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Core empirical result</p>
+            <h2>Binance leads Kraken across all tested BTC scales</h2>
+            <p>The ridge of contrast maxima remains on the negative-lag side. Its magnitude grows at coarser scales, from −0.05s at the fastest band to −1.95s at the slowest band.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/lead-lag/contrast-heatmap.png' | relative_url }}" target="_blank" rel="noopener">
+              <img src="{{ '/images/research-preview/lead-lag/contrast-heatmap.png' | relative_url }}" alt="Heatmap of normalized Hayashi-Koike contrast by lag and scale for BTC Binance versus Kraken" loading="lazy">
+            </a>
+            <figcaption><strong>Filtered Hayashi–Koike contrast · April 2026.</strong> White markers identify the maximizing lag at each scale; negative values indicate that Binance leads Kraken under the documented ordering.</figcaption>
+          </figure>
+          <div class="data-table-wrap" style="margin-top:18px">
+            <table class="data-table">
+              <thead><tr><th>Scale</th><th>Approx. band</th><th>Estimated lag</th><th>Interpretation</th></tr></thead>
+              <tbody>
+                <tr><td>j1</td><td>0.10–0.20s</td><td><strong>−0.05s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j2</td><td>0.20–0.40s</td><td><strong>−0.15s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j3</td><td>0.40–0.80s</td><td><strong>−0.20s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j4</td><td>0.80–1.60s</td><td><strong>−0.30s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j5</td><td>1.60–3.20s</td><td><strong>−0.50s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j6</td><td>3.20–6.40s</td><td><strong>−0.80s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j7</td><td>6.40–12.80s</td><td><strong>−1.25s</strong></td><td>Binance leads Kraken</td></tr>
+                <tr><td>j8</td><td>12.80–25.60s</td><td><strong>−1.95s</strong></td><td>Binance leads Kraken</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Robustness and breadth</p>
+            <h2>Direction is stable; magnitude is regime-dependent</h2>
+          </header>
+          <div class="figure-grid">
+            <figure class="research-figure">
+              <a href="{{ '/images/research-preview/lead-lag/temporal-robustness.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/lead-lag/temporal-robustness.png' | relative_url }}" alt="BTC Binance versus Kraken lead-lag estimates across January, February and April 2026" loading="lazy"></a>
+              <figcaption><strong>Temporal robustness.</strong> The sign is negative in every month and scale. Coarser-scale magnitudes vary, consistent with changing volatility, activity and liquidity regimes.</figcaption>
+            </figure>
+            <figure class="research-figure">
+              <a href="{{ '/images/research-preview/lead-lag/cross-market-comparison.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/lead-lag/cross-market-comparison.png' | relative_url }}" alt="Cross-venue and cross-product lead-lag profiles for BTC and ETH" loading="lazy"></a>
+              <figcaption><strong>Cross-market comparison.</strong> Binance–Kraken is pronounced; Binance–Bybit is close to synchronous. USDT-M perpetuals lead COIN-M perpetuals, while perpetuals lead spot at coarser BTC and ETH scales.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column">
+          <article class="research-card">
+            <p class="eyebrow">Validation protocol</p>
+            <h3>Designed to falsify the result</h3>
+            <ul>
+              <li>Deterministic sign-convention tests with known shifts.</li>
+              <li>Monte Carlo diagnostics under constant and Heston-type volatility.</li>
+              <li>Lo–MacKinlay asynchronous sampling versus previous-tick interpolation.</li>
+              <li>Tick-density artifact tests to separate activity differences from genuine lead–lag structure.</li>
+              <li>LOBSTER midpoint sanity check on equity order-book data.</li>
+            </ul>
+          </article>
+          <aside class="research-note research-note--warning">
+            <p class="eyebrow accent-amber">Limits</p>
+            <h3>Statistical dependence is not free arbitrage</h3>
+            <p>The public-data implementation uses trade log-prices and a 50ms lag grid, not the quote microprice and ultra-fine timestamps of the original empirical setting. A measured lead does not include fees, latency, slippage, queue priority, inventory or capital constraints. Deployability requires a separate execution study.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <div class="research-card">
+            <p class="eyebrow">Data universe</p>
+            <h3>Cross-venue, cross-product and sanity-check samples</h3>
+            <p>Binance spot, USDT-M and COIN-M aggregate trades; Kraken spot trades; Bybit public trade archives; and LOBSTER message/order-book data for a quote-based equity check. The core April 2026 Binance–Kraken sample contains approximately 12.6 million Binance BTC observations and 0.86 million Kraken observations.</p>
+          </div>
+          <aside class="research-note research-note--green">
+            <p class="eyebrow accent-green">Reproducibility</p>
+            <h3>Research artifacts preserved</h3>
+            <p>The project includes configurable experiments, cached summaries, figures, tests and a complete 31-page paper. The preview uses the original generated figures without redrawing the results.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    {% include research-preview/footer.html %}
+  </body>
+</html>

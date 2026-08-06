@@ -1,0 +1,169 @@
+---
+layout: null
+permalink: /research-preview/imc-prosperity/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include research-preview/head.html title="IMC Prosperity 4 — Research Preview" description="A six-round quantitative trading research case study from the IMC Prosperity 4 competition." %}
+  </head>
+  <body class="rp-page">
+    {% include research-preview/header.html %}
+    <div class="preview-ribbon"><div class="rp-shell">Case study 03 · isolated preview · noindex</div></div>
+
+    <main>
+      <section class="rp-hero rp-hero--detail">
+        <div class="rp-shell rp-hero__grid">
+          <div>
+            <p class="eyebrow">Systematic trading · competition research</p>
+            <h1>IMC Prosperity 4</h1>
+            <p class="rp-lede">A six-round trading research programme built by a three-person team: shared infrastructure, rapid hypothesis testing, strategy diagnostics and final integration across market making, relative value, options and counterparty signals.</p>
+          </div>
+          <aside class="rp-hero__aside">
+            <p><strong>RELATIVISTIC QUANTS</strong><br>Théo Verdelhan · Léo Renault · Thibaut DST<br>Algorithmic and manual competition archive.</p>
+            <div class="rp-actions"><a class="rp-button rp-button--primary" href="https://github.com/theov07/IMC_PROSPERITY_4_COMPETITION" target="_blank" rel="noopener noreferrer">Repository ↗</a></div>
+          </aside>
+        </div>
+      </section>
+
+      {% include research-preview/project-nav.html active="imc" %}
+
+      <section class="rp-section rp-section--compact">
+        <div class="rp-shell">
+          <div class="metric-grid">
+            <div class="metric"><span>Competition field</span><strong>18,803</strong><p>Teams across 1,549 universities and 117 countries.</p></div>
+            <div class="metric"><span>Round 1 algorithmic</span><strong>#77</strong><p>Worldwide · #1 in France.</p></div>
+            <div class="metric"><span>Final algorithmic</span><strong>#514</strong><p>Worldwide · #17 in France.</p></div>
+            <div class="metric"><span>Research cycle</span><strong>6 rounds</strong><p>From baseline quoting to a 50-product universe.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Round 1</p>
+            <h2>A strong result built on a reliable base layer</h2>
+            <p>The first round combined a common backtester and submission path with increasingly signal-aware quoting. The archived result was 107,674 in-game PnL, rank 77 globally and rank 1 in France.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/imc/round-1-ranking.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-1-ranking.png' | relative_url }}" alt="Round 1 global and French rank versus in-game PnL with Relativistic Quants highlighted" loading="lazy"></a>
+            <figcaption><strong>Round 1 leaderboard reconstruction.</strong> The highlighted point shows the team at rank 77 worldwide and first in France. Values are competition units, not investment returns.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Research progression</p>
+            <h2>Each round changed the market—and the research process</h2>
+          </header>
+          <div class="data-table-wrap">
+            <table class="data-table">
+              <thead><tr><th>Round</th><th>Market problem</th><th>Research response</th><th>Decision discipline</th></tr></thead>
+              <tbody>
+                <tr><td><strong>R0</strong></td><td>Baseline products and execution.</td><td>Common framework, simple market making and one export path.</td><td>Establish reproducible comparisons before adding complexity.</td></tr>
+                <tr><td><strong>R1</strong></td><td>Short-term directional structure.</td><td>Inventory-aware and signal-aware quoting variants.</td><td>Compare teammate ideas inside the same backtest environment.</td></tr>
+                <tr><td><strong>R2</strong></td><td>Strategy synthesis and manual market design.</td><td>Gap behaviour, order-book logic, game theory and allocation optimization.</td><td>Turn qualitative prompts into explicit payoff landscapes.</td></tr>
+                <tr><td><strong>R3</strong></td><td>Underlying plus an option chain.</td><td>Implied-volatility smiles, Greeks, passive quoting and live probes.</td><td>Evaluate portfolio exposure, drawdown and strategy ablations.</td></tr>
+                <tr><td><strong>R4</strong></td><td>Observable counterparty identities.</td><td>Trader-specific flow, imbalance features and selective fading.</td><td>Disable or downweight components that became toxic.</td></tr>
+                <tr><td><strong>R5</strong></td><td>Fifty-product universe.</td><td>Group structure, pair relationships, carry and specialist overlays.</td><td>Merge distinct alphas only after product-level attribution.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Round 3 · options</p>
+            <h2>From quoting rules to volatility structure</h2>
+            <p>The option round forced a portfolio view: implied-volatility diagnostics, exposure by strike, hedging cost and the interaction between passive market making and directional filters.</p>
+          </header>
+          <div class="figure-grid">
+            <figure class="research-figure">
+              <a href="{{ '/images/research-preview/imc/round-3-volatility-smile.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-3-volatility-smile.png' | relative_url }}" alt="Implied volatility smiles across three days and three intraday snapshots" loading="lazy"></a>
+              <figcaption><strong>Volatility-smile diagnostics.</strong> Strike-level implied volatility was monitored across days and intraday snapshots rather than summarized by one ATM number.</figcaption>
+            </figure>
+            <figure class="research-figure">
+              <a href="{{ '/images/research-preview/imc/round-3-strategy-comparison.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-3-strategy-comparison.png' | relative_url }}" alt="Cumulative in-game backtest PnL comparison for two Round 3 strategies" loading="lazy"></a>
+              <figcaption><strong>Strategy-family comparison.</strong> The three-day backtest contrasts a Round 3 candidate with its baseline. The path and drawdowns mattered alongside the terminal competition PnL.</figcaption>
+            </figure>
+          </div>
+          <div class="mini-stat-grid" style="margin-top:18px">
+            <div class="mini-stat"><span>Archived final candidate</span><strong>240,918 PnL</strong></div>
+            <div class="mini-stat"><span>Archived drawdown</span><strong>56,858</strong></div>
+            <div class="mini-stat"><span>PnL / drawdown</span><strong>4.237</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/imc/round-4-backtest-dashboard.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-4-backtest-dashboard.png' | relative_url }}" alt="Round 4 backtest dashboard with total PnL, drawdown and per-product attribution" loading="lazy"></a>
+            <figcaption><strong>Round 4 candidate review.</strong> The dashboard exposes total in-game PnL, maximum drawdown, day contribution and product-level attribution. This made rejection and de-risking decisions visible.</figcaption>
+          </figure>
+          <aside class="research-note research-note--blue">
+            <p class="eyebrow">Round 4</p>
+            <h3>Counterparty-aware, not counterparty-dependent</h3>
+            <p>Official log analysis was used to identify participant-specific flow and test selective fading. Order-book imbalance was an additional input, not a substitute for risk control. When evidence deteriorated, products or modules were disabled instead of being kept alive to preserve a narrative.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Round 5 · portfolio scale</p>
+            <h2>Fifty products required structure, not fifty separate guesses</h2>
+            <p>Product families were screened for internal cohesion, pair correlation and divergence. The final candidate combined specialized pair/carry overlays with distinct directional and cross-group research streams.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/imc/round-5-group-structure.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-5-group-structure.png' | relative_url }}" alt="Round 5 product-family cohesion and strongest pair relationships" loading="lazy"></a>
+            <figcaption><strong>Group-structure analysis.</strong> Weak family cohesion and large pairwise correlations or anti-correlations helped determine where specialized relative-value overlays were worth testing.</figcaption>
+          </figure>
+          <div class="research-note research-note--green" style="margin-top:18px">
+            <h3>Integrated candidate</h3>
+            <p>The strongest archived hybrid reached 1,038,132 in-game PnL over the three-day Round 5 backtest. This is a competition backtest result under the provided simulator and should not be interpreted as real-market performance.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Research operating system</p>
+            <h2>The framework was part of the alpha process</h2>
+          </header>
+          <div class="process-grid">
+            <article class="process-step"><h3>Shared backtester</h3><p>One execution and configuration layer for round-specific strategies and reproducible comparisons.</p></article>
+            <article class="process-step"><h3>Diagnostics</h3><p>Equity paths, drawdown, daily and product attribution, log parsing and scorecards.</p></article>
+            <article class="process-step"><h3>Candidate selection</h3><p>Side-by-side variants, ablations, live probes and explicit champion-selection notes.</p></article>
+            <article class="process-step"><h3>Submission assembly</h3><p>Modular research code compiled into the single-file format required by the competition.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column">
+          <article class="research-card">
+            <p class="eyebrow">What the result demonstrates</p>
+            <h3>Fast iteration with reviewable evidence</h3>
+            <p>The strongest signal is not one backtest number. It is the ability to move from simple quoting to options, participant-aware flow and large-universe relative value while retaining common tests, diagnostics and integration discipline.</p>
+          </article>
+          <aside class="research-note research-note--warning">
+            <p class="eyebrow accent-amber">Interpretation limits</p>
+            <h3>A competition is a synthetic market</h3>
+            <p>All PnL values on this page are competition or backtest units. The provided simulator, fictional products, participant behaviour and execution rules differ from live markets. Rankings are factual competition outcomes; strategy profitability is not generalized beyond that environment.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    {% include research-preview/footer.html %}
+  </body>
+</html>

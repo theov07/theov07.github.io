@@ -1,0 +1,6 @@
+<nav class="case-nav" aria-label="Research case studies">
+  <a{% if include.active == 'lead-lag' %} class="is-active" aria-current="page"{% endif %} href="{{ '/research-preview/lead-lag/' | relative_url }}">Lead–Lag</a>
+  <a{% if include.active == 'market-making' %} class="is-active" aria-current="page"{% endif %} href="{{ '/research-preview/market-making/' | relative_url }}">Market Making</a>
+  <a{% if include.active == 'imc' %} class="is-active" aria-current="page"{% endif %} href="{{ '/research-preview/imc-prosperity/' | relative_url }}">IMC Prosperity 4</a>
+  <a{% if include.active == 'gdp' %} class="is-active" aria-current="page"{% endif %} href="{{ '/research-preview/gdp-forecasting/' | relative_url }}">GDP Forecasting</a>
+</nav>

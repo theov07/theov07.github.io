@@ -1,0 +1,144 @@
+---
+layout: null
+permalink: /research-preview/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include research-preview/head.html title="Selected Quantitative Research — Preview" description="An isolated preview of four quantitative research case studies by Théo Verdelhan." %}
+  </head>
+  <body class="rp-page">
+    {% include research-preview/header.html %}
+
+    <div class="preview-ribbon">
+      <div class="rp-shell">Isolated preview · not linked from the current portfolio · noindex</div>
+    </div>
+
+    <main>
+      <section class="rp-hero">
+        <div class="rp-shell rp-hero__grid">
+          <div>
+            <p class="eyebrow">Research portfolio · case-study preview</p>
+            <h1>Selected Quantitative Research</h1>
+            <p class="rp-lede">Four end-to-end studies spanning high-frequency price discovery, execution-aware market making, systematic competition research and mixed-frequency macro forecasting.</p>
+          </div>
+          <aside class="rp-hero__aside">
+            <p><strong>What this preview changes</strong><br>Nothing on the current site. These routes are isolated so the content, hierarchy and visuals can be reviewed before any integration.</p>
+            <div class="rp-actions">
+              <a class="rp-button rp-button--primary" href="#case-studies">Explore the research</a>
+              <a class="rp-button" href="{{ '/' | relative_url }}">Current portfolio ↗</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section rp-section--compact">
+        <div class="rp-shell">
+          <div class="metric-grid" aria-label="Research principles">
+            <div class="metric">
+              <span>Research layer 01</span>
+              <strong>Signal</strong>
+              <p>Define the economic question before optimizing a strategy.</p>
+            </div>
+            <div class="metric">
+              <span>Research layer 02</span>
+              <strong>Validation</strong>
+              <p>Stress sign conventions, sampling choices and temporal stability.</p>
+            </div>
+            <div class="metric">
+              <span>Research layer 03</span>
+              <strong>Execution</strong>
+              <p>Model queues, fills, latency and risk before discussing deployability.</p>
+            </div>
+            <div class="metric">
+              <span>Research layer 04</span>
+              <strong>Limits</strong>
+              <p>Show what worked, what did not, and where evidence remains incomplete.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section" id="case-studies">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Case studies</p>
+            <h2>Research, not a project catalogue</h2>
+            <p>Each page follows the same reviewable structure: question, data, method, evidence, validation and limitations.</p>
+          </header>
+
+          <div class="hub-grid">
+            <article class="hub-card">
+              <div class="hub-card__image">
+                <img src="{{ '/images/research-preview/lead-lag/contrast-heatmap.png' | relative_url }}" alt="Multi-scale lead-lag contrast heatmap for Binance and Kraken" loading="eager">
+              </div>
+              <div class="hub-card__body">
+                <p class="eyebrow">01 · Market microstructure</p>
+                <h2>Multi-Scale Lead–Lag</h2>
+                <p>An asynchronous-tick implementation of the Hayashi–Koike estimator, adapted to cross-venue and cross-product crypto price discovery.</p>
+                <div class="tag-row"><span>Hayashi–Yoshida</span><span>Wavelets</span><span>Tick data</span><span>Validation</span></div>
+                <a class="hub-card__footer" href="{{ '/research-preview/lead-lag/' | relative_url }}"><span>Open case study</span><span>01 ↗</span></a>
+              </div>
+            </article>
+
+            <article class="hub-card">
+              <div class="hub-card__image">
+                <img src="{{ '/images/research-preview/market-making/order-book-depth.png' | relative_url }}" alt="Live BTC order-book cumulative depth chart" loading="lazy">
+              </div>
+              <div class="hub-card__body">
+                <p class="eyebrow">02 · Execution research</p>
+                <h2>Real-Time Market Making</h2>
+                <p>A live Binance market-data pipeline and paper-execution engine designed around queue-aware fills, markouts, inventory and explicit risk gates.</p>
+                <div class="tag-row"><span>WebSocket</span><span>L2 queues</span><span>Markouts</span><span>Paper execution</span></div>
+                <a class="hub-card__footer" href="{{ '/research-preview/market-making/' | relative_url }}"><span>Open case study</span><span>02 ↗</span></a>
+              </div>
+            </article>
+
+            <article class="hub-card">
+              <div class="hub-card__image">
+                <img src="{{ '/images/research-preview/imc/round-3-strategy-comparison.png' | relative_url }}" alt="IMC Prosperity Round 3 cumulative backtest PnL comparison" loading="lazy">
+              </div>
+              <div class="hub-card__body">
+                <p class="eyebrow">03 · Systematic trading</p>
+                <h2>IMC Prosperity 4</h2>
+                <p>A six-round, three-person research programme covering market making, options, counterparty signals, relative value and strategy integration.</p>
+                <div class="tag-row"><span>Market making</span><span>Options</span><span>Relative value</span><span>Backtesting</span></div>
+                <a class="hub-card__footer" href="{{ '/research-preview/imc-prosperity/' | relative_url }}"><span>Open case study</span><span>03 ↗</span></a>
+              </div>
+            </article>
+
+            <article class="hub-card">
+              <div class="hub-card__image">
+                <img src="{{ '/images/research-preview/gdp/long-sample-oos.png' | relative_url }}" alt="Out-of-sample GDP growth forecasts from MIDAS and AR models" loading="lazy">
+              </div>
+              <div class="hub-card__body">
+                <p class="eyebrow">04 · Econometrics</p>
+                <h2>GDP Forecasting with MIDAS</h2>
+                <p>A replication and extension of mixed-frequency GDP forecasting with daily financial data, recursive evaluation and separate lag/lead dynamics.</p>
+                <div class="tag-row"><span>MIDAS</span><span>PCA</span><span>Nowcasting</span><span>Out-of-sample</span></div>
+                <a class="hub-card__footer" href="{{ '/research-preview/gdp-forecasting/' | relative_url }}"><span>Open case study</span><span>04 ↗</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <div class="research-card">
+            <p class="eyebrow">Editorial rule</p>
+            <h3>Evidence before performance language</h3>
+            <p>Competition PnL is labelled as in-game or backtest PnL. Market-making fills are explicitly simulated. Forecast improvements are shown against their stated benchmark and include negative results. Lead–lag estimates are treated as statistical price-discovery evidence, not as executable arbitrage.</p>
+          </div>
+          <aside class="research-note research-note--blue">
+            <h3>Preview status</h3>
+            <p>These pages are intentionally excluded from the sitemap and carry a <code>noindex</code> directive. They can be removed without touching the current homepage or existing portfolio pages.</p>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    {% include research-preview/footer.html %}
+  </body>
+</html>
