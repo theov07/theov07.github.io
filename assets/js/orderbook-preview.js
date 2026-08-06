@@ -22,8 +22,11 @@
     second: "2-digit",
     hour12: false
   });
-  const SIMULATED_QUOTE_SIZE = 0.01;
+  const SIMULATED_QUOTE_SIZE = 0.002;
   const FLOW_WINDOW_MS = 5000;
+  const PAPER_HISTORY_LIMIT = 240;
+  const PAPER_HISTORY_INTERVAL_MS = 500;
+  const PAPER_INVENTORY_LIMIT = 0.02;
 
   const elements = {
     body: document.body,
@@ -53,6 +56,24 @@
     markout1s: document.getElementById("markout-1s"),
     markout5s: document.getElementById("markout-5s"),
     depthChart: document.getElementById("depth-chart"),
+    paperChart: document.getElementById("paper-chart"),
+    paperChartTitle: document.getElementById("paper-chart-title"),
+    paperChartTabs: Array.from(document.querySelectorAll("[data-paper-chart]")),
+    paperBidQuote: document.getElementById("paper-bid-quote"),
+    paperAskQuote: document.getElementById("paper-ask-quote"),
+    paperBidStatus: document.getElementById("paper-bid-status"),
+    paperAskStatus: document.getElementById("paper-ask-status"),
+    paperBidQueue: document.getElementById("paper-bid-queue"),
+    paperAskQueue: document.getElementById("paper-ask-queue"),
+    paperBidQueueBar: document.getElementById("paper-bid-queue-bar"),
+    paperAskQueueBar: document.getElementById("paper-ask-queue-bar"),
+    paperBidFills: document.getElementById("paper-bid-fills"),
+    paperAskFills: document.getElementById("paper-ask-fills"),
+    paperBidLast: document.getElementById("paper-bid-last"),
+    paperAskLast: document.getElementById("paper-ask-last"),
+    paperPnl: document.getElementById("paper-pnl"),
+    paperInventory: document.getElementById("paper-inventory"),
+    paperFillCount: document.getElementById("paper-fill-count"),
     connectionLabel: document.getElementById("connection-label"),
     latencyLabel: document.getElementById("latency-label"),
     tradeTape: document.getElementById("trade-tape")
@@ -68,7 +89,6 @@
     markouts1s: [],
     markouts5s: [],
     markoutTimers: new Set(),
-    lastMarkoutCaptureAt: 0,
     lastTradePrice: null,
     lastMessageAt: 0,
     lastStatusAt: 0,
@@ -84,7 +104,26 @@
     bookDirty: false,
     renderQueued: false,
     chartRenderQueued: false,
-    depthChartObserver: null
+    paperChartRenderQueued: false,
+    depthChartObserver: null,
+    paperChartObserver: null,
+    paper: {
+      bidQuote: null,
+      askQuote: null,
+      bidQueueAhead: 0,
+      askQueueAhead: 0,
+      bidQueueStart: 0,
+      askQueueStart: 0,
+      bidFills: 0,
+      askFills: 0,
+      inventory: 0,
+      cash: 0,
+      pnl: 0,
+      fills: [],
+      history: [],
+      lastHistoryAt: 0,
+      chartMode: "fills"
+    }
   };
 
   function levelCount() {
@@ -202,6 +241,8 @@
     const askLiquidity = state.asks.slice(0, 10).reduce((sum, [, quantity]) => sum + quantity, 0);
     const denominator = bidLiquidity + askLiquidity;
     const imbalance = denominator ? ((bidLiquidity - askLiquidity) / denominator) * 100 : 0;
+    updatePaperQuotes({ bestBid, bestAsk, bestBidQuantity, bestAskQuantity, mid, microprice });
+    recordPaperSnapshot(Date.now());
     updateAnalytics({
       bestBid,
       bestAsk,
@@ -214,6 +255,7 @@
       imbalance
     });
     scheduleDepthChart();
+    schedulePaperChart();
   }
 
   function setMetricTone(element, value) {
@@ -260,6 +302,325 @@
 
     setMetricTone(elements.analyticsImbalance, metrics.imbalance);
     setMetricTone(elements.analyticsMicroprice, micropriceSkew);
+  }
+
+  function paperQueueSeed(displayedQuantity) {
+    if (!Number.isFinite(displayedQuantity)) return 0.005;
+    return Math.min(0.2, Math.max(0.005, displayedQuantity * 0.04));
+  }
+
+  function paperSideIsActive(side) {
+    return side === "bid"
+      ? state.paper.inventory < PAPER_INVENTORY_LIMIT
+      : state.paper.inventory > -PAPER_INVENTORY_LIMIT;
+  }
+
+  function updatePaperSummary() {
+    const paper = state.paper;
+    const pnlPrefix = paper.pnl > 0 ? "+" : "";
+    const inventoryPrefix = paper.inventory > 0 ? "+" : "";
+    const pnlDecimals = Math.abs(paper.pnl) < 0.1 ? 5 : Math.abs(paper.pnl) < 10 ? 3 : 2;
+    elements.paperPnl.textContent = `${pnlPrefix}${paper.pnl.toFixed(pnlDecimals)} USDT`;
+    elements.paperInventory.textContent = `${inventoryPrefix}${paper.inventory.toFixed(3)} BTC`;
+    elements.paperFillCount.textContent = String(paper.bidFills + paper.askFills);
+    setMetricTone(elements.paperPnl, paper.pnl);
+    setMetricTone(elements.paperInventory, paper.inventory);
+  }
+
+  function renderPaperQuoteSide(side) {
+    const paper = state.paper;
+    const isBid = side === "bid";
+    const quote = isBid ? paper.bidQuote : paper.askQuote;
+    const queue = isBid ? paper.bidQueueAhead : paper.askQueueAhead;
+    const queueStart = isBid ? paper.bidQueueStart : paper.askQueueStart;
+    const fills = isBid ? paper.bidFills : paper.askFills;
+    const quoteElement = isBid ? elements.paperBidQuote : elements.paperAskQuote;
+    const statusElement = isBid ? elements.paperBidStatus : elements.paperAskStatus;
+    const queueElement = isBid ? elements.paperBidQueue : elements.paperAskQueue;
+    const queueBar = isBid ? elements.paperBidQueueBar : elements.paperAskQueueBar;
+    const fillsElement = isBid ? elements.paperBidFills : elements.paperAskFills;
+    const lastElement = isBid ? elements.paperBidLast : elements.paperAskLast;
+    const lastFill = paper.fills.find((fill) => fill.side === side);
+    const active = paperSideIsActive(side);
+    const queuePercent = queueStart ? Math.max(0, Math.min(100, (queue / queueStart) * 100)) : 0;
+
+    quoteElement.textContent = quote ? priceFormatter.format(quote) : "—";
+    statusElement.textContent = active ? "RESTING AT L1 · QUEUE MODEL" : "INVENTORY GUARD ACTIVE";
+    statusElement.classList.toggle("is-paused", !active);
+    queueElement.textContent = quote ? `${formatAmount(Math.max(0, queue))} BTC` : "—";
+    queueBar.style.width = `${queuePercent.toFixed(1)}%`;
+    fillsElement.textContent = String(fills);
+    lastElement.textContent = lastFill ? `@ ${priceFormatter.format(lastFill.price)}` : "—";
+  }
+
+  function renderPaperQuotes() {
+    renderPaperQuoteSide("bid");
+    renderPaperQuoteSide("ask");
+    updatePaperSummary();
+  }
+
+  function updatePaperQuotes(metrics) {
+    const paper = state.paper;
+    const modelBid = Math.min(metrics.bestBid, Math.floor((metrics.microprice * 100) + 1e-7) / 100);
+    const modelAsk = Math.max(metrics.bestAsk, Math.ceil((metrics.microprice * 100) - 1e-7) / 100);
+    if (paper.bidQuote !== modelBid) {
+      paper.bidQuote = modelBid;
+      paper.bidQueueStart = paperQueueSeed(metrics.bestBidQuantity);
+      paper.bidQueueAhead = paper.bidQueueStart;
+    }
+    if (paper.askQuote !== modelAsk) {
+      paper.askQuote = modelAsk;
+      paper.askQueueStart = paperQueueSeed(metrics.bestAskQuantity);
+      paper.askQueueAhead = paper.askQueueStart;
+    }
+    renderPaperQuotes();
+  }
+
+  function recordPaperSnapshot(time, force = false) {
+    const paper = state.paper;
+    if (!state.currentMid || !state.currentMicroprice) return;
+    paper.pnl = paper.cash + (paper.inventory * state.currentMid);
+    updatePaperSummary();
+    const sampleTime = Math.max(time, paper.lastHistoryAt + 1);
+    if (!force && sampleTime - paper.lastHistoryAt < PAPER_HISTORY_INTERVAL_MS) return;
+
+    paper.lastHistoryAt = sampleTime;
+    paper.history.push({
+      time: sampleTime,
+      mid: state.currentMid,
+      microprice: state.currentMicroprice,
+      pnl: paper.pnl
+    });
+    if (paper.history.length > PAPER_HISTORY_LIMIT) paper.history.shift();
+    schedulePaperChart();
+  }
+
+  function executePaperFill(side, time) {
+    if (!paperSideIsActive(side)) return;
+    const paper = state.paper;
+    const price = side === "bid" ? paper.bidQuote : paper.askQuote;
+    if (!price) return;
+
+    const signedQuantity = side === "bid" ? SIMULATED_QUOTE_SIZE : -SIMULATED_QUOTE_SIZE;
+    paper.inventory += signedQuantity;
+    paper.cash -= signedQuantity * price;
+    if (side === "bid") paper.bidFills += 1;
+    else paper.askFills += 1;
+
+    const fill = { side, price, quantity: SIMULATED_QUOTE_SIZE, time };
+    paper.fills.unshift(fill);
+    if (paper.fills.length > 120) paper.fills.pop();
+
+    const displayedQuantity = side === "bid" ? state.bids[0]?.[1] : state.asks[0]?.[1];
+    const refreshedQueue = paperQueueSeed(displayedQuantity);
+    if (side === "bid") {
+      paper.bidQueueStart = refreshedQueue;
+      paper.bidQueueAhead = refreshedQueue;
+    } else {
+      paper.askQueueStart = refreshedQueue;
+      paper.askQueueAhead = refreshedQueue;
+    }
+
+    capturePaperMarkout(fill);
+    recordPaperSnapshot(time, true);
+    renderPaperQuotes();
+    schedulePaperChart();
+  }
+
+  function processPaperTrade(trade) {
+    const paper = state.paper;
+    let queueChanged = false;
+
+    if (trade.isSell && paper.bidQuote && paperSideIsActive("bid") && trade.price <= paper.bidQuote + 0.005) {
+      paper.bidQueueAhead -= trade.quantity;
+      queueChanged = true;
+      if (paper.bidQueueAhead <= 0) executePaperFill("bid", trade.time);
+    }
+
+    if (!trade.isSell && paper.askQuote && paperSideIsActive("ask") && trade.price >= paper.askQuote - 0.005) {
+      paper.askQueueAhead -= trade.quantity;
+      queueChanged = true;
+      if (paper.askQueueAhead <= 0) executePaperFill("ask", trade.time);
+    }
+
+    if (queueChanged) renderPaperQuotes();
+  }
+
+  function schedulePaperChart() {
+    if (state.paperChartRenderQueued) return;
+    state.paperChartRenderQueued = true;
+    window.requestAnimationFrame(() => {
+      state.paperChartRenderQueued = false;
+      drawPaperChart();
+    });
+  }
+
+  function prepareCanvas(canvas) {
+    if (!canvas) return null;
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width < 80 || rect.height < 70) return null;
+    const ratio = Math.min(2, window.devicePixelRatio || 1);
+    const width = Math.round(rect.width);
+    const height = Math.round(rect.height);
+    const targetWidth = Math.round(width * ratio);
+    const targetHeight = Math.round(height * ratio);
+    if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+    }
+    const context = canvas.getContext("2d");
+    context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    context.clearRect(0, 0, width, height);
+    return { context, width, height };
+  }
+
+  function drawPaperChart() {
+    const prepared = prepareCanvas(elements.paperChart);
+    if (!prepared) return;
+    const { context, width, height } = prepared;
+    const history = state.paper.history;
+    const padding = { top: 18, right: 18, bottom: 27, left: 58 };
+    const chartWidth = width - padding.left - padding.right;
+    const chartHeight = height - padding.top - padding.bottom;
+
+    context.font = '10px "SFMono-Regular", Consolas, monospace';
+    context.textBaseline = "middle";
+    if (history.length < 2) {
+      context.fillStyle = "rgba(148, 163, 184, 0.62)";
+      context.textAlign = "center";
+      context.fillText("COLLECTING LIVE PAPER HISTORY…", width / 2, height / 2);
+      return;
+    }
+
+    const firstTime = history[0].time;
+    const lastTime = history[history.length - 1].time;
+    const timeRange = Math.max(lastTime - firstTime, 1);
+    const x = (time) => padding.left + ((time - firstTime) / timeRange) * chartWidth;
+
+    function drawGrid(minValue, maxValue, formatter) {
+      for (let index = 0; index <= 3; index += 1) {
+        const ratio = index / 3;
+        const lineY = padding.top + chartHeight - (ratio * chartHeight);
+        const value = minValue + ((maxValue - minValue) * ratio);
+        context.strokeStyle = "rgba(148, 163, 184, 0.11)";
+        context.lineWidth = 1;
+        context.beginPath();
+        context.moveTo(padding.left, lineY);
+        context.lineTo(width - padding.right, lineY);
+        context.stroke();
+        context.fillStyle = "rgba(148, 163, 184, 0.58)";
+        context.textAlign = "right";
+        context.fillText(formatter(value), padding.left - 7, lineY);
+      }
+    }
+
+    function drawTimeLabels() {
+      [0, 0.5, 1].forEach((ratio, index) => {
+        const time = firstTime + (timeRange * ratio);
+        context.fillStyle = "rgba(148, 163, 184, 0.55)";
+        context.textAlign = index === 0 ? "left" : index === 2 ? "right" : "center";
+        context.fillText(timeFormatter.format(new Date(time)), padding.left + (chartWidth * ratio), height - 10);
+      });
+    }
+
+    function drawLine(accessor, y, color, dashed = false) {
+      context.beginPath();
+      history.forEach((point, index) => {
+        const pointX = x(point.time);
+        const pointY = y(accessor(point));
+        if (index === 0) context.moveTo(pointX, pointY);
+        else context.lineTo(pointX, pointY);
+      });
+      if (dashed) context.setLineDash([4, 4]);
+      context.strokeStyle = color;
+      context.lineWidth = 1.6;
+      context.stroke();
+      context.setLineDash([]);
+    }
+
+    if (state.paper.chartMode === "pnl") {
+      const pnlValues = history.map((point) => point.pnl);
+      const rawMin = Math.min(0, ...pnlValues);
+      const rawMax = Math.max(0, ...pnlValues);
+      const pad = Math.max(0.00005, (rawMax - rawMin) * 0.18);
+      const minValue = rawMin - pad;
+      const maxValue = rawMax + pad;
+      const y = (value) => padding.top + chartHeight - ((value - minValue) / (maxValue - minValue)) * chartHeight;
+      const zeroY = y(0);
+      const positive = history[history.length - 1].pnl >= 0;
+      const lineColor = positive ? "#00d99b" : "#ff506f";
+
+      const pnlGridDecimals = Math.abs(maxValue - minValue) < 0.1 ? 5 : Math.abs(maxValue - minValue) < 10 ? 3 : 2;
+      drawGrid(minValue, maxValue, (value) => value.toFixed(pnlGridDecimals));
+      context.setLineDash([3, 4]);
+      context.strokeStyle = "rgba(210, 218, 230, 0.38)";
+      context.beginPath();
+      context.moveTo(padding.left, zeroY);
+      context.lineTo(width - padding.right, zeroY);
+      context.stroke();
+      context.setLineDash([]);
+
+      const gradient = context.createLinearGradient(0, padding.top, 0, padding.top + chartHeight);
+      gradient.addColorStop(0, positive ? "rgba(0, 217, 155, 0.18)" : "rgba(255, 80, 111, 0.04)");
+      gradient.addColorStop(1, positive ? "rgba(0, 217, 155, 0.02)" : "rgba(255, 80, 111, 0.18)");
+      context.beginPath();
+      context.moveTo(x(history[0].time), zeroY);
+      history.forEach((point) => context.lineTo(x(point.time), y(point.pnl)));
+      context.lineTo(x(history[history.length - 1].time), zeroY);
+      context.closePath();
+      context.fillStyle = gradient;
+      context.fill();
+      drawLine((point) => point.pnl, y, lineColor);
+      drawTimeLabels();
+      elements.paperChart.setAttribute("aria-label", `Paper trading P and L curve. Current simulated P and L ${state.paper.pnl.toFixed(2)} USDT.`);
+      return;
+    }
+
+    const visibleFills = state.paper.fills.filter((fill) => fill.time >= firstTime && fill.time <= lastTime);
+    const priceValues = history.flatMap((point) => [point.mid, point.microprice]);
+    visibleFills.forEach((fill) => priceValues.push(fill.price));
+    const rawMin = Math.min(...priceValues);
+    const rawMax = Math.max(...priceValues);
+    const pricePad = Math.max(0.1, (rawMax - rawMin) * 0.18);
+    const minPrice = rawMin - pricePad;
+    const maxPrice = rawMax + pricePad;
+    const y = (value) => padding.top + chartHeight - ((value - minPrice) / (maxPrice - minPrice)) * chartHeight;
+
+    drawGrid(minPrice, maxPrice, (value) => priceFormatter.format(value));
+    drawLine((point) => point.mid, y, "rgba(190, 201, 217, 0.86)");
+    drawLine((point) => point.microprice, y, "#ffc66d", true);
+
+    visibleFills.forEach((fill) => {
+      const fillX = x(fill.time);
+      const fillY = y(fill.price);
+      const isBid = fill.side === "bid";
+      context.beginPath();
+      if (isBid) {
+        context.moveTo(fillX, fillY - 7);
+        context.lineTo(fillX - 5, fillY + 3);
+        context.lineTo(fillX + 5, fillY + 3);
+      } else {
+        context.moveTo(fillX, fillY + 7);
+        context.lineTo(fillX - 5, fillY - 3);
+        context.lineTo(fillX + 5, fillY - 3);
+      }
+      context.closePath();
+      context.fillStyle = isBid ? "#00d99b" : "#ff506f";
+      context.fill();
+    });
+
+    context.font = '600 10px "SFMono-Regular", Consolas, monospace';
+    context.textAlign = "left";
+    context.fillStyle = "rgba(190, 201, 217, 0.86)";
+    context.fillText("MID", padding.left + 4, 8);
+    context.fillStyle = "#ffc66d";
+    context.fillText("MICROPRICE", padding.left + 42, 8);
+    context.fillStyle = "#00d99b";
+    context.fillText("▲ BID FILL", padding.left + 128, 8);
+    context.fillStyle = "#ff506f";
+    context.fillText("▼ ASK FILL", padding.left + 205, 8);
+    drawTimeLabels();
+    elements.paperChart.setAttribute("aria-label", `Paper fill chart with ${state.paper.bidFills} simulated bid fills and ${state.paper.askFills} simulated ask fills.`);
   }
 
   function cumulativeLevels(levels) {
@@ -453,22 +814,20 @@
     state.trades = state.trades.slice(0, 14);
     state.recentFlow.push({ price, quantity, isSell, time: tradeTime });
     if (state.recentFlow.length > 2500) state.recentFlow = state.recentFlow.slice(-2000);
-    captureMarkout({ price, isSell, time: tradeTime });
+    processPaperTrade({ price, quantity, isSell, time: tradeTime });
     scheduleTradeRender();
   }
 
-  function captureMarkout(trade) {
-    const now = Date.now();
-    if (!state.currentMid || now - state.lastMarkoutCaptureAt < 350) return;
-    state.lastMarkoutCaptureAt = now;
-    const direction = trade.isSell ? -1 : 1;
+  function capturePaperMarkout(fill) {
+    if (!state.currentMid) return;
+    const direction = fill.side === "bid" ? 1 : -1;
 
     [[1000, state.markouts1s, elements.markout1s], [5000, state.markouts5s, elements.markout5s]]
       .forEach(([horizon, samples, element]) => {
         const timer = window.setTimeout(() => {
           state.markoutTimers.delete(timer);
           if (!state.currentMid || state.destroyed) return;
-          const markout = direction * ((state.currentMid - trade.price) / trade.price) * 10000;
+          const markout = direction * ((state.currentMid - fill.price) / fill.price) * 10000;
           samples.push(markout);
           if (samples.length > 40) samples.shift();
           const average = samples.reduce((sum, value) => sum + value, 0) / samples.length;
@@ -628,6 +987,7 @@
     window.clearInterval(state.staleTimer);
     state.markoutTimers.forEach((timer) => window.clearTimeout(timer));
     if (state.depthChartObserver) state.depthChartObserver.disconnect();
+    if (state.paperChartObserver) state.paperChartObserver.disconnect();
     if (state.socket) state.socket.close();
   }
 
@@ -637,6 +997,7 @@
     resizeTimer = window.setTimeout(() => {
       resetRows();
       scheduleDepthChart();
+      schedulePaperChart();
     }, 120);
   });
   window.addEventListener("beforeunload", destroy, { once: true });
@@ -644,11 +1005,31 @@
     if (!document.hidden && (!state.socket || state.socket.readyState === WebSocket.CLOSED)) connect();
   });
 
+  elements.paperChartTabs.forEach((button) => {
+    button.addEventListener("click", () => {
+      const mode = button.dataset.paperChart;
+      if (mode !== "fills" && mode !== "pnl") return;
+      state.paper.chartMode = mode;
+      elements.paperChartTabs.forEach((tab) => {
+        const active = tab === button;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-pressed", String(active));
+      });
+      elements.paperChartTitle.textContent = mode === "fills" ? "MID PRICE & FILLS" : "P&L CURVE";
+      schedulePaperChart();
+    });
+  });
+
   resetRows();
   if ("ResizeObserver" in window && elements.depthChart) {
     state.depthChartObserver = new ResizeObserver(scheduleDepthChart);
     state.depthChartObserver.observe(elements.depthChart);
   }
+  if ("ResizeObserver" in window && elements.paperChart) {
+    state.paperChartObserver = new ResizeObserver(schedulePaperChart);
+    state.paperChartObserver.observe(elements.paperChart);
+  }
+  renderPaperQuotes();
   watchForStaleData();
   connect();
 })();

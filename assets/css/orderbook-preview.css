@@ -1035,7 +1035,7 @@ a {
 /* Single-screen portfolio terminal */
 .dashboard-workspace {
   display: grid;
-  grid-template-rows: minmax(380px, 1.62fr) var(--tape-height) minmax(190px, 0.58fr);
+  grid-template-rows: minmax(0, 1fr) var(--tape-height) clamp(260px, 31vh, 340px);
   width: 100%;
   height: calc(100dvh - var(--header-height));
   overflow: hidden;
@@ -1140,12 +1140,177 @@ a {
 .book-row {
   min-height: 24px;
   padding-inline: 0.8rem;
-  font-size: clamp(0.56rem, 0.68vw, 0.66rem);
+  font-size: clamp(0.64rem, 0.76vw, 0.78rem);
+  font-weight: 650;
+}
+
+.paper-quote {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(8, 12, 18, 0.2), rgba(8, 12, 18, 0.72)),
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(148, 163, 184, 0.035) 28px);
+}
+
+.paper-quote > header,
+.paper-quote__queue p {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.paper-quote > header {
+  color: var(--muted-light);
+  font-size: 0.46rem;
+  font-weight: 850;
+  letter-spacing: 0.13em;
+}
+
+.paper-quote > header small {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.38rem;
+}
+
+.paper-quote > header i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+.paper-quote--bid > header small,
+.paper-quote--bid .paper-quote__price strong {
+  color: var(--bid);
+}
+
+.paper-quote--ask > header small,
+.paper-quote--ask .paper-quote__price strong {
+  color: var(--ask);
+}
+
+.paper-quote__price {
+  margin-top: 0.52rem;
+}
+
+.paper-quote__price > span,
+.paper-quote__price > small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.38rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.paper-quote__price > span.is-paused {
+  color: var(--amber);
+}
+
+.paper-quote__price strong {
+  display: block;
+  margin: 0.25rem 0;
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(1rem, 1.35vw, 1.35rem);
+  line-height: 1;
+}
+
+.paper-quote__queue {
+  margin-top: 0.62rem;
+}
+
+.paper-quote__queue p {
+  margin: 0 0 0.3rem;
+  color: var(--muted);
+  font-size: 0.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.paper-quote__queue p strong {
+  color: var(--muted-light);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.48rem;
+}
+
+.paper-quote__queue > div {
+  height: 3px;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.11);
+}
+
+.paper-quote__queue i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  transition: width 180ms ease-out;
+}
+
+.paper-quote--bid .paper-quote__queue i {
+  background: var(--bid);
+  box-shadow: 0 0 8px rgba(var(--bid-rgb), 0.45);
+}
+
+.paper-quote--ask .paper-quote__queue i {
+  background: var(--ask);
+  box-shadow: 0 0 8px rgba(var(--ask-rgb), 0.45);
+}
+
+.paper-quote dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 0.6rem 0 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.paper-quote dl div {
+  min-width: 0;
+  padding: 0.42rem 0.5rem;
+  background: rgba(8, 12, 18, 0.94);
+}
+
+.paper-quote dt {
+  color: var(--muted);
+  font-size: 0.36rem;
+  font-weight: 850;
+  letter-spacing: 0.09em;
+}
+
+.paper-quote dd {
+  margin: 0.25rem 0 0;
+  overflow: hidden;
+  color: var(--text);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: clamp(0.58rem, 0.68vw, 0.72rem);
+  font-weight: 750;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paper-quote__notice {
+  margin: 0.46rem 0 0;
+  color: #4f5b6c;
+  font-size: 0.34rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-align: center;
 }
 
 .book-snapshot {
-  margin-top: auto;
-  padding: 0.72rem 0.8rem 0.82rem;
+  flex: 0 0 auto;
+  padding: 0.58rem 0.8rem 0.66rem;
   border-top: 1px solid var(--line-strong);
   background: linear-gradient(180deg, rgba(8, 12, 18, 0.28), rgba(8, 12, 18, 0.92));
 }
@@ -1189,8 +1354,8 @@ a {
 
 .book-snapshot dl div {
   min-width: 0;
-  min-height: 68px;
-  padding: 0.62rem;
+  min-height: 58px;
+  padding: 0.5rem 0.58rem;
   background: rgba(9, 13, 19, 0.96);
 }
 
@@ -1205,7 +1370,7 @@ a {
 }
 
 .book-snapshot dd {
-  margin: 0.38rem 0 0;
+  margin: 0.3rem 0 0;
   overflow: hidden;
   color: var(--text);
   font-family: "SFMono-Regular", Consolas, monospace;
@@ -1283,7 +1448,13 @@ a {
 }
 
 .route-order strong {
-  font-size: clamp(0.8rem, 0.96vw, 1rem);
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(1rem, 1.25vw, 1.3rem);
+  letter-spacing: 0.09em;
+  pointer-events: none;
 }
 
 .route-order__type,
@@ -1299,13 +1470,13 @@ a {
   display: flex;
   min-height: 0;
   flex-direction: column;
-  padding: 0.42rem 0.65rem 0.35rem;
+  padding: 0.34rem 0.65rem 0.38rem;
   overflow: hidden;
 }
 
 .analytics-dashboard__header {
   flex: 0 0 auto;
-  margin-bottom: 0.28rem;
+  margin-bottom: 0.26rem;
 }
 
 .analytics-dashboard__header > div:first-child > span {
@@ -1314,7 +1485,7 @@ a {
 
 .analytics-dashboard__header h2 {
   margin-top: 0.18rem;
-  font-size: 0.96rem;
+  font-size: 0.88rem;
 }
 
 .analytics-dashboard__badges {
@@ -1328,22 +1499,37 @@ a {
 
 .analytics-dashboard__content {
   flex: 1;
-  grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.92fr);
+  grid-template-columns: minmax(420px, 0.72fr) minmax(620px, 1.28fr);
   gap: 0.38rem;
   min-height: 0;
 }
 
-.depth-chart-card {
+.depth-chart-card,
+.paper-chart-card {
+  display: flex;
   min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: rgba(9, 13, 19, 0.84);
 }
 
-.depth-chart-card__header {
+.depth-chart-card__header,
+.paper-chart-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
   min-height: 36px;
   padding: 0.38rem 0.62rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.depth-chart-card h3 {
+.depth-chart-card h3,
+.paper-chart-card h3 {
+  margin: 0;
   font-size: 0.7rem;
+  letter-spacing: 0.09em;
 }
 
 .depth-chart-card p {
@@ -1360,13 +1546,16 @@ a {
 }
 
 .analytics-metrics {
-  grid-template-rows: repeat(2, minmax(0, 1fr));
-  min-height: 0;
+  flex: 0 0 66px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  min-height: 66px;
+  margin-bottom: 0.36rem;
 }
 
 .metric-card {
   min-height: 0;
-  padding: 0.62rem 0.7rem;
+  padding: 0.45rem 0.62rem;
 }
 
 .metric-card__label {
@@ -1374,13 +1563,101 @@ a {
 }
 
 .metric-card strong {
-  margin-top: 0.38rem;
-  font-size: clamp(0.84rem, 1vw, 1.08rem);
+  margin-top: 0.28rem;
+  font-size: clamp(0.82rem, 1vw, 1.05rem);
 }
 
 .metric-card small {
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
   font-size: clamp(0.38rem, 0.44vw, 0.48rem);
+}
+
+.paper-chart-card__header > div:first-child > span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--blue);
+  font-size: 0.4rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.paper-chart-tabs {
+  display: flex;
+  align-self: stretch;
+}
+
+.paper-chart-tabs button {
+  padding: 0 0.62rem;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.45rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  transition: color 150ms ease, background 150ms ease;
+}
+
+.paper-chart-tabs button:hover,
+.paper-chart-tabs button:focus-visible,
+.paper-chart-tabs button.is-active {
+  color: var(--text);
+  background: rgba(90, 169, 255, 0.08);
+  outline: none;
+}
+
+.paper-chart-tabs button.is-active {
+  box-shadow: inset 0 -2px var(--blue);
+}
+
+.paper-chart-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex: 0 0 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.paper-chart-summary span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.42rem;
+  color: var(--muted);
+  font-size: 0.38rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.paper-chart-summary span + span {
+  border-left: 1px solid var(--line);
+}
+
+.paper-chart-summary strong {
+  color: var(--text);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.52rem;
+}
+
+.paper-chart-summary strong.is-positive {
+  color: var(--bid);
+}
+
+.paper-chart-summary strong.is-negative {
+  color: var(--ask);
+}
+
+.paper-chart-wrap {
+  flex: 1;
+  min-height: 0;
+  padding: 0.2rem 0.35rem 0.28rem;
+}
+
+#paper-chart {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .analytics-note {
@@ -1451,7 +1728,7 @@ a {
   }
 
   .analytics-metrics {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
   }
 }
 
@@ -1596,7 +1873,8 @@ a {
     padding-block: 0.1rem;
   }
 
-  .book-snapshot {
+  .book-snapshot,
+  .paper-quote {
     display: none;
   }
 
@@ -1631,12 +1909,12 @@ a {
   .analytics-dashboard__content {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 118px minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
     gap: 0.3rem;
   }
 
   .depth-chart-card {
-    min-height: 0;
+    display: none;
   }
 
   .depth-chart-wrap {
@@ -1674,6 +1952,20 @@ a {
   .analytics-note {
     display: none;
   }
+
+  .paper-chart-card__header > div:first-child > span,
+  .paper-chart-summary span:nth-child(2) {
+    display: none;
+  }
+
+  .paper-chart-tabs button {
+    padding-inline: 0.42rem;
+    font-size: 0.38rem;
+  }
+
+  .paper-chart-summary {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 430px) {
@@ -1709,6 +2001,29 @@ a {
 
   .last-market__meta span:last-child {
     display: none;
+  }
+}
+
+@media (max-height: 850px) and (min-width: 781px) {
+  .paper-quote {
+    display: none;
+  }
+
+  .book-snapshot {
+    padding-block: 0.42rem 0.48rem;
+  }
+
+  .book-snapshot dl div {
+    min-height: 46px;
+    padding-block: 0.36rem;
+  }
+
+  .book-snapshot dl small {
+    display: none;
+  }
+
+  .book-snapshot dd {
+    margin-top: 0.22rem;
   }
 }
 

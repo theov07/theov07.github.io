@@ -74,6 +74,26 @@ permalink: /orderbook-preview/
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
         </div>
         <div class="book-rows" id="bid-book" aria-label="Live BTCUSDT bid levels"></div>
+        <section class="paper-quote paper-quote--bid" aria-label="Simulated bid quote">
+          <header>
+            <span>PAPER QUOTE · BID</span>
+            <small><i></i>SIMULATED</small>
+          </header>
+          <div class="paper-quote__price">
+            <span id="paper-bid-status">INITIALIZING QUEUE</span>
+            <strong id="paper-bid-quote">—</strong>
+            <small>0.002 BTC · MICROPRICE MODEL</small>
+          </div>
+          <div class="paper-quote__queue">
+            <p><span>EST. QUEUE AHEAD</span><strong id="paper-bid-queue">—</strong></p>
+            <div><i id="paper-bid-queue-bar"></i></div>
+          </div>
+          <dl>
+            <div><dt>PAPER FILLS</dt><dd id="paper-bid-fills">0</dd></div>
+            <div><dt>LAST FILL</dt><dd id="paper-bid-last">—</dd></div>
+          </dl>
+          <p class="paper-quote__notice">RESEARCH SIMULATION · NO ORDER SENT</p>
+        </section>
         <section class="book-snapshot book-snapshot--bid" aria-label="Basic bid-side statistics">
           <header><span>LIQUIDITY SNAPSHOT</span><small>BUY SIDE · LIVE</small></header>
           <dl>
@@ -151,6 +171,26 @@ permalink: /orderbook-preview/
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
         </div>
         <div class="book-rows" id="ask-book" aria-label="Live BTCUSDT ask levels"></div>
+        <section class="paper-quote paper-quote--ask" aria-label="Simulated ask quote">
+          <header>
+            <span>PAPER QUOTE · ASK</span>
+            <small><i></i>SIMULATED</small>
+          </header>
+          <div class="paper-quote__price">
+            <span id="paper-ask-status">INITIALIZING QUEUE</span>
+            <strong id="paper-ask-quote">—</strong>
+            <small>0.002 BTC · MICROPRICE MODEL</small>
+          </div>
+          <div class="paper-quote__queue">
+            <p><span>EST. QUEUE AHEAD</span><strong id="paper-ask-queue">—</strong></p>
+            <div><i id="paper-ask-queue-bar"></i></div>
+          </div>
+          <dl>
+            <div><dt>PAPER FILLS</dt><dd id="paper-ask-fills">0</dd></div>
+            <div><dt>LAST FILL</dt><dd id="paper-ask-last">—</dd></div>
+          </dl>
+          <p class="paper-quote__notice">RESEARCH SIMULATION · NO ORDER SENT</p>
+        </section>
         <section class="book-snapshot book-snapshot--ask" aria-label="Basic ask-side statistics">
           <header><span>EXECUTION SNAPSHOT</span><small>SELL SIDE · LIVE</small></header>
           <dl>
@@ -189,24 +229,7 @@ permalink: /orderbook-preview/
           </div>
         </header>
 
-        <div class="analytics-dashboard__content">
-          <article class="depth-chart-card" aria-labelledby="depth-chart-title">
-            <header class="depth-chart-card__header">
-              <div>
-                <h3 id="depth-chart-title">ORDER BOOK DEPTH</h3>
-                <p>Split depth scale · top 20 levels · live spread isolated</p>
-              </div>
-              <div class="depth-chart-legend" aria-label="Chart legend">
-                <span><i class="depth-chart-legend__line depth-chart-legend__line--bid"></i>Bid depth</span>
-                <span><i class="depth-chart-legend__line depth-chart-legend__line--ask"></i>Ask depth</span>
-              </div>
-            </header>
-            <div class="depth-chart-wrap">
-              <canvas id="depth-chart" width="980" height="300" role="img" aria-label="Waiting for live bid and ask depth"></canvas>
-            </div>
-          </article>
-
-          <div class="analytics-metrics" aria-label="Live market making metrics">
+        <div class="analytics-metrics" aria-label="Live market making metrics">
             <article class="metric-card metric-card--blue">
               <span class="metric-card__label">MICROPRICE</span>
               <strong id="analytics-microprice">—</strong>
@@ -228,19 +251,57 @@ permalink: /orderbook-preview/
               <small>BUY FLOW / QUEUE</small>
             </article>
             <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">SIGNED MARKOUT · 1S</span>
+              <span class="metric-card__label">PAPER MARKOUT · 1S</span>
               <strong id="markout-1s">COLLECTING</strong>
-              <small>AGGRESSOR-SIGNED</small>
+              <small>FROM SIMULATED FILLS</small>
             </article>
             <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">SIGNED MARKOUT · 5S</span>
+              <span class="metric-card__label">PAPER MARKOUT · 5S</span>
               <strong id="markout-5s">COLLECTING</strong>
-              <small>AGGRESSOR-SIGNED</small>
+              <small>FROM SIMULATED FILLS</small>
             </article>
-          </div>
         </div>
 
-        <p class="analytics-note">Fill metrics are queue-consumption proxies based on public aggregate trades and displayed L1 liquidity. Markouts measure aggressor-signed post-trade mid-price moves. Research visualization only.</p>
+        <div class="analytics-dashboard__content">
+          <article class="depth-chart-card" aria-labelledby="depth-chart-title">
+            <header class="depth-chart-card__header">
+              <div>
+                <h3 id="depth-chart-title">ORDER BOOK DEPTH</h3>
+                <p>Split depth · top 20 levels</p>
+              </div>
+              <div class="depth-chart-legend" aria-label="Chart legend">
+                <span><i class="depth-chart-legend__line depth-chart-legend__line--bid"></i>Bid</span>
+                <span><i class="depth-chart-legend__line depth-chart-legend__line--ask"></i>Ask</span>
+              </div>
+            </header>
+            <div class="depth-chart-wrap">
+              <canvas id="depth-chart" width="760" height="300" role="img" aria-label="Waiting for live bid and ask depth"></canvas>
+            </div>
+          </article>
+
+          <article class="paper-chart-card" aria-labelledby="paper-chart-title">
+            <header class="paper-chart-card__header">
+              <div>
+                <span>PAPER EXECUTION LAB · LIVE MODEL</span>
+                <h3 id="paper-chart-title">MID PRICE &amp; FILLS</h3>
+              </div>
+              <div class="paper-chart-tabs" role="group" aria-label="Paper trading chart view">
+                <button class="is-active" type="button" data-paper-chart="fills" aria-pressed="true">MID PRICE &amp; FILLS</button>
+                <button type="button" data-paper-chart="pnl" aria-pressed="false">P&amp;L CURVE</button>
+              </div>
+            </header>
+            <div class="paper-chart-summary" aria-label="Paper trading summary">
+              <span>PAPER P&amp;L <strong id="paper-pnl">0.00 USDT</strong></span>
+              <span>INVENTORY <strong id="paper-inventory">0.000 BTC</strong></span>
+              <span>FILLS <strong id="paper-fill-count">0</strong></span>
+            </div>
+            <div class="paper-chart-wrap">
+              <canvas id="paper-chart" width="980" height="300" role="img" aria-label="Waiting for paper trading history"></canvas>
+            </div>
+          </article>
+        </div>
+
+        <p class="analytics-note">Paper fills use a queue-consumption model driven by public aggregate trades and displayed L1 liquidity. No order is created, transmitted or executed. Research visualization only.</p>
       </section>
     </main>
 
