@@ -63,11 +63,7 @@ exclude:
   - Gemfile.lock
   - README.md
   - package.json
-  - Dockerfile
-  - docker-compose.yaml
-  - CONTRIBUTING.md
   - LICENSE
-  - optimize_avatar.py
 
 markdown: kramdown
 highlighter: rouge
