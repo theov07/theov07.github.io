@@ -1051,6 +1051,23 @@ a {
   height: 34px;
 }
 
+.terminal-brand__copy small,
+.market-name__venue {
+  font-size: 0.64rem;
+}
+
+.header-stat span {
+  font-size: 0.62rem;
+}
+
+.connection__copy strong {
+  font-size: 0.67rem;
+}
+
+.connection__copy small {
+  font-size: 0.57rem;
+}
+
 .terminal-shell {
   grid-template-columns: minmax(215px, 0.58fr) minmax(520px, 1.55fr) minmax(215px, 0.58fr);
   height: auto;
@@ -1078,7 +1095,7 @@ a {
 .personal-context span {
   display: block;
   overflow: hidden;
-  font-size: clamp(0.54rem, 0.62vw, 0.68rem);
+  font-size: clamp(0.63rem, 0.71vw, 0.77rem);
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1096,7 +1113,7 @@ a {
   padding: 0.62rem 0.72rem;
   border: 1px solid var(--line);
   color: var(--muted-light);
-  font-size: 0.54rem;
+  font-size: 0.63rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   transition: border-color 150ms ease, color 150ms ease;
@@ -1121,13 +1138,17 @@ a {
 
 .book-panel__signal {
   padding: 0.28rem 0.38rem;
-  font-size: 0.43rem;
+  font-size: 0.52rem;
+}
+
+.book-panel__eyebrow {
+  font-size: 0.61rem;
 }
 
 .book-columns {
   min-height: 23px;
   padding-inline: 0.8rem;
-  font-size: 0.43rem;
+  font-size: 0.52rem;
 }
 
 .book-rows {
@@ -1140,7 +1161,7 @@ a {
 .book-row {
   min-height: 24px;
   padding-inline: 0.8rem;
-  font-size: clamp(0.64rem, 0.76vw, 0.78rem);
+  font-size: clamp(0.73rem, 0.85vw, 0.87rem);
   font-weight: 650;
 }
 
@@ -1167,7 +1188,7 @@ a {
 
 .paper-quote > header {
   color: var(--muted-light);
-  font-size: 0.46rem;
+  font-size: 0.55rem;
   font-weight: 850;
   letter-spacing: 0.13em;
 }
@@ -1178,7 +1199,7 @@ a {
   gap: 0.3rem;
   color: var(--muted);
   font: inherit;
-  font-size: 0.38rem;
+  font-size: 0.47rem;
 }
 
 .paper-quote > header i {
@@ -1207,7 +1228,7 @@ a {
 .paper-quote__price > small {
   display: block;
   color: var(--muted);
-  font-size: 0.38rem;
+  font-size: 0.47rem;
   font-weight: 800;
   letter-spacing: 0.1em;
 }
@@ -1231,7 +1252,7 @@ a {
 .paper-quote__queue p {
   margin: 0 0 0.3rem;
   color: var(--muted);
-  font-size: 0.4rem;
+  font-size: 0.49rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -1239,7 +1260,7 @@ a {
 .paper-quote__queue p strong {
   color: var(--muted-light);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.48rem;
+  font-size: 0.57rem;
 }
 
 .paper-quote__queue > div {
@@ -1283,7 +1304,7 @@ a {
 
 .paper-quote dt {
   color: var(--muted);
-  font-size: 0.36rem;
+  font-size: 0.45rem;
   font-weight: 850;
   letter-spacing: 0.09em;
 }
@@ -1293,19 +1314,10 @@ a {
   overflow: hidden;
   color: var(--text);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: clamp(0.58rem, 0.68vw, 0.72rem);
+  font-size: clamp(0.67rem, 0.77vw, 0.81rem);
   font-weight: 750;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-.paper-quote__notice {
-  margin: 0.46rem 0 0;
-  color: #4f5b6c;
-  font-size: 0.34rem;
-  font-weight: 800;
-  letter-spacing: 0.09em;
-  text-align: center;
 }
 
 .book-snapshot {
@@ -1322,7 +1334,7 @@ a {
   gap: 0.5rem;
   margin-bottom: 0.52rem;
   color: var(--muted-light);
-  font-size: 0.48rem;
+  font-size: 0.57rem;
   font-weight: 850;
   letter-spacing: 0.13em;
 }
@@ -1330,7 +1342,7 @@ a {
 .book-snapshot header small {
   color: var(--muted);
   font: inherit;
-  font-size: 0.4rem;
+  font-size: 0.49rem;
   white-space: nowrap;
 }
 
@@ -1362,7 +1374,7 @@ a {
 .book-snapshot dt {
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.43rem;
+  font-size: 0.52rem;
   font-weight: 850;
   letter-spacing: 0.09em;
   text-overflow: ellipsis;
@@ -1374,7 +1386,7 @@ a {
   overflow: hidden;
   color: var(--text);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: clamp(0.66rem, 0.76vw, 0.82rem);
+  font-size: clamp(0.75rem, 0.85vw, 0.91rem);
   font-weight: 750;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1393,7 +1405,7 @@ a {
   margin-top: 0.22rem;
   overflow: hidden;
   color: #566173;
-  font-size: 0.36rem;
+  font-size: 0.45rem;
   font-weight: 750;
   letter-spacing: 0.08em;
   text-overflow: ellipsis;
@@ -1411,18 +1423,26 @@ a {
 
 .last-market__price {
   margin-top: 0.32rem;
-  font-size: clamp(2.2rem, 4.5vh, 3.1rem);
+  font-size: clamp(2.02rem, 4.1vh, 2.85rem);
 }
 
 .last-market__meta {
   margin-top: 0.36rem;
-  font-size: 0.58rem;
+  font-size: 0.67rem;
+}
+
+.last-market__label {
+  font-size: 0.61rem;
 }
 
 .spread-line {
   min-height: 28px;
   padding-inline: 0.65rem;
-  font-size: 0.48rem;
+  font-size: 0.57rem;
+}
+
+.spread-line strong {
+  font-size: 0.73rem;
 }
 
 .portfolio-nav {
@@ -1431,11 +1451,11 @@ a {
 
 .portfolio-nav__label {
   margin-bottom: 0.42rem;
-  font-size: 0.54rem;
+  font-size: 0.63rem;
 }
 
 .portfolio-nav__label small {
-  font-size: 0.44rem;
+  font-size: 0.53rem;
 }
 
 .portfolio-nav__grid {
@@ -1459,7 +1479,7 @@ a {
 
 .route-order__type,
 .route-order__action {
-  font-size: 0.5rem;
+  font-size: 0.59rem;
 }
 
 .market-disclaimer {
@@ -1479,22 +1499,9 @@ a {
   margin-bottom: 0.26rem;
 }
 
-.analytics-dashboard__header > div:first-child > span {
-  font-size: 0.44rem;
-}
-
 .analytics-dashboard__header h2 {
-  margin-top: 0.18rem;
-  font-size: 0.88rem;
-}
-
-.analytics-dashboard__badges {
-  gap: 0.25rem;
-}
-
-.analytics-dashboard__badges span {
-  padding: 0.28rem 0.35rem;
-  font-size: 0.38rem;
+  margin: 0;
+  font-size: 0.97rem;
 }
 
 .analytics-dashboard__content {
@@ -1528,21 +1535,25 @@ a {
 .depth-chart-card h3,
 .paper-chart-card h3 {
   margin: 0;
-  font-size: 0.7rem;
+  font-size: 0.79rem;
   letter-spacing: 0.09em;
 }
 
 .depth-chart-card p {
   margin-top: 0.14rem;
-  font-size: 0.52rem;
+  font-size: 0.61rem;
 }
 
 .depth-chart-legend {
-  font-size: 0.52rem;
+  font-size: 0.61rem;
 }
 
 .depth-chart-wrap {
   min-height: 0;
+}
+
+.depth-chart-wrap::before {
+  font-size: 0.51rem;
 }
 
 .analytics-metrics {
@@ -1559,26 +1570,17 @@ a {
 }
 
 .metric-card__label {
-  font-size: clamp(0.46rem, 0.55vw, 0.58rem);
+  font-size: clamp(0.55rem, 0.64vw, 0.67rem);
 }
 
 .metric-card strong {
   margin-top: 0.28rem;
-  font-size: clamp(0.82rem, 1vw, 1.05rem);
+  font-size: clamp(0.91rem, 1.09vw, 1.14rem);
 }
 
 .metric-card small {
   margin-top: 0.2rem;
-  font-size: clamp(0.38rem, 0.44vw, 0.48rem);
-}
-
-.paper-chart-card__header > div:first-child > span {
-  display: block;
-  margin-bottom: 0.2rem;
-  color: var(--blue);
-  font-size: 0.4rem;
-  font-weight: 850;
-  letter-spacing: 0.12em;
+  font-size: clamp(0.47rem, 0.53vw, 0.57rem);
 }
 
 .paper-chart-tabs {
@@ -1594,7 +1596,7 @@ a {
   color: var(--muted);
   cursor: pointer;
   font: inherit;
-  font-size: 0.45rem;
+  font-size: 0.54rem;
   font-weight: 850;
   letter-spacing: 0.08em;
   transition: color 150ms ease, background 150ms ease;
@@ -1625,7 +1627,7 @@ a {
   justify-content: center;
   gap: 0.42rem;
   color: var(--muted);
-  font-size: 0.38rem;
+  font-size: 0.47rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
@@ -1637,7 +1639,7 @@ a {
 .paper-chart-summary strong {
   color: var(--text);
   font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 0.52rem;
+  font-size: 0.61rem;
 }
 
 .paper-chart-summary strong.is-positive {
@@ -1667,6 +1669,15 @@ a {
 .trade-tape__label,
 .trade-tape__profile {
   padding-inline: 0.85rem;
+  font-size: 0.61rem;
+}
+
+.trade-chip strong {
+  font-size: 0.73rem;
+}
+
+.trade-chip span {
+  font-size: 0.61rem;
 }
 
 @keyframes live-pulse {
