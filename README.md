@@ -20,11 +20,13 @@ Then open `http://localhost:4000`.
 
 ## Content structure
 
-- `_pages/about.md`: homepage
+- `_pages/home.html`: live-market homepage and portfolio navigation
 - `_pages/experience.md`: professional experience
 - `_pages/education.md`: academic background
 - `_pages/projects.md`: selected projects and competitions
 - `_pages/cv.md`: web resume
+- `assets/css/orderbook-preview.css`: homepage visual system
+- `assets/js/orderbook-preview.js`: live order book and paper-execution dashboard
 - `_sass/_custom.scss`: site-specific visual system
 - `_config.yml`: Jekyll and SEO configuration
 
