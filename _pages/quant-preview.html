@@ -1,0 +1,64 @@
+---
+layout: quant-preview
+title: "Quant Lab Preview"
+description: "Private preview index for the Quant Lab portfolio redesign."
+permalink: /preview/
+preview_section: overview
+sitemap: false
+---
+<section class="ql-hero">
+  <div class="ql-shell ql-hero__grid">
+    <div>
+      <p class="ql-kicker">ISOLATED DESIGN BRANCH · REVIEW ENVIRONMENT</p>
+      <h1>One portfolio.<br><em>One market language.</em></h1>
+      <p class="ql-hero__lede">A restrained Quant Lab design system connecting research, experience, education and engineering to the live market-microstructure identity of the homepage.</p>
+    </div>
+    <aside>
+      <div class="ql-preview-state"><strong>PUBLIC SITE UNCHANGED</strong><br>Every route below is isolated under <code>/preview/</code>. Nothing replaces the current pages before validation.</div>
+      <div class="ql-hero__profile">
+        <img src="{{ '/images/avatar.webp' | relative_url }}" alt="Théo Verdelhan">
+        <p><strong>THÉO VERDELHAN · QUANT RESEARCH</strong><br>Market microstructure, systematic trading and derivatives research.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="ql-section">
+  <div class="ql-shell">
+    <header class="ql-section-heading">
+      <div><p class="ql-kicker">PREVIEW ROUTER</p><h2>Review every redesigned surface.</h2></div>
+      <p>The content remains factual and portfolio-led. Live BTCUSDT data is a shared visual context, never presented as proprietary performance.</p>
+    </header>
+    <div class="ql-preview-grid">
+      <a class="ql-card ql-preview-card" href="{{ '/preview/education/' | relative_url }}">
+        <p class="ql-card__meta"><span>LMT · 01</span><span>FOUNDATION</span></p><h2>Education</h2><p>Degrees, coursework and the direct bridge from theory to quantitative research practice.</p><span class="ql-link">Open preview</span>
+      </a>
+      <a class="ql-card ql-preview-card" href="{{ '/preview/experience/' | relative_url }}">
+        <p class="ql-card__meta"><span>MKT · 02</span><span>EXECUTION</span></p><h2>Experience</h2><p>A professional track record presented as a clear research and engineering progression.</p><span class="ql-link">Open preview</span>
+      </a>
+      <a class="ql-card ql-preview-card" href="{{ '/preview/projects/' | relative_url }}">
+        <p class="ql-card__meta"><span>STP · 03</span><span>SYSTEMS</span></p><h2>Projects</h2><p>Trading infrastructure, numerical finance and financial machine learning in one filterable catalogue.</p><span class="ql-link">Open preview</span>
+      </a>
+      <a class="ql-card ql-preview-card" href="{{ '/preview/research/' | relative_url }}">
+        <p class="ql-card__meta"><span>IOC · 04</span><span>RESEARCH</span></p><h2>Research Hub</h2><p>Four evidence-led studies with consistent metadata, methodology, diagnostics and limitations.</p><span class="ql-link">Open preview</span>
+      </a>
+      <a class="ql-card ql-preview-card" href="{{ '/preview/research/market-making/' | relative_url }}">
+        <p class="ql-card__meta"><span>LIVE · 05</span><span>MICROSTRUCTURE</span></p><h2>Market Making Study</h2><p>The strongest visual bridge between the dashboard homepage and the deeper research site.</p><span class="ql-link">Open preview</span>
+      </a>
+      <a class="ql-card ql-preview-card" href="{{ '/' | relative_url }}">
+        <p class="ql-card__meta"><span>MID · 00</span><span>PRODUCTION</span></p><h2>Current Site</h2><p>Return to the unchanged production portfolio at any point during review.</p><span class="ql-link">Open current site</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="ql-section ql-section--tint">
+  <div class="ql-shell">
+    <div class="ql-stat-grid">
+      <div class="ql-stat"><span>DATA SOURCE</span><strong>BTCUSDT</strong><p>One existing Binance public WebSocket stream.</p></div>
+      <div class="ql-stat" style="--stat-color: var(--ql-bid)"><span>SESSION CONTROL</span><strong>10:00</strong><p>Stops on page exit or after ten minutes.</p></div>
+      <div class="ql-stat" style="--stat-color: var(--ql-ask)"><span>EXECUTION MODE</span><strong>DISPLAY</strong><p>No order, account or private endpoint.</p></div>
+      <div class="ql-stat" style="--stat-color: var(--ql-gold)"><span>RELEASE STATE</span><strong>PREVIEW</strong><p>No production route has been replaced.</p></div>
+    </div>
+  </div>
+</section>

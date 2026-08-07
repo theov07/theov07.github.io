@@ -1,0 +1,49 @@
+---
+layout: quant-preview
+title: "Research Hub Preview"
+description: "Four evidence-led quantitative research case studies."
+permalink: /preview/research/
+preview_section: research
+sitemap: false
+---
+<section class="ql-hero">
+  <div class="ql-shell ql-hero__grid">
+    <div><p class="ql-kicker">IOC · SELECTED QUANTITATIVE RESEARCH</p><h1>Evidence before<br><em>performance language.</em></h1><p class="ql-hero__lede">Four end-to-end studies spanning high-frequency price discovery, execution-aware market making, systematic competition research and mixed-frequency macro forecasting.</p></div>
+    <aside><div class="ql-route"><div class="ql-route__row"><span>STANDARD</span><strong>QUESTION → METHOD → EVIDENCE</strong><b>ACTIVE</b></div><div class="ql-route__row"><span>DISCLOSURE</span><strong>LIMITS + ASSUMPTIONS</strong><b>REQUIRED</b></div></div><div class="ql-hero__profile"><img src="{{ '/images/avatar.webp' | relative_url }}" alt="Théo Verdelhan"><p><strong>REVIEWABLE RESEARCH</strong><br>Statistical evidence, simulation and competition outcomes clearly separated.</p></div></aside>
+  </div>
+</section>
+
+{% include quant-preview/study-nav.html %}
+
+<section class="ql-section ql-section--tight">
+  <div class="ql-shell ql-standard-grid">
+    <article><span>01 · SIGNAL</span><h3>Economic question</h3><p>Define the mechanism and hypothesis before optimization.</p></article><article><span>02 · VALIDATION</span><h3>Temporal evidence</h3><p>Stress conventions, sampling choices and stability.</p></article><article><span>03 · EXECUTION</span><h3>Market constraints</h3><p>Model queues, fills, latency and risk where relevant.</p></article><article><span>04 · LIMITS</span><h3>Explicit boundaries</h3><p>Show what worked, what failed and what remains incomplete.</p></article>
+  </div>
+</section>
+
+<section class="ql-section">
+  <div class="ql-shell">
+    <header class="ql-section-heading"><div><p class="ql-kicker">CASE STUDIES</p><h2>Research, not a project catalogue.</h2></div><p>Every card is fully clickable. Each detail page uses the same visual grammar, true project dates and locally preserved figures.</p></header>
+    <div class="ql-hub-grid">
+      <a class="ql-card ql-case" href="{{ '/preview/research/lead-lag/' | relative_url }}">
+        <div class="ql-case__visual"><img src="{{ '/images/research-preview/lead-lag/contrast-heatmap.png' | relative_url }}" alt="Multi-scale lead-lag contrast heatmap"></div><div class="ql-case__body"><p class="ql-card__meta"><span>PUBLIC · MAY–JUN 2026</span><span>01</span></p><p class="ql-kicker">MARKET MICROSTRUCTURE</p><h2>Multi-Scale Lead–Lag</h2><p>An asynchronous-tick Hayashi–Koike implementation adapted to cross-venue and cross-product crypto price discovery.</p><div class="ql-tags"><span>Hayashi–Yoshida</span><span>Wavelets</span><span>Tick Data</span></div><div class="ql-case__footer"><span>OPEN CASE STUDY</span><span>↗</span></div></div>
+      </a>
+      <a class="ql-card ql-case" href="{{ '/preview/research/market-making/' | relative_url }}">
+        <div class="ql-case__visual"><img src="{{ '/images/research-preview/market-making/order-book-depth.png' | relative_url }}" alt="BTC order-book cumulative depth chart"></div><div class="ql-case__body"><p class="ql-card__meta"><span>PUBLIC · APR–MAY 2026</span><span>02</span></p><p class="ql-kicker">EXECUTION RESEARCH</p><h2>Real-Time Market Making</h2><p>A live market-data pipeline and paper-execution engine designed around queue-aware fills, markouts, inventory and explicit risk gates.</p><div class="ql-tags"><span>WebSocket</span><span>L2 Queues</span><span>Markouts</span></div><div class="ql-case__footer"><span>OPEN CASE STUDY</span><span>↗</span></div></div>
+      </a>
+      <a class="ql-card ql-case" href="{{ '/preview/research/imc-prosperity/' | relative_url }}">
+        <div class="ql-case__visual"><img src="{{ '/images/research-preview/imc/round-3-strategy-comparison.png' | relative_url }}" alt="IMC Prosperity strategy comparison"></div><div class="ql-case__body"><p class="ql-card__meta"><span>PUBLIC · MAR–JUN 2026</span><span>03</span></p><p class="ql-kicker">SYSTEMATIC TRADING</p><h2>IMC Prosperity 4</h2><p>A six-round, three-person research programme covering market making, options, counterparty signals, relative value and integration.</p><div class="ql-tags"><span>Market Making</span><span>Options</span><span>Backtesting</span></div><div class="ql-case__footer"><span>OPEN CASE STUDY</span><span>↗</span></div></div>
+      </a>
+      <a class="ql-card ql-case" href="{{ '/preview/research/gdp-forecasting/' | relative_url }}">
+        <div class="ql-case__visual"><img src="{{ '/images/research-preview/gdp/long-sample-oos.png' | relative_url }}" alt="Out-of-sample GDP growth forecasts"></div><div class="ql-case__body"><p class="ql-card__meta"><span>PUBLIC · JAN–FEB 2026</span><span>04</span></p><p class="ql-kicker">ECONOMETRICS</p><h2>GDP Forecasting with MIDAS</h2><p>A mixed-frequency forecasting replication with daily financial data, recursive evaluation and separate lag/lead dynamics.</p><div class="ql-tags"><span>MIDAS</span><span>PCA</span><span>Nowcasting</span></div><div class="ql-case__footer"><span>OPEN CASE STUDY</span><span>↗</span></div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="ql-section ql-section--tint">
+  <div class="ql-shell ql-thesis">
+    <article class="ql-card"><p class="ql-kicker">EDITORIAL RULE</p><h2>Outcomes keep their context.</h2><p>Competition P&amp;L remains labelled as in-game or backtest P&amp;L. Market-making fills remain simulated. Forecasts keep their benchmark. Lead–lag remains statistical price-discovery evidence, not executable arbitrage.</p></article>
+    <article class="ql-card" style="--card-accent:var(--ql-ask)"><p class="ql-kicker">RESEARCH BOUNDARY</p><h2>Negative results stay visible.</h2><p>A serious portfolio does not hide unstable specifications, short evaluation samples, execution assumptions or strategies that lost against their benchmark.</p></article>
+  </div>
+</section>

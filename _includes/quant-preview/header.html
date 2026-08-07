@@ -1,0 +1,27 @@
+<header class="ql-header">
+  <div class="ql-shell ql-header__inner">
+    <a class="ql-brand" href="{{ '/preview/' | relative_url }}" aria-label="Quant Lab preview overview">
+      <span class="ql-brand__mark">TV</span>
+      <span class="ql-brand__copy">
+        <strong>THÉO VERDELHAN</strong>
+        <small>QUANTITATIVE RESEARCH · PORTFOLIO LAB</small>
+      </span>
+    </a>
+
+    <button class="ql-nav-toggle" type="button" aria-expanded="false" aria-controls="ql-nav">
+      <span>MENU</span><i></i><i></i>
+    </button>
+
+    <nav class="ql-nav" id="ql-nav" aria-label="Preview navigation">
+      <a href="{{ '/preview/education/' | relative_url }}" {% if page.preview_section == 'education' %}aria-current="page"{% endif %}><span>LMT</span>Education</a>
+      <a href="{{ '/preview/experience/' | relative_url }}" {% if page.preview_section == 'experience' %}aria-current="page"{% endif %}><span>MKT</span>Experience</a>
+      <a href="{{ '/preview/research/' | relative_url }}" {% if page.preview_section == 'research' %}aria-current="page"{% endif %}><span>IOC</span>Research</a>
+      <a href="{{ '/preview/projects/' | relative_url }}" {% if page.preview_section == 'projects' %}aria-current="page"{% endif %}><span>STP</span>Projects</a>
+    </nav>
+
+    <div class="ql-live" aria-label="Live BTC USDT market status">
+      <div><span class="ql-status-dot"></span><strong data-qm="status">CONNECTING</strong></div>
+      <p><span>BTC/USDT</span><b data-qm="price">—</b></p>
+    </div>
+  </div>
+</header>
