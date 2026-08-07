@@ -1,7 +1,13 @@
 ---
 layout: null
+title: "IMC Prosperity 4"
 permalink: /research/imc-prosperity/
 sitemap: true
+schema_type: "TechArticle"
+schema_date_created: 2026-03-22
+schema_date_modified: 2026-06-12
+schema_repository: "https://github.com/theov07/IMC_PROSPERITY_4_COMPETITION"
+schema_keywords: "IMC Prosperity, systematic trading, market making, options, relative value, backtesting"
 ---
 <!doctype html>
 <html lang="en">
@@ -28,6 +34,14 @@ sitemap: true
       </section>
 
       {% include research-preview/project-nav.html active="imc" %}
+
+      {% include research-preview/project-profile.html
+        period="Mar–Jun 2026"
+        role="Co-researcher · framework, backtesting, execution diagnostics and strategy integration"
+        team="3-person team · Relativistic Quants"
+        data="Official simulator inputs, logs and competition scorecards"
+        artifacts="Public code · backtests · dashboards · exact submission archive"
+      %}
 
       <section class="rp-section rp-section--compact">
         <div class="rp-shell">
@@ -73,6 +87,20 @@ sitemap: true
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/imc/round-2-manual-landscape.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/round-2-manual-landscape.png' | relative_url }}" alt="IMC Prosperity Round 2 manual-trading payoff landscape and rank-based speed multiplier" loading="lazy"></a>
+            <figcaption><strong>Round 2 payoff landscape.</strong> A 3,065-observation field sample turns a qualitative speed choice into an explicit PnL surface. The selected recommendation is read against both expected payoff and the rank-dependent multiplier.</figcaption>
+          </figure>
+          <aside class="research-note research-note--blue">
+            <p class="eyebrow">Manual market design</p>
+            <h3>Model the scoring rule before choosing the action</h3>
+            <p>The manual component was treated as a small mechanism-design problem: reconstruct the payoff mapping, estimate where the field concentrates and select a robust region rather than the sample maximum alone.</p>
+          </aside>
         </div>
       </section>
 
@@ -159,6 +187,20 @@ sitemap: true
             <p class="eyebrow accent-amber">Interpretation limits</p>
             <h3>A competition is a synthetic market</h3>
             <p>All PnL values on this page are competition or backtest units. The provided simulator, fictional products, participant behaviour and execution rules differ from live markets. Rankings are factual competition outcomes; strategy profitability is not generalized beyond that environment.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/imc/final-algorithmic-standing.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/imc/final-algorithmic-standing.png' | relative_url }}" alt="Official IMC Prosperity 4 leaderboard showing Relativistic Quants at algorithmic rank 514" loading="lazy"></a>
+            <figcaption><strong>Official final algorithmic standing.</strong> Relativistic Quants finished #514 worldwide and #17 in France algorithmically. The broader overall score also includes the separate manual component.</figcaption>
+          </figure>
+          <aside class="research-note research-note--green">
+            <p class="eyebrow accent-green">Public result</p>
+            <h3>Outcome preserved with its context</h3>
+            <p>The repository retains the official scorecards alongside strategy code and backtests. This separates factual leaderboard outcomes from simulated candidate PnL and makes the final result independently reviewable.</p>
           </aside>
         </div>
       </section>

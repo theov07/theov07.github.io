@@ -11,6 +11,20 @@ permalink: /
     <meta name="robots" content="index, follow">
     <meta name="description" content="Live BTCUSDT order book interface for Théo Verdelhan's quantitative portfolio.">
     <title>BTCUSDT Live Order Book · Théo Verdelhan</title>
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Théo Verdelhan · Quantitative Research Portfolio">
+    <meta property="og:description" content="Market microstructure, systematic trading, execution research and derivatives projects by Théo Verdelhan.">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ '/images/social/portfolio-og.png' | absolute_url }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Théo Verdelhan quantitative research portfolio">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Théo Verdelhan · Quantitative Research Portfolio">
+    <meta name="twitter:description" content="Market microstructure, systematic trading, execution research and derivatives projects.">
+    <meta name="twitter:image" content="{{ '/images/social/portfolio-og.png' | absolute_url }}">
+    {% include structured-data.html title="Théo Verdelhan · Quantitative Research Portfolio" description="Market microstructure, systematic trading, execution research and derivatives projects by Théo Verdelhan." %}
     <link rel="icon" href="{{ '/images/favicon.ico' | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/orderbook-preview.css' | relative_url }}">
   </head>
@@ -310,5 +324,6 @@ permalink: /
       <div class="no-script">JavaScript is required to display the live order book. Portfolio links remain available from the current site.</div>
     </noscript>
     <script src="{{ '/assets/js/orderbook-preview.js' | relative_url }}" defer></script>
+    {% include privacy-analytics.html %}
   </body>
 </html>

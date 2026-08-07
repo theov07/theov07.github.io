@@ -1,0 +1,49 @@
+{% assign schema_title = include.title | default: page.title | default: site.title %}
+{% assign schema_description = include.description | default: page.description | default: site.description %}
+{% assign schema_type = page.schema_type | default: include.type | default: "WebPage" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/#theo-verdelhan",
+      "name": "Théo Verdelhan",
+      "url": "{{ site.url }}/",
+      "image": "{{ '/images/avatar.webp' | absolute_url }}",
+      "jobTitle": "Quantitative Researcher",
+      "sameAs": [
+        "https://github.com/theov07",
+        "https://www.linkedin.com/in/theoverdelhan/"
+      ],
+      "knowsAbout": [
+        "Market microstructure",
+        "Systematic trading",
+        "Execution research",
+        "Derivatives pricing",
+        "Financial econometrics"
+      ]
+    },
+    {
+      "@type": {{ schema_type | jsonify }},
+      "@id": "{{ page.url | absolute_url }}#content",
+      "name": {{ schema_title | strip_html | jsonify }},
+      "description": {{ schema_description | strip_html | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "image": "{{ '/images/social/portfolio-og.png' | absolute_url }}",
+      "isAccessibleForFree": true,
+      "author": { "@id": "{{ site.url }}/#theo-verdelhan" },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "name": "Théo Verdelhan · Quantitative Research",
+        "url": "{{ site.url }}/"
+      }{% if page.schema_date_created %},
+      "dateCreated": {{ page.schema_date_created | date_to_xmlschema | jsonify }}{% endif %}{% if page.schema_date_modified %},
+      "dateModified": {{ page.schema_date_modified | date_to_xmlschema | jsonify }}{% endif %}{% if page.schema_repository %},
+      "codeRepository": {{ page.schema_repository | jsonify }}{% endif %}{% if page.schema_keywords %},
+      "keywords": {{ page.schema_keywords | jsonify }}{% endif %}
+    }
+  ]
+}
+</script>

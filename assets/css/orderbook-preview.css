@@ -2296,6 +2296,23 @@ a {
   }
 }
 
+@media (max-height: 760px) and (min-width: 781px) {
+  .personal-context {
+    --portrait-size: 52px;
+    gap: 0.72rem;
+    margin-bottom: 0.46rem;
+    padding-block: 0.42rem;
+  }
+
+  .personal-context p {
+    margin-top: 0.18rem;
+  }
+
+  .last-market {
+    padding-top: 0.1rem;
+  }
+}
+
 @media (max-height: 700px) and (min-width: 781px) {
   :root {
     --tape-height: 32px;

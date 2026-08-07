@@ -669,7 +669,10 @@
     context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
     context.clearRect(0, 0, displayWidth, displayHeight);
 
-    const padding = { top: 50, right: 24, bottom: 38, left: 70 };
+    const compactHeight = displayHeight < 190;
+    const padding = compactHeight
+      ? { top: 44, right: 18, bottom: 30, left: 62 }
+      : { top: 50, right: 24, bottom: 38, left: 70 };
     const chartWidth = displayWidth - padding.left - padding.right;
     const chartHeight = displayHeight - padding.top - padding.bottom;
     const minPrice = bidDepth[bidDepth.length - 1].price;
@@ -690,10 +693,11 @@
     const baseline = padding.top + chartHeight;
 
     context.lineWidth = 1;
-    context.font = '13.5px "SFMono-Regular", Consolas, monospace';
+    context.font = `${compactHeight ? 11.5 : 13.5}px "SFMono-Regular", Consolas, monospace`;
     context.textBaseline = "middle";
-    for (let index = 0; index <= 4; index += 1) {
-      const quantity = (maxQuantity / 4) * index;
+    const verticalTickCount = chartHeight < 70 ? 1 : chartHeight < 130 ? 2 : 4;
+    for (let index = 0; index <= verticalTickCount; index += 1) {
+      const quantity = (maxQuantity / verticalTickCount) * index;
       const lineY = y(quantity);
       context.strokeStyle = "rgba(148, 163, 184, 0.12)";
       context.beginPath();
@@ -758,7 +762,7 @@
     context.stroke();
     context.setLineDash([]);
 
-    context.font = '600 13.5px "SFMono-Regular", Consolas, monospace';
+    context.font = `600 ${compactHeight ? 11.5 : 13.5}px "SFMono-Regular", Consolas, monospace`;
     context.fillStyle = "rgba(210, 218, 230, 0.86)";
     context.textAlign = "center";
     context.fillText(`MID ${priceFormatter.format(mid)}`, centerX, 13);
@@ -770,7 +774,7 @@
     context.textAlign = "left";
     context.fillText(`ASK ${priceFormatter.format(bestAsk)}`, askEdge + 9, 32);
 
-    context.font = '12.5px "SFMono-Regular", Consolas, monospace';
+    context.font = `${compactHeight ? 10.5 : 12.5}px "SFMono-Regular", Consolas, monospace`;
     context.fillStyle = "rgba(148, 163, 184, 0.62)";
     context.textAlign = "left";
     context.fillText(priceFormatter.format(minPrice), padding.left, baseline + 18);

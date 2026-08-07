@@ -46,7 +46,9 @@ read_more: "disabled"
 # Analytics (optional)
 # ================================
 analytics:
-  provider: false
+  provider: custom
+
+og_description: "Quantitative research portfolio by Théo Verdelhan, focused on market microstructure, systematic trading, execution and derivatives."
 
 # ================================
 # Files

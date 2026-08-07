@@ -8,6 +8,20 @@ author_profile: false
   <p class="eyebrow">Research · Trading systems · Numerical finance</p>
 </div>
 
+<section class="project-section project-section--hub">
+  <article class="project-card project-card--featured project-card--hub">
+    <div>
+      <div class="project-card__meta">Featured research · Four public case studies</div>
+      <h3>Quantitative Research Hub</h3>
+      <p>Detailed, evidence-led studies covering multi-scale lead–lag estimation, execution-aware market making, IMC Prosperity research and mixed-frequency GDP forecasting.</p>
+    </div>
+    <div class="project-card__footer">
+      <div class="tag-list"><span>Microstructure</span><span>Execution</span><span>Systematic Trading</span><span>Econometrics</span></div>
+      <a href="{{ '/research/' | relative_url }}">Explore the Research Hub ↗</a>
+    </div>
+  </article>
+</section>
+
 <section class="project-section">
   <header class="section-heading">
     <p class="eyebrow">01</p>
@@ -19,43 +33,6 @@ author_profile: false
 
   <div class="project-grid">
     <article class="project-card project-card--featured">
-      <div class="project-card__meta">Competition · Apr–May 2026</div>
-      <h3>IMC Prosperity 4</h3>
-      <p>Built a shared Python framework with a three-person team for backtesting, diagnostics and multi-round research across market making, relative value and volatility strategies.</p>
-      <ul class="compact-list">
-        <li>Round 1 algorithmic ranking: #77 worldwide and #1 in France</li>
-        <li>Final algorithmic ranking: #514 worldwide and #17 in France among about 20,000 teams</li>
-        <li>Explored microstructure, volatility, game theory, Bayesian mixtures and Monte Carlo models under tight iteration cycles</li>
-      </ul>
-      <div class="project-card__footer">
-        <div class="tag-list"><span>Python</span><span>Market Making</span><span>Relative Value</span><span>Game Theory</span></div>
-        <div class="link-row">
-          <a href="{{ '/research/imc-prosperity/' | relative_url }}">Case study ↗</a>
-          <a href="https://github.com/theov07/IMC_PROSPERITY_4_COMPETITION" target="_blank" rel="noopener noreferrer">Repository ↗</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <div class="project-card__meta">Public project · Apr 2026</div>
-      <h3>Real-Time Market Data &amp; Market Making</h3>
-      <p>Python and Streamlit simulator using Binance WebSocket data to study quoting, queue position, fill quality and short-horizon risk.</p>
-      <ul class="compact-list">
-        <li>Live order-book and trade visualization with configurable depth</li>
-        <li>Microprice and queue-aware quoting with 1s/5s/10s markouts</li>
-        <li>Inventory, notional, volatility and max-loss controls</li>
-      </ul>
-      <div class="project-card__footer">
-        <div class="tag-list"><span>Python</span><span>WebSocket</span><span>Streamlit</span><span>Order Book</span></div>
-        <div class="link-row">
-          <a href="{{ '/research/market-making/' | relative_url }}">Case study ↗</a>
-          <a href="https://github.com/theov07/Real_Time_Market_Data_And_MM_Logic" target="_blank" rel="noopener noreferrer">Repository ↗</a>
-          <a href="https://mm-dashboard-microstructure.streamlit.app/" target="_blank" rel="noopener noreferrer">Live demo ↗</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="project-card">
       <div class="project-card__meta">Public project · Apr–Jun 2026</div>
       <h3>C++17 Simulated Trading Platform</h3>
       <p>Event-driven trading simulator covering order-book reconstruction, strategy execution, portfolio accounting and post-trade analysis.</p>
@@ -116,21 +93,6 @@ author_profile: false
   <div class="project-grid">
     <article class="project-card project-card--featured">
       <div class="project-card__meta">Research project · Mar–May 2026</div>
-      <h3>Multi-Scale Lead–Lag in High-Frequency Markets</h3>
-      <p>Implemented the Hayashi–Koike multi-scale lead–lag estimator for asynchronous cryptocurrency tick data.</p>
-      <ul class="compact-list">
-        <li>Combined Hayashi–Yoshida covariance with Daubechies wavelet filtering</li>
-        <li>Built validation tests and reproducible experimental artifacts</li>
-        <li>Applied the pipeline to Binance, Kraken and Bybit BTC/ETH data to study scale-dependent price discovery</li>
-      </ul>
-      <div class="project-card__footer">
-        <div class="tag-list"><span>High-Frequency Data</span><span>Lead–Lag</span><span>Wavelets</span><span>Python</span></div>
-        <a href="{{ '/research/lead-lag/' | relative_url }}">Case study ↗</a>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <div class="project-card__meta">Research project · Mar–May 2026</div>
       <h3>Realized Volatility Timing for Short-Volatility Carry</h3>
       <p>Estimated latent realized volatility with a Heston state-space model and Unscented Kalman Filter, then tested dynamic short-volatility allocations.</p>
       <ul class="compact-list">
@@ -141,24 +103,6 @@ author_profile: false
       <div class="project-card__footer">
         <div class="tag-list"><span>Heston</span><span>UKF</span><span>Volatility</span><span>Options</span></div>
         <a href="https://github.com/theov07/Volatility_Timing_Short_Volatility_Carry" target="_blank" rel="noopener noreferrer">Repository ↗</a>
-      </div>
-    </article>
-
-    <article class="project-card">
-      <div class="project-card__meta">Academic project · Nov 2025–Jan 2026</div>
-      <h3>GDP Forecasting with MIDAS Regressions</h3>
-      <p>Forecasted US real GDP growth from 47 daily multi-asset series over 1986–2025 using mixed-frequency econometrics.</p>
-      <ul class="compact-list">
-        <li>ADL-MIDAS with exponential Almon weights and PCA factor extraction</li>
-        <li>Expanding-window pseudo out-of-sample evaluation using RMSFE and MAE</li>
-        <li>Two-parameter extension separating lag and lead dynamics</li>
-      </ul>
-      <div class="project-card__footer">
-        <div class="tag-list"><span>MIDAS</span><span>Econometrics</span><span>PCA</span><span>Forecasting</span></div>
-        <div class="link-row">
-          <a href="{{ '/research/gdp-forecasting/' | relative_url }}">Case study ↗</a>
-          <a href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">Repository ↗</a>
-        </div>
       </div>
     </article>
 

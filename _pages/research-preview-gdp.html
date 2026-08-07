@@ -1,7 +1,13 @@
 ---
 layout: null
+title: "GDP Forecasting with MIDAS"
 permalink: /research/gdp-forecasting/
 sitemap: true
+schema_type: "TechArticle"
+schema_date_created: 2026-01-16
+schema_date_modified: 2026-02-01
+schema_repository: "https://github.com/theov07/QUANTITATIVE_MIDAS_MODEL_REPLICATION"
+schema_keywords: "MIDAS regression, GDP forecasting, mixed-frequency data, nowcasting, PCA, econometrics"
 ---
 <!doctype html>
 <html lang="en">
@@ -22,12 +28,23 @@ sitemap: true
           </div>
           <aside class="rp-hero__aside">
             <p><strong>Academic replication and extension</strong><br>M2 272 Quantitative Finance · Paris-Dauphine PSL<br>Théo Verdelhan · Léo Renault · Arthur Le Net · Nicolas Annon</p>
-            <div class="rp-actions"><a class="rp-button rp-button--primary" href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">Repository ↗</a></div>
+            <div class="rp-actions">
+              <a class="rp-button rp-button--primary" href="https://github.com/theov07/QUANTITATIVE_MIDAS_MODEL_REPLICATION" target="_blank" rel="noopener noreferrer">Repository ↗</a>
+              <a class="rp-button" href="https://github.com/theov07/QUANTITATIVE_MIDAS_MODEL_REPLICATION/blob/main/English_Paper_Report_MIDAS_Regressions.pdf" target="_blank" rel="noopener noreferrer">Paper ↗</a>
+            </div>
           </aside>
         </div>
       </section>
 
       {% include research-preview/project-nav.html active="gdp" %}
+
+      {% include research-preview/project-profile.html
+        period="Jan–Feb 2026"
+        role="Co-author · econometric implementation, recursive evaluation and Two-β extension"
+        team="4 researchers"
+        data="47 Bloomberg multi-asset series · quarterly US real GDP"
+        artifacts="Public code · English/French papers · presentation · generated figures"
+      %}
 
       <section class="rp-section rp-section--compact">
         <div class="rp-shell">
@@ -59,6 +76,20 @@ sitemap: true
       <section class="rp-section">
         <div class="rp-shell">
           <header class="section-heading">
+            <p class="eyebrow">Data engineering</p>
+            <h2>Coverage, transformations and cross-asset structure are audited first</h2>
+            <p>The 47-series panel spans equities, rates, commodities, FX and macro indicators with unequal histories. Coverage thresholds, transformations and alignment decisions are made visible before any forecasting comparison.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/gdp/data-universe-diagnostics.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/gdp/data-universe-diagnostics.png' | relative_url }}" alt="GDP forecasting data-universe diagnostics with ticker coverage, asset classes, correlations and transformations" loading="lazy"></a>
+            <figcaption><strong>Data-universe diagnostics.</strong> The panel documents history by ticker, asset-class balance, representative correlations, normalized returns, completeness and the effect of transformations. Series below the required coverage are excluded from factor extraction.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
             <p class="eyebrow">Data and evaluation</p>
             <h2>Three samples, one leakage-safe protocol</h2>
           </header>
@@ -76,6 +107,20 @@ sitemap: true
             <article class="research-card"><h3>Benchmark set</h3><p>Random Walk, AR, flat distributed lags, factor autoregressions, ADL, FADL and MIDAS variants are compared using RMSFE. Ratios below one indicate an improvement over Random Walk.</p></article>
             <article class="research-card"><h3>Forecast combination</h3><p>Multiple signals can be combined with discounted MSFE weights, allowing models with smaller recent errors to receive more weight without using future outcomes.</p></article>
           </div>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell two-column two-column--wide-left">
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/gdp/midas-weight-diagnostics.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/gdp/midas-weight-diagnostics.png' | relative_url }}" alt="Exponential Almon MIDAS weight profiles and distribution of recursively estimated decay parameters" loading="lazy"></a>
+            <figcaption><strong>MIDAS weight diagnostics.</strong> Exponential Almon profiles show how one parameter changes the memory assigned across 63 trading days; the recursive estimates reveal that the decay itself varies through the OOS window.</figcaption>
+          </figure>
+          <aside class="research-note research-note--blue">
+            <p class="eyebrow">Interpretability</p>
+            <h3>The parameter has an economic meaning</h3>
+            <p>A negative decay emphasizes recent observations; a positive decay gives more mass to older days. Plotting the estimated distribution makes unstable or implausible memory profiles visible instead of hiding them inside an optimizer.</p>
+          </aside>
         </div>
       </section>
 
@@ -176,7 +221,7 @@ sitemap: true
             <p class="eyebrow accent-green">Reference</p>
             <h3>Replication target</h3>
             <p>Andreou, Ghysels and Kourtellos (2013), “Should Macroeconomic Forecasters Use Daily Financial Data and How?”, <em>Journal of Business &amp; Economic Statistics</em>.</p>
-            <div class="rp-link-row" style="margin-top:16px"><a class="rp-button" href="https://github.com/theov07/GDP_Forecasting_With_MIDAS_Regressions" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
+            <div class="rp-link-row" style="margin-top:16px"><a class="rp-button" href="https://github.com/theov07/QUANTITATIVE_MIDAS_MODEL_REPLICATION" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
           </aside>
         </div>
       </section>

@@ -1,7 +1,12 @@
 ---
 layout: null
+title: "Multi-Scale Lead–Lag"
 permalink: /research/lead-lag/
 sitemap: true
+schema_type: "TechArticle"
+schema_date_created: 2026-05-26
+schema_date_modified: 2026-06-09
+schema_keywords: "Hayashi-Koike, Hayashi-Yoshida, lead-lag, wavelets, asynchronous tick data, market microstructure"
 ---
 <!doctype html>
 <html lang="en">
@@ -21,13 +26,24 @@ sitemap: true
             <p class="rp-lede">Which venue incorporates information first—and does that ordering change with the time scale? This study implements the Hayashi–Koike estimator and adapts it to public cryptocurrency trades across venues and products.</p>
           </div>
           <aside class="rp-hero__aside">
-            <p><strong>Academic research project</strong><br>M2 272 Quantitative Finance · Paris-Dauphine PSL<br>Théo Verdelhan · Léo Renault · Ziad El Arari</p>
+            <p><strong>Public academic research project</strong><br>M2 272 Quantitative Finance · Paris-Dauphine PSL<br>Théo Verdelhan · Léo Renault · Ziad El Arari</p>
             <div class="tag-row"><span>Python</span><span>Hayashi–Yoshida</span><span>Daubechies</span><span>HFT data</span></div>
+            <div class="rp-actions" style="margin-top:18px">
+              <a class="rp-button rp-button--primary" href="{{ '/files/research/Multi_Scale_Lead_Lag_Research_Paper.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Research paper ↗</a>
+            </div>
           </aside>
         </div>
       </section>
 
       {% include research-preview/project-nav.html active="lead-lag" %}
+
+      {% include research-preview/project-profile.html
+        period="May–Jun 2026"
+        role="Co-author · quantitative implementation, empirical pipeline and validation"
+        team="3 researchers"
+        data="Public Binance, Kraken and Bybit trades · LOBSTER sample"
+        artifacts="Research code · public 31-page paper · tests · reproducible figures"
+      %}
 
       <section class="rp-section rp-section--compact">
         <div class="rp-shell">
@@ -147,6 +163,20 @@ sitemap: true
             <h3>Statistical dependence is not free arbitrage</h3>
             <p>The public-data implementation uses trade log-prices and a 50ms lag grid, not the quote microprice and ultra-fine timestamps of the original empirical setting. A measured lead does not include fees, latency, slippage, queue priority, inventory or capital constraints. Deployability requires a separate execution study.</p>
           </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Independent data sanity check</p>
+            <h2>The estimator also runs on quote-derived equity prices</h2>
+            <p>A LOBSTER midpoint experiment checks that the implementation is not tied to crypto transaction prices. The objective is portability and sign-convention control, not an economic claim about this short equity sample.</p>
+          </header>
+          <figure class="research-figure">
+            <a href="{{ '/images/research-preview/lead-lag/lobster-sanity-check.png' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/images/research-preview/lead-lag/lobster-sanity-check.png' | relative_url }}" alt="Hayashi-Koike lead-lag contrast heatmap for AAPL and MSFT LOBSTER midpoint data" loading="lazy"></a>
+            <figcaption><strong>LOBSTER midpoint sanity check.</strong> The scale-by-scale maxima move across both signs, showing that the code does not mechanically force one asset to lead. This control uses quote-derived midpoints closer to the original estimator setting.</figcaption>
+          </figure>
         </div>
       </section>
 

@@ -337,6 +337,65 @@ body.rp-page::before {
   box-shadow: inset 0 -2px var(--rp-blue);
 }
 
+.project-profile-section {
+  padding: 16px 0 10px;
+}
+
+.project-profile {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--rp-line);
+  border-radius: var(--rp-radius);
+  background: var(--rp-line);
+}
+
+.project-profile > div {
+  min-height: 98px;
+  padding: 18px 20px;
+  background: rgba(15, 16, 20, 0.97);
+}
+
+.project-profile dt {
+  margin: 0 0 9px;
+  color: var(--rp-dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.project-profile dd {
+  margin: 0;
+  color: #d4d7dd;
+  font-size: 14px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+.project-profile__status dd {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--rp-green);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 12px currentColor;
+}
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -669,6 +728,23 @@ body.rp-page::before {
   flex-direction: column;
 }
 
+.hub-card__body .hub-card__meta {
+  margin: 0 0 12px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--rp-dim);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hub-card__meta span:first-child {
+  color: var(--rp-green);
+}
+
 .hub-card__body h2 {
   margin: 0;
   font-size: clamp(27px, 3.3vw, 40px);
@@ -810,6 +886,10 @@ body.rp-page::before {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .project-profile {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .system-flow {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -898,6 +978,7 @@ body.rp-page::before {
   }
 
   .metric-grid,
+  .project-profile,
   .two-column,
   .figure-grid,
   .figure-grid--asymmetric,

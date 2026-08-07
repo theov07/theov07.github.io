@@ -1,7 +1,13 @@
 ---
 layout: null
+title: "Real-Time Market Making"
 permalink: /research/market-making/
 sitemap: true
+schema_type: "TechArticle"
+schema_date_created: 2026-04-15
+schema_date_modified: 2026-04-21
+schema_repository: "https://github.com/theov07/Real_Time_Market_Data_And_MM_Logic"
+schema_keywords: "market making, order book, queue position, markout, paper execution, Binance WebSocket"
 ---
 <!doctype html>
 <html lang="en">
@@ -31,6 +37,14 @@ sitemap: true
       </section>
 
       {% include research-preview/project-nav.html active="market-making" %}
+
+      {% include research-preview/project-profile.html
+        period="Apr–May 2026"
+        role="Solo research engineering · end-to-end market data, execution model and analytics"
+        team="Individual project"
+        data="Public Binance L2 depth, trades and ticker streams"
+        artifacts="Public code · live demo · tests · CSV diagnostics"
+      %}
 
       <section class="rp-section rp-section--compact">
         <div class="rp-shell">
@@ -151,6 +165,25 @@ sitemap: true
             <h3>Paper fills remain a model</h3>
             <p>L2 public data cannot reconstruct exact queue priority, hidden liquidity, exchange matching details or network latency. The participation cap and queue model make fills less optimistic, but simulated P&amp;L is not a claim of executable return. No live order is ever sent.</p>
           </aside>
+        </div>
+      </section>
+
+      <section class="rp-section">
+        <div class="rp-shell">
+          <header class="section-heading">
+            <p class="eyebrow">Risk and observability contract</p>
+            <h2>Every quote is bounded; every simulated fill stays reviewable</h2>
+            <p>The engine treats risk gates and diagnostics as part of the strategy definition, not as presentation-layer extras.</p>
+          </header>
+          <div class="mini-stat-grid">
+            <div class="mini-stat"><span>Initial paper capital</span><strong>$1.0M</strong></div>
+            <div class="mini-stat"><span>Maximum notional</span><strong>$1.0M</strong></div>
+            <div class="mini-stat"><span>Maximum paper loss</span><strong>$100k</strong></div>
+          </div>
+          <div class="two-column" style="margin-top:18px">
+            <article class="research-card"><h3>State retained per fill</h3><p>Side, price, size, quote mode, spread, inventory, queue-ahead estimate and contemporaneous mid-price are preserved so later markouts can be interpreted in context.</p></article>
+            <article class="research-card"><h3>Operational resilience</h3><p>Heartbeat monitoring, exponential-backoff reconnection and exchange precision utilities keep the live research session deterministic when the feed resets or symbol rules differ.</p></article>
+          </div>
         </div>
       </section>
 
