@@ -157,8 +157,6 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 
 .ql-status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ql-bid); box-shadow: 0 0 12px rgba(24, 214, 160, .68); }
 .ql-status-dot.is-offline { background: var(--ql-ask); box-shadow: 0 0 12px rgba(255,79,112,.5); }
-.ql-nav-toggle { display: none; }
-
 .ql-market-rail { border-bottom: 1px solid var(--ql-line); background: rgba(9,13,19,.88); }
 .ql-market-rail__inner { min-height: 48px; display: grid; grid-template-columns: repeat(5, 1fr); align-items: stretch; border-inline-start: 1px solid var(--ql-line-soft); }
 .ql-market-rail__label, .ql-market-rail__metric, .ql-market-rail__session { display: grid; align-content: center; padding: 8px 18px; border-inline-end: 1px solid var(--ql-line-soft); }
@@ -335,17 +333,14 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 
 @media (max-width: 920px) {
   .ql-shell { width: min(calc(100% - 32px), var(--ql-shell)); }
-  .ql-header__inner { min-height: 74px; display: flex; align-items: center; justify-content: space-between; }
+  .ql-header__inner { min-height: 0; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; }
   .ql-brand__copy small { display: none; }
-  .ql-nav-toggle { display: grid; grid-template-columns: auto 18px; align-items: center; gap: 3px 9px; padding: 10px; border: 1px solid var(--ql-line); background: transparent; font: 600 8px/1 var(--ql-mono); letter-spacing: .13em; cursor: pointer; }
-  .ql-nav-toggle span { grid-row: 1/3; }
-  .ql-nav-toggle i { display: block; width: 18px; height: 1px; background: #d8dee7; transition: transform .2s; }
-  .ql-nav { position: absolute; top: 74px; left: 0; right: 0; display: none; grid-template-columns: 1fr 1fr; padding: 12px 16px 16px; background: rgba(6,9,14,.98); border-bottom: 1px solid var(--ql-line); }
-  .ql-nav.is-open { display: grid; }
-  .ql-nav a { min-height: 62px; border: 1px solid var(--ql-line) !important; margin: -1px 0 0 -1px; font-size: 12px; }
-  .ql-nav a span { font-size: 10px; }
-  .ql-nav a:first-child { grid-column: 1 / -1; }
-  .ql-live { min-width: auto; padding: 0; gap: 10px; }
+  .ql-nav { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); align-items: stretch; border-top: 1px solid var(--ql-line-soft); }
+  .ql-nav a { min-width: 0; min-height: 54px; padding: 5px 4px; font-size: 10px; letter-spacing: .055em; border-inline-start: 1px solid var(--ql-line-soft); }
+  .ql-nav a:last-child { border-inline-end: 1px solid var(--ql-line-soft); }
+  .ql-nav a span { font-size: 8.5px; }
+  .ql-nav a::after { inset-inline: 5px; }
+  .ql-live { grid-column: 2; grid-row: 1; min-width: auto; min-height: 64px; padding: 0; gap: 10px; }
   .ql-live__price { display: none !important; }
   .ql-live__latency { display: grid !important; min-width: 58px; }
   .ql-market-rail { overflow-x: auto; scrollbar-width: none; }
@@ -370,7 +365,10 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
   .ql-shell { width: min(calc(100% - 24px), var(--ql-shell)); }
   .ql-brand { gap: 10px; }
   .ql-brand__avatar { width: 40px; height: 40px; }
-  .ql-brand__copy { display: none; }
+  .ql-brand__copy { display: grid; }
+  .ql-brand__copy strong { font-size: 9px; letter-spacing: .075em; white-space: nowrap; }
+  .ql-nav a { min-height: 52px; font-size: 9.5px; letter-spacing: .025em; }
+  .ql-nav a span { font-size: 8px; letter-spacing: .1em; }
   .ql-live__status strong { display: none; }
   .ql-live__latency { min-width: 62px; }
   .ql-live__latency span { font-size: 9px !important; }

@@ -235,22 +235,6 @@
     closeSocket();
   }
 
-  function initNavigation() {
-    var toggle = document.querySelector(".ql-nav-toggle");
-    var nav = document.querySelector(".ql-nav");
-    if (!toggle || !nav) return;
-    toggle.addEventListener("click", function () {
-      var open = nav.classList.toggle("is-open");
-      toggle.setAttribute("aria-expanded", String(open));
-    });
-    nav.addEventListener("click", function (event) {
-      if (event.target.closest("a")) {
-        nav.classList.remove("is-open");
-        toggle.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-
   function initFilters() {
     var filters = document.querySelectorAll("[data-project-filter]");
     var cards = document.querySelectorAll("[data-project-category]");
@@ -268,7 +252,6 @@
   }
 
   function init() {
-    initNavigation();
     initFilters();
     tickSession();
     countdownTimer = window.setInterval(tickSession, 1000);
