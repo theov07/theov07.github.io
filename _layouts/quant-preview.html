@@ -9,8 +9,10 @@ layout: compress
   <body class="ql-page ql-page--{{ page.preview_section | default: 'overview' }}">
     <a class="ql-skip" href="#main-content">Skip to content</a>
     <div class="ql-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
-    {% include quant-preview/header.html %}
-    {% include quant-preview/market-rail.html %}
+    <div class="ql-fixed-market">
+      {% include quant-preview/header.html %}
+      {% include quant-preview/market-rail.html %}
+    </div>
 
     <main id="main-content" class="ql-main">
       {{ content }}

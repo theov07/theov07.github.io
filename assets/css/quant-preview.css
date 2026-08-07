@@ -88,10 +88,15 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 }
 .ql-skip:focus { transform: none; }
 
-.ql-header {
+.ql-fixed-market {
   position: sticky;
   top: 0;
   z-index: 40;
+}
+
+.ql-header {
+  position: relative;
+  z-index: 1;
   border-bottom: 1px solid var(--ql-line);
   background: rgba(5, 8, 12, 0.9);
   backdrop-filter: blur(20px);
