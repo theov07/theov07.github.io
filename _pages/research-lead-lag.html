@@ -1,13 +1,17 @@
 ---
-layout: quant-preview
-title: "Multi-Scale Lead–Lag Preview"
+layout: quant-site
+title: "Multi-Scale Lead–Lag"
 description: "Asynchronous high-frequency lead-lag estimation across crypto venues and products."
-permalink: /preview/research/lead-lag/
-preview_section: research
-sitemap: false
+permalink: /research/lead-lag/
+site_section: research
+sitemap: true
+schema_type: "TechArticle"
+schema_date_created: 2026-05-26
+schema_date_modified: 2026-06-09
+schema_keywords: "Hayashi-Koike, Hayashi-Yoshida, lead-lag, wavelets, asynchronous tick data, market microstructure"
 ---
 <section class="ql-study-hero"><div class="ql-shell ql-study-hero__grid"><div><p class="ql-kicker">CASE 01 · MARKET MICROSTRUCTURE</p><h1>Multi-Scale Lead–Lag</h1><p class="ql-study-hero__lede">Price discovery across venues and scales.</p></div><aside><div class="ql-study-meta"><div><span>STATUS</span><strong class="is-bid">PUBLIC</strong></div><div><span>PERIOD</span><strong>MAY–JUN 2026</strong></div><div><span>TEAM</span><strong>3 RESEARCHERS</strong></div><div><span>ROLE</span><strong>CO-AUTHOR</strong></div></div><div class="ql-study-links"><a class="ql-link" href="{{ '/files/research/Multi_Scale_Lead_Lag_Research_Paper.pdf' | relative_url }}" target="_blank" rel="noopener noreferrer">Research paper</a></div></aside></div></section>
-{% include quant-preview/study-nav.html active="lead-lag" %}
+{% include quant-site/study-nav.html active="lead-lag" %}
 <section class="ql-section ql-section--tight"><div class="ql-shell ql-stat-grid"><div class="ql-stat"><span>CORE SAMPLE</span><strong>12.6M</strong><p>Binance BTC observations in April 2026.</p></div><div class="ql-stat" style="--stat-color:var(--ql-bid)"><span>LAG GRID</span><strong>50 MS</strong><p>Main empirical resolution.</p></div><div class="ql-stat" style="--stat-color:var(--ql-gold)"><span>FREQUENCY BANDS</span><strong>8 SCALES</strong><p>Approximately 0.10s to 25.60s.</p></div><div class="ql-stat" style="--stat-color:var(--ql-ask)"><span>TEMPORAL AUDIT</span><strong>3 MONTHS</strong><p>January, February and April 2026.</p></div></div></section>
 <section class="ql-section"><div class="ql-shell"><header class="ql-section-heading"><div><p class="ql-kicker">RESEARCH QUESTION</p><h2>Price discovery is not necessarily single-scale.</h2></div><p>A venue can react first at sub-second horizons yet behave differently at slower adjustment scales. Synchronizing irregular trades can distort the result.</p></header><div class="ql-thesis"><article class="ql-card"><h2>Why asynchronous estimation?</h2><p>Binance and Kraken do not print trades on a common clock. Hayashi–Yoshida covariance works directly with overlapping observation intervals instead of fabricating a synchronized series.</p></article><article class="ql-card" style="--card-accent:var(--ql-gold)"><h2>Why multiple scales?</h2><p>Daubechies wavelet filters decompose lagged covariance into dyadic bands, producing a profile of immediate price discovery and slower cross-venue adjustment.</p></article></div></div></section>
 <section class="ql-section ql-section--tint"><div class="ql-shell"><header class="ql-section-heading"><div><p class="ql-kicker">ESTIMATOR PIPELINE</p><h2>From raw event time to scale-by-scale lag.</h2></div><p>The sign convention and synthetic-shift behavior are validated before any exchange result is interpreted.</p></header><div class="ql-number-list"><article><div><h3>Ingest event-time data</h3><p>Normalize public trades without forcing a shared timestamp grid.</p></div></article><article><div><h3>Build lagged HY contrast</h3><p>Shift the second series over candidate lags and accumulate overlapping return intervals.</p></div></article><article><div><h3>Apply wavelet filters</h3><p>Use Daubechies coefficients and autocorrelation wavelets to isolate dyadic scales.</p></div></article><article><div><h3>Estimate each maximum</h3><p>Select the lag maximizing absolute filtered contrast at every scale and audit stability.</p></div></article></div></div></section>

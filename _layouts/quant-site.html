@@ -4,25 +4,25 @@ layout: compress
 <!doctype html>
 <html lang="en">
   <head>
-    {% include quant-preview/head.html %}
+    {% include quant-site/head.html %}
   </head>
-  <body class="ql-page ql-page--{{ page.preview_section | default: 'overview' }}">
+  <body class="ql-page ql-page--{{ page.site_section | default: 'overview' }}">
     <a class="ql-skip" href="#main-content">Skip to content</a>
     <div class="ql-backdrop" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="ql-fixed-market">
-      {% include quant-preview/header.html %}
-      {% include quant-preview/market-rail.html %}
+      {% include quant-site/header.html %}
+      {% include quant-site/market-rail.html %}
     </div>
 
     <main id="main-content" class="ql-main">
       {{ content }}
     </main>
 
-    {% include quant-preview/footer.html %}
+    {% include quant-site/footer.html %}
     <div class="ql-session-note" data-session-note role="status" aria-live="polite">
       <span class="ql-status-dot"></span>
       <span>Public BTCUSDT stream · display only · auto-stop after 10 min</span>
     </div>
-    <script src="{{ '/assets/js/quant-preview.js' | relative_url }}" defer></script>
+    <script src="{{ '/assets/js/quant-site.js' | relative_url }}" defer></script>
   </body>
 </html>

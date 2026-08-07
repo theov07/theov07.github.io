@@ -22,14 +22,16 @@ Then open `http://localhost:4000`.
 ## Content structure
 
 - `_pages/home.html`: live-market homepage and portfolio navigation
-- `_pages/experience.md`: experience
-- `_pages/education.md`: academic background
-- `_pages/research-preview*.html`: public research hub and detailed case studies
-- `_pages/projects.md`: selected projects and competitions
+- `_pages/experience.html`: experience
+- `_pages/education.html`: academic background
+- `_pages/research*.html`: public research hub and detailed case studies
+- `_pages/projects.html`: selected projects and competitions
 - `files/Resume_Theo_Verdelhan.pdf`: downloadable one-page resume
 - `assets/css/orderbook-preview.css`: homepage visual system
 - `assets/js/orderbook-preview.js`: live order book and paper-execution dashboard
-- `_sass/_custom.scss`: site-specific visual system
+- `assets/css/quant-site.css`: interior-page visual system
+- `assets/js/quant-site.js`: shared interior-page market-data display
+- `_archive/legacy-site-2026-08-07/`: recoverable copy of the previous interior pages
 - `_config.yml`: Jekyll and SEO configuration
 
 Deployment is handled automatically by GitHub Pages after a push to `master`.

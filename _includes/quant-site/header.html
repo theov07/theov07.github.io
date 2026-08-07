@@ -9,12 +9,12 @@
       <span>MENU</span><i></i><i></i>
     </button>
 
-    <nav class="ql-nav" id="ql-nav" aria-label="Preview navigation">
+    <nav class="ql-nav" id="ql-nav" aria-label="Primary navigation">
       <a href="{{ '/' | relative_url }}"><span>MID</span>Home</a>
-      <a href="{{ '/preview/education/' | relative_url }}" {% if page.preview_section == 'education' %}aria-current="page"{% endif %}><span>LMT</span>Education</a>
-      <a href="{{ '/preview/experience/' | relative_url }}" {% if page.preview_section == 'experience' %}aria-current="page"{% endif %}><span>MKT</span>Experience</a>
-      <a href="{{ '/preview/research/' | relative_url }}" {% if page.preview_section == 'research' %}aria-current="page"{% endif %}><span>IOC</span>Research</a>
-      <a href="{{ '/preview/projects/' | relative_url }}" {% if page.preview_section == 'projects' %}aria-current="page"{% endif %}><span>STP</span>Projects</a>
+      <a href="{{ '/education/' | relative_url }}" {% if page.site_section == 'education' %}aria-current="page"{% endif %}><span>LMT</span>Education</a>
+      <a href="{{ '/professional-experiences/' | relative_url }}" {% if page.site_section == 'experience' %}aria-current="page"{% endif %}><span>MKT</span>Experience</a>
+      <a href="{{ '/research/' | relative_url }}" {% if page.site_section == 'research' %}aria-current="page"{% endif %}><span>IOC</span>Research</a>
+      <a href="{{ '/projects/' | relative_url }}" {% if page.site_section == 'projects' %}aria-current="page"{% endif %}><span>STP</span>Projects</a>
     </nav>
 
     <div class="ql-live" aria-label="Live BTC USDT market status">

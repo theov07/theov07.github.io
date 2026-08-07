@@ -164,7 +164,7 @@
     socket.onmessage = null;
     socket.onerror = null;
     socket.onclose = null;
-    if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) socket.close(1000, "Preview session closed");
+    if (socket.readyState === WebSocket.OPEN || socket.readyState === WebSocket.CONNECTING) socket.close(1000, "Market data session closed");
     socket = null;
   }
 
