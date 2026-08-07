@@ -698,13 +698,20 @@ body.rp-page::before {
   border: 1px solid var(--rp-line);
   border-radius: var(--rp-radius);
   overflow: hidden;
+  color: inherit;
   background: linear-gradient(155deg, rgba(29, 20, 23, 0.98), rgba(13, 14, 17, 0.96));
+  text-decoration: none;
   transition: border-color 180ms ease, transform 180ms ease;
 }
 
 .hub-card:hover {
   border-color: rgba(255, 108, 96, 0.5);
   transform: translateY(-3px);
+}
+
+.hub-card:focus-visible {
+  outline: 2px solid var(--rp-blue);
+  outline-offset: 4px;
 }
 
 .hub-card__image {
