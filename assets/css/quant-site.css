@@ -221,9 +221,6 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 .ql-education-card__top { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 24px; align-items: start; }
 .ql-education-card h2 { font-size: 30px; }
 .ql-education-card__degree { max-width: 750px; margin: 0; color: #cbd3de !important; font-size: 16px; }
-.ql-education-card__rank { min-width: 150px; padding: 17px; text-align: center; border: 1px solid var(--ql-line); }
-.ql-education-card__rank span { display: block; color: var(--ql-dim); font: 600 9px/1 var(--ql-mono); letter-spacing: .14em; }
-.ql-education-card__rank strong { display: block; margin-top: 7px; font: 500 22px/1 var(--ql-mono); color: var(--ql-bid); }
 
 .ql-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 22px; }
 .ql-tags span { padding: 7px 10px; border: 1px solid var(--ql-line); color: #b8afb5; background: rgba(255,255,255,.012); font: 500 10px/1 var(--ql-mono); letter-spacing: .035em; }
@@ -387,7 +384,6 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
   .ql-timeline-card__dates { text-align: left; }
   .ql-toolkit { display: grid; gap: 7px; color: #929dab; font-size: 11px; }
   .ql-education-card h2 { font-size: 24px; }
-  .ql-education-card__rank { text-align: left; }
   .ql-project-grid, .ql-hub-grid, .ql-evidence-grid, .ql-thesis { grid-template-columns: 1fr; }
   .ql-featured-project { grid-column: auto; grid-template-columns: 1fr; gap: 25px; }
   .ql-project-card { min-height: 0; }
