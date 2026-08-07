@@ -8,7 +8,7 @@ The site is built with Jekyll and GitHub Pages. Its public content is intentiona
 - education;
 - detailed quantitative research case studies;
 - selected quantitative research and engineering projects;
-- an HTML resume and downloadable one-page PDF.
+- a downloadable one-page resume.
 
 ## Local development
 
@@ -26,7 +26,7 @@ Then open `http://localhost:4000`.
 - `_pages/education.md`: academic background
 - `_pages/research-preview*.html`: public research hub and detailed case studies
 - `_pages/projects.md`: selected projects and competitions
-- `_pages/cv.md`: web resume
+- `files/Resume_Theo_Verdelhan.pdf`: downloadable one-page resume
 - `assets/css/orderbook-preview.css`: homepage visual system
 - `assets/js/orderbook-preview.js`: live order book and paper-execution dashboard
 - `_sass/_custom.scss`: site-specific visual system

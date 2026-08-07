@@ -581,23 +581,6 @@ a {
   color: var(--site-accent);
 }
 
-.resume-actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  align-items: center;
-  margin: 0 0 3rem;
-  padding: 1.4rem;
-  border: 1px solid var(--site-border);
-  border-radius: 14px;
-  background: var(--site-surface);
-}
-
-.resume-actions p {
-  margin: 0 !important;
-  color: var(--site-muted) !important;
-}
-
 .fixed-footer-contact {
   margin-top: 4rem;
   padding: 2rem 1rem;
@@ -734,8 +717,7 @@ a {
     min-height: 180px;
   }
 
-  .timeline-card__header,
-  .resume-actions {
+  .timeline-card__header {
     flex-direction: column;
   }
 
