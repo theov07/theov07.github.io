@@ -1,0 +1,9 @@
+<nav class="ql-study-nav" aria-label="Research case studies">
+  <div class="ql-shell">
+    <a href="{{ '/research/' | relative_url }}"><span>HUB</span>All studies</a>
+    <a href="{{ '/research/lead-lag/' | relative_url }}" {% if include.active == 'lead-lag' %}aria-current="page"{% endif %}><span>01</span>Lead–Lag</a>
+    <a href="{{ '/research/market-making/' | relative_url }}" {% if include.active == 'market-making' %}aria-current="page"{% endif %}><span>02</span>Market Making</a>
+    <a href="{{ '/research/imc-prosperity/' | relative_url }}" {% if include.active == 'imc' %}aria-current="page"{% endif %}><span>03</span>IMC Prosperity</a>
+    <a href="{{ '/research/gdp-forecasting/' | relative_url }}" {% if include.active == 'gdp' %}aria-current="page"{% endif %}><span>04</span>GDP / MIDAS</a>
+  </div>
+</nav>
