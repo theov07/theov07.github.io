@@ -1,15 +1,49 @@
 <header class="rp-header">
   <div class="rp-shell rp-header__inner">
-    <a class="rp-brand" href="{{ '/research/' | relative_url }}" aria-label="Open the research index">
+    <a class="rp-brand" href="{{ '/' | relative_url }}" aria-label="Return to Théo Verdelhan's portfolio">
       <span class="rp-brand__mark">TV</span>
       <span>
         <strong>THÉO VERDELHAN</strong>
         <small>QUANTITATIVE RESEARCH</small>
       </span>
     </a>
-    <nav class="rp-header__nav" aria-label="Research navigation">
-      <a href="{{ '/research/' | relative_url }}">Research index</a>
-      <a href="{{ '/' | relative_url }}">Portfolio <span aria-hidden="true">↗</span></a>
+    <button class="rp-header__toggle" type="button" aria-expanded="false" aria-controls="rp-header-nav" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="rp-header__nav" id="rp-header-nav" aria-label="Primary navigation">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/education/' | relative_url }}">Education</a>
+      <a href="{{ '/professional-experiences/' | relative_url }}">Experience</a>
+      <a class="is-active" href="{{ '/research/' | relative_url }}" aria-current="page">Research</a>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
     </nav>
   </div>
 </header>
+
+<script>
+  (function () {
+    var header = document.querySelector('.rp-header');
+    var toggle = header && header.querySelector('.rp-header__toggle');
+    var nav = header && header.querySelector('.rp-header__nav');
+    if (!header || !toggle || !nav) return;
+
+    toggle.addEventListener('click', function () {
+      var open = header.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+
+    nav.addEventListener('click', function (event) {
+      if (event.target.closest('a')) {
+        header.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        header.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }());
+</script>
