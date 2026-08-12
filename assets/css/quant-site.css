@@ -255,9 +255,13 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 
 .ql-hub-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
 .ql-case { min-height: 510px; display: flex; flex-direction: column; cursor: pointer; }
+.ql-hub-grid > .ql-case:last-child:nth-child(odd) { grid-column: 1 / -1; min-height: 420px; display: grid; grid-template-columns: minmax(0,1.12fr) minmax(360px,.88fr); }
+.ql-hub-grid > .ql-case:last-child:nth-child(odd) .ql-case__visual { aspect-ratio: auto; border-right: 1px solid var(--ql-line); border-bottom: 0; }
 .ql-case__visual { position: relative; aspect-ratio: 16/7.5; overflow: hidden; border-bottom: 1px solid var(--ql-line); background: #080c12; }
 .ql-case__visual::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, rgba(5,8,12,.44)), linear-gradient(90deg, rgba(168,44,69,.06), transparent); }
 .ql-case__visual img { width: 100%; height: 100%; object-fit: cover; opacity: .82; filter: saturate(.77) contrast(1.06); transition: transform .7s var(--ql-ease), opacity .5s, filter .5s; }
+.ql-case--chart .ql-case__visual { background: #f2f2f2; }
+.ql-case--chart .ql-case__visual img { object-fit: contain; }
 .ql-case:hover .ql-case__visual img { transform: scale(1.025); opacity: 1; filter: saturate(.95) contrast(1.05); }
 .ql-case__body { display: flex; flex-direction: column; flex: 1; padding: 28px; }
 .ql-case__body h2 { font-size: 28px; }
@@ -268,7 +272,7 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
 
 .ql-study-hero { padding: 52px 0 42px; border-bottom: 1px solid var(--ql-line); }
 .ql-study-nav { border-bottom: 1px solid var(--ql-line); background: rgba(9,13,19,.82); overflow-x: auto; scrollbar-width: none; }
-.ql-study-nav > div { display: grid; grid-template-columns: repeat(5,1fr); min-width: 760px; }
+.ql-study-nav > div { display: grid; grid-template-columns: repeat(6,1fr); min-width: 900px; }
 .ql-study-nav a { position: relative; min-height: 58px; display: grid; place-content: center; gap: 3px; text-align: center; border-right: 1px solid var(--ql-line); color: var(--ql-muted); font: 600 9px/1 var(--ql-mono); letter-spacing: .08em; text-transform: uppercase; transition: color .25s, background .25s; }
 .ql-study-nav a:first-child { border-left: 1px solid var(--ql-line); }
 .ql-study-nav a span { color: var(--ql-dim); font-size: 8px; letter-spacing: .15em; }
@@ -391,6 +395,8 @@ body.ql-page::selection { background: rgba(228, 90, 112, 0.3); color: #fff; }
   .ql-toolkit { display: grid; gap: 7px; color: #929dab; font-size: 11px; }
   .ql-education-card h2 { font-size: 24px; }
   .ql-project-grid, .ql-hub-grid, .ql-evidence-grid, .ql-thesis { grid-template-columns: 1fr; }
+  .ql-hub-grid > .ql-case:last-child:nth-child(odd) { grid-column: auto; min-height: 0; display: flex; }
+  .ql-hub-grid > .ql-case:last-child:nth-child(odd) .ql-case__visual { aspect-ratio: 16/9; border-right: 0; border-bottom: 1px solid var(--ql-line); }
   .ql-featured-project { grid-column: auto; grid-template-columns: 1fr; gap: 25px; }
   .ql-project-card { min-height: 0; }
   .ql-case { min-height: 0; }
