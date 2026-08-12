@@ -194,9 +194,7 @@ a {
 }
 
 .market-name__venue {
-  margin-left: 0.7rem;
-  padding-left: 0.7rem;
-  border-left: 1px solid var(--line-strong);
+  margin-left: 0.55rem;
 }
 
 .header-stats {
@@ -673,8 +671,9 @@ a {
 
 .portfolio-social-link {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) auto;
+  grid-template-columns: 28px auto;
   align-items: center;
+  justify-content: center;
   gap: 0.62rem;
   min-height: 44px;
   padding: 0.48rem 0.65rem;
@@ -905,7 +904,7 @@ a {
 }
 
 .depth-chart-wrap::before {
-  content: "CUMULATIVE QUANTITY (BTC)";
+  content: none;
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -2009,7 +2008,8 @@ a {
   }
 
   .portfolio-social-link {
-    grid-template-columns: 28px minmax(0, 1fr);
+    grid-template-columns: 28px auto;
+    justify-content: center;
     gap: 0.58rem;
     min-height: 48px;
     padding: 0.42rem 0.58rem;

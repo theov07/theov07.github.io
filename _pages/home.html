@@ -51,7 +51,7 @@ permalink: /
 
       <div class="market-name" aria-label="Selected market">
         <span class="market-name__asset">BTC</span><span class="market-name__quote">/USDT</span>
-        <span class="market-name__venue">LIVE MARKET LAB · BINANCE</span>
+        <span class="market-name__venue">· BINANCE</span>
       </div>
 
       <div class="header-stats" aria-label="24 hour market statistics">
@@ -84,10 +84,9 @@ permalink: /
       <section class="book-panel book-panel--bids" aria-labelledby="bids-title">
         <header class="book-panel__header">
           <div>
-            <span class="book-panel__eyebrow">BUY-SIDE LIQUIDITY</span>
             <h2 id="bids-title">BIDS</h2>
           </div>
-          <span class="book-panel__signal">DEPTH 20 · 100MS</span>
+          <span class="book-panel__signal">20 LEVELS</span>
         </header>
         <div class="book-columns" aria-hidden="true">
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
@@ -95,7 +94,7 @@ permalink: /
         <div class="book-rows" id="bid-book" aria-label="Live BTCUSDT bid levels"></div>
         <section class="paper-quote paper-quote--bid" aria-label="Simulated bid quote">
           <header>
-            <span>PAPER QUOTE · BID</span>
+            <span>BID QUOTE</span>
             <small><i></i>SIMULATED</small>
           </header>
           <div class="paper-quote__price">
@@ -108,17 +107,17 @@ permalink: /
             <div><i id="paper-bid-queue-bar"></i></div>
           </div>
           <dl>
-            <div><dt>PAPER FILLS</dt><dd id="paper-bid-fills">0</dd></div>
+            <div><dt>FILLS</dt><dd id="paper-bid-fills">0</dd></div>
             <div><dt>LAST FILL</dt><dd id="paper-bid-last">—</dd></div>
           </dl>
         </section>
         <section class="book-snapshot book-snapshot--bid" aria-label="Basic bid-side statistics">
           <header><span>LIQUIDITY SNAPSHOT</span><small>BUY SIDE · LIVE</small></header>
           <dl>
-            <div><dt>MID PRICE</dt><dd id="mid-price">—</dd><small>BEST BID / ASK</small></div>
-            <div><dt>L1 BID QUEUE</dt><dd id="bid-queue">—</dd><small>BTC AHEAD</small></div>
-            <div><dt>BID DEPTH · 8</dt><dd id="bid-depth">—</dd><small>DISPLAYED BTC</small></div>
-            <div><dt>SELL FLOW · 5S</dt><dd id="bid-sell-flow">—</dd><small>AGGRESSIVE BTC</small></div>
+            <div><dt>MID PRICE</dt><dd id="mid-price">—</dd></div>
+            <div><dt>L1 BID QUEUE</dt><dd id="bid-queue">—</dd></div>
+            <div><dt>BID DEPTH · 8</dt><dd id="bid-depth">—</dd></div>
+            <div><dt>SELL FLOW · 5S</dt><dd id="bid-sell-flow">—</dd></div>
           </dl>
         </section>
       </section>
@@ -136,15 +135,8 @@ permalink: /
           <span class="last-market__label">LAST TRADE</span>
           <div class="last-market__price" id="last-price">—</div>
           <div class="last-market__meta">
-            <span id="last-size">Waiting for BTCUSDT</span>
             <span id="last-time">—</span>
           </div>
-        </div>
-
-        <div class="spread-line" aria-label="Current spread">
-          <span>SPREAD</span>
-          <strong id="spread-value">—</strong>
-          <span id="spread-bps">— BPS</span>
         </div>
 
         <nav class="portfolio-nav" id="portfolio-navigation" aria-label="Portfolio navigation">
@@ -175,12 +167,10 @@ permalink: /
             <a class="portfolio-social-link portfolio-social-link--linkedin" href="https://www.linkedin.com/in/theoverdelhan/" target="_blank" rel="noopener noreferrer">
               <span class="portfolio-social-link__icon portfolio-social-link__icon--linkedin" aria-hidden="true"></span>
               <strong>LINKEDIN</strong>
-              <small>CONNECT ↗</small>
             </a>
             <a class="portfolio-social-link portfolio-social-link--github" href="https://github.com/theov07" target="_blank" rel="noopener noreferrer">
               <span class="portfolio-social-link__icon portfolio-social-link__icon--github" aria-hidden="true"></span>
               <strong>GITHUB</strong>
-              <small>VIEW CODE ↗</small>
             </a>
           </div>
         </nav>
@@ -191,10 +181,8 @@ permalink: /
       <section class="book-panel book-panel--asks" aria-labelledby="asks-title">
         <header class="book-panel__header">
           <div>
-            <span class="book-panel__eyebrow">SELL-SIDE LIQUIDITY</span>
             <h2 id="asks-title">ASKS</h2>
           </div>
-          <span class="book-panel__signal">LIVE BOOK</span>
         </header>
         <div class="book-columns" aria-hidden="true">
           <span>PRICE</span><span>AMOUNT</span><span>TOTAL</span>
@@ -202,7 +190,7 @@ permalink: /
         <div class="book-rows" id="ask-book" aria-label="Live BTCUSDT ask levels"></div>
         <section class="paper-quote paper-quote--ask" aria-label="Simulated ask quote">
           <header>
-            <span>PAPER QUOTE · ASK</span>
+            <span>ASK QUOTE</span>
             <small><i></i>SIMULATED</small>
           </header>
           <div class="paper-quote__price">
@@ -215,17 +203,17 @@ permalink: /
             <div><i id="paper-ask-queue-bar"></i></div>
           </div>
           <dl>
-            <div><dt>PAPER FILLS</dt><dd id="paper-ask-fills">0</dd></div>
+            <div><dt>FILLS</dt><dd id="paper-ask-fills">0</dd></div>
             <div><dt>LAST FILL</dt><dd id="paper-ask-last">—</dd></div>
           </dl>
         </section>
         <section class="book-snapshot book-snapshot--ask" aria-label="Basic ask-side statistics">
           <header><span>EXECUTION SNAPSHOT</span><small>SELL SIDE · LIVE</small></header>
           <dl>
-            <div><dt>24H VOLUME</dt><dd id="volume-24h">—</dd><small>QUOTE TURNOVER</small></div>
-            <div><dt>L1 ASK QUEUE</dt><dd id="ask-queue">—</dd><small>BTC AHEAD</small></div>
-            <div><dt>ASK DEPTH · 8</dt><dd id="ask-depth">—</dd><small>DISPLAYED BTC</small></div>
-            <div><dt>BUY FLOW · 5S</dt><dd id="ask-buy-flow">—</dd><small>AGGRESSIVE BTC</small></div>
+            <div><dt>24H VOLUME</dt><dd id="volume-24h">—</dd></div>
+            <div><dt>L1 ASK QUEUE</dt><dd id="ask-queue">—</dd></div>
+            <div><dt>ASK DEPTH · 8</dt><dd id="ask-depth">—</dd></div>
+            <div><dt>BUY FLOW · 5S</dt><dd id="ask-buy-flow">—</dd></div>
           </dl>
         </section>
       </section>
@@ -246,7 +234,7 @@ permalink: /
       <section class="analytics-dashboard" aria-labelledby="analytics-title">
         <header class="analytics-dashboard__header">
           <div>
-            <h2 id="analytics-title">MARKET MAKING ANALYTICS</h2>
+            <h2 id="analytics-title">MARKET ANALYTICS</h2>
           </div>
         </header>
 
@@ -254,32 +242,26 @@ permalink: /
             <article class="metric-card metric-card--blue">
               <span class="metric-card__label">MICROPRICE</span>
               <strong id="analytics-microprice">—</strong>
-              <small id="microprice-skew">— BPS VS MID</small>
             </article>
             <article class="metric-card metric-card--blue">
-              <span class="metric-card__label">BOOK IMBALANCE · 10</span>
+              <span class="metric-card__label">BOOK IMBALANCE</span>
               <strong id="analytics-imbalance">—</strong>
-              <small>BID VS ASK DEPTH</small>
             </article>
             <article class="metric-card metric-card--bid">
-              <span class="metric-card__label">BID FILL PROXY · 5S</span>
+              <span class="metric-card__label">BID FILL</span>
               <strong id="bid-fill-proxy">—</strong>
-              <small>SELL FLOW / QUEUE</small>
             </article>
             <article class="metric-card metric-card--ask">
-              <span class="metric-card__label">ASK FILL PROXY · 5S</span>
+              <span class="metric-card__label">ASK FILL</span>
               <strong id="ask-fill-proxy">—</strong>
-              <small>BUY FLOW / QUEUE</small>
             </article>
             <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">PAPER MARKOUT · 1S</span>
+              <span class="metric-card__label">MARKOUT · 1S</span>
               <strong id="markout-1s">COLLECTING</strong>
-              <small>FROM SIMULATED FILLS</small>
             </article>
             <article class="metric-card metric-card--neutral">
-              <span class="metric-card__label">PAPER MARKOUT · 5S</span>
+              <span class="metric-card__label">MARKOUT · 5S</span>
               <strong id="markout-5s">COLLECTING</strong>
-              <small>FROM SIMULATED FILLS</small>
             </article>
         </div>
 
@@ -288,7 +270,6 @@ permalink: /
             <header class="depth-chart-card__header">
               <div>
                 <h3 id="depth-chart-title">ORDER BOOK DEPTH</h3>
-                <p>Split depth · top 20 levels</p>
               </div>
               <div class="depth-chart-legend" aria-label="Chart legend">
                 <span><i class="depth-chart-legend__line depth-chart-legend__line--bid"></i>Bid</span>
@@ -303,15 +284,15 @@ permalink: /
           <article class="paper-chart-card" aria-labelledby="paper-chart-title">
             <header class="paper-chart-card__header">
               <div>
-                <h3 id="paper-chart-title">MID PRICE &amp; FILLS</h3>
+                <h3 id="paper-chart-title">PAPER EXECUTION</h3>
               </div>
               <div class="paper-chart-tabs" role="group" aria-label="Paper trading chart view">
-                <button class="is-active" type="button" data-paper-chart="fills" aria-pressed="true">MID PRICE &amp; FILLS</button>
+                <button class="is-active" type="button" data-paper-chart="fills" aria-pressed="true">FILLS</button>
                 <button type="button" data-paper-chart="pnl" aria-pressed="false">P&amp;L CURVE</button>
               </div>
             </header>
             <div class="paper-chart-summary" aria-label="Paper trading summary">
-              <span>PAPER P&amp;L <strong id="paper-pnl">0.00 USDT</strong></span>
+              <span>P&amp;L <strong id="paper-pnl">0.00 USDT</strong></span>
               <span>INVENTORY <strong id="paper-inventory">0.000 BTC</strong></span>
               <span>FILLS <strong id="paper-fill-count">0</strong></span>
             </div>

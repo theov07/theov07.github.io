@@ -34,10 +34,7 @@
     bidBook: document.getElementById("bid-book"),
     askBook: document.getElementById("ask-book"),
     lastPrice: document.getElementById("last-price"),
-    lastSize: document.getElementById("last-size"),
     lastTime: document.getElementById("last-time"),
-    spreadValue: document.getElementById("spread-value"),
-    spreadBps: document.getElementById("spread-bps"),
     midPrice: document.getElementById("mid-price"),
     bidDepth: document.getElementById("bid-depth"),
     askDepth: document.getElementById("ask-depth"),
@@ -48,7 +45,6 @@
     low24h: document.getElementById("low-24h"),
     volume24h: document.getElementById("volume-24h"),
     analyticsMicroprice: document.getElementById("analytics-microprice"),
-    micropriceSkew: document.getElementById("microprice-skew"),
     bidQueue: document.getElementById("bid-queue"),
     askQueue: document.getElementById("ask-queue"),
     analyticsImbalance: document.getElementById("analytics-imbalance"),
@@ -58,7 +54,6 @@
     markout5s: document.getElementById("markout-5s"),
     depthChart: document.getElementById("depth-chart"),
     paperChart: document.getElementById("paper-chart"),
-    paperChartTitle: document.getElementById("paper-chart-title"),
     paperChartTabs: Array.from(document.querySelectorAll("[data-paper-chart]")),
     paperBidQuote: document.getElementById("paper-bid-quote"),
     paperAskQuote: document.getElementById("paper-ask-quote"),
@@ -238,8 +233,6 @@
       : mid;
     state.currentMid = mid;
     state.currentMicroprice = microprice;
-    elements.spreadValue.textContent = `${priceFormatter.format(spread)} USDT`;
-    elements.spreadBps.textContent = `${spreadBps.toFixed(2)} BPS`;
     elements.midPrice.textContent = priceFormatter.format(mid);
 
     const bidLiquidity = state.bids.slice(0, 10).reduce((sum, [, quantity]) => sum + quantity, 0);
@@ -294,7 +287,6 @@
 
     elements.midPrice.textContent = priceFormatter.format(metrics.mid);
     elements.analyticsMicroprice.textContent = priceFormatter.format(metrics.microprice);
-    elements.micropriceSkew.textContent = `${signedBps(micropriceSkew)} VS MID`;
     elements.bidQueue.textContent = `${formatAmount(metrics.bestBidQuantity)} BTC`;
     elements.askQueue.textContent = `${formatAmount(metrics.bestAskQuantity)} BTC`;
     elements.bidDepth.textContent = `${formatAmount(displayedBidDepth)} BTC`;
@@ -354,7 +346,7 @@
     statusElement.textContent = state.sessionExpired
       ? "SESSION PAUSED"
       : active
-        ? "RESTING AT L1 · QUEUE MODEL"
+        ? ""
         : "INVENTORY GUARD ACTIVE";
     statusElement.classList.toggle("is-paused", state.sessionExpired || !active);
     queueElement.textContent = quote ? `${formatAmount(Math.max(0, queue))} BTC` : "—";
@@ -619,12 +611,10 @@
 
     context.font = '600 11.5px "SFMono-Regular", Consolas, monospace';
     context.textAlign = "left";
-    context.fillStyle = "rgba(190, 201, 217, 0.86)";
-    context.fillText("MID", padding.left + 4, 8);
     context.fillStyle = "#00d99b";
-    context.fillText("▲ BID FILL", padding.left + 55, 8);
+    context.fillText("▲ BID FILL", padding.left + 4, 8);
     context.fillStyle = "#ff506f";
-    context.fillText("▼ ASK FILL", padding.left + 145, 8);
+    context.fillText("▼ ASK FILL", padding.left + 94, 8);
     drawTimeLabels();
     elements.paperChart.setAttribute("aria-label", `Paper fill chart with ${state.paper.bidFills} simulated bid fills and ${state.paper.askFills} simulated ask fills.`);
   }
@@ -858,7 +848,6 @@
       elements.lastPrice.textContent = priceFormatter.format(trade.price);
       elements.lastPrice.classList.toggle("is-buy", !trade.isSell);
       elements.lastPrice.classList.toggle("is-sell", trade.isSell);
-      elements.lastSize.textContent = `${formatAmount(trade.quantity)} BTC · ${trade.isSell ? "SELL" : "BUY"}`;
       elements.lastTime.textContent = timeFormatter.format(new Date(trade.time));
       renderTrades();
     }, 100);
@@ -1091,7 +1080,6 @@
         tab.classList.toggle("is-active", active);
         tab.setAttribute("aria-pressed", String(active));
       });
-      elements.paperChartTitle.textContent = mode === "fills" ? "MID PRICE & FILLS" : "P&L CURVE";
       schedulePaperChart();
     });
   });
