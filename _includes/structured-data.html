@@ -1,6 +1,7 @@
 {% assign schema_title = include.title | default: page.title | default: site.title %}
 {% assign schema_description = include.description | default: page.description | default: site.description %}
 {% assign schema_type = page.schema_type | default: include.type | default: "WebPage" %}
+{% assign schema_image = page.social_image | default: '/images/social/portfolio-og.png' %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,14 +26,25 @@
       ]
     },
     {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "name": "Théo Verdelhan · Quantitative Research",
+      "url": "{{ site.url }}/",
+      "inLanguage": "en-US",
+      "author": { "@id": "{{ site.url }}/#theo-verdelhan" }
+    },
+    {
       "@type": {{ schema_type | jsonify }},
       "@id": "{{ page.url | absolute_url }}#content",
       "name": {{ schema_title | strip_html | jsonify }},
+      {% if schema_type == 'TechArticle' %}"headline": {{ schema_title | strip_html | jsonify }},{% endif %}
       "description": {{ schema_description | strip_html | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
-      "image": "{{ '/images/social/portfolio-og.png' | absolute_url }}",
+      "image": {{ schema_image | absolute_url | jsonify }},
+      "inLanguage": "en-US",
       "isAccessibleForFree": true,
       "author": { "@id": "{{ site.url }}/#theo-verdelhan" },
+      "mainEntityOfPage": {{ page.url | absolute_url | jsonify }},
       "isPartOf": {
         "@type": "WebSite",
         "@id": "{{ site.url }}/#website",
