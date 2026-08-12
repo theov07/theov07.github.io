@@ -22,11 +22,11 @@
     second: "2-digit",
     hour12: false
   });
-  const SIMULATED_QUOTE_SIZE = 0.002;
+  const SIMULATED_QUOTE_SIZE = 0.1;
   const FLOW_WINDOW_MS = 5000;
   const PAPER_HISTORY_LIMIT = 240;
   const PAPER_HISTORY_INTERVAL_MS = 500;
-  const PAPER_INVENTORY_LIMIT = 0.02;
+  const PAPER_INVENTORY_LIMIT = SIMULATED_QUOTE_SIZE * 10;
   const LIVE_SESSION_LIMIT_MS = 5 * 60 * 1000;
 
   const elements = {
